@@ -1,0 +1,524 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Defining &lt; Routes/&gt;, Nested Routing,  - Leptos Book Abridged</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html" class="active"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leptos Book Abridged</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4>
+ROUTER::
+DEFINING `< Routes/>`
+NESTED ROUTING
+</h4>
+<hr />
+<p>A router is the answer to the question, &quot;Give this URL, what should appear on the page?&quot;</p>
+<ul>
+<li>
+<p>A URL consists of many parts. For example, the URL <code>https://my-cool-blog.com/blog/search?q=Search#resuts</code> consists of</p>
+<ul>
+<li>a sheme: <code>https</code></li>
+<li>a domain: <code>my-cool-blog.com</code></li>
+<li>a path: <code>/blog/search</code></li>
+<li>a query (or search): <code>?q=Search</code></li>
+<li>a hash: <code>#result</code></li>
+</ul>
+</li>
+<li>
+<p>The Leptos Router works with the path and query (<code>blog/search/?=Search</code>). Given this piece of the URL, what should the app render on the page?</p>
+</li>
+<li>
+<p>A Router also helps with layouts in some cases, which you are about to see.</p>
+</li>
+<li>
+<p>For most major applications, most major changes in the state of the app should be reflected in the URL. If you copy and paste the URL and open it in another tab, you should find yourself more or less in the same place.
+In this sense, the router is really at the heart of the global state management for your application. More than anything else, it drives what is displayed on the page.
+The router handles most of this work for you by mapping the current loaction to particular components.</p>
+</li>
+</ul>
+<hr />
+<ol>
+<li>To use a <code>Router</code> in your leptos code, import the relevant types from the <code>leptos_router</code> package to your code as dependencies using either syntax;</li>
+</ol>
+<pre><code class="language-rs">use leptos_router::{Route, RouteProps, Router, RouterProps, Routes, RoutesProps};
+</code></pre>
+<p>OR</p>
+<pre><code>use leptos_router::*;
+</code></pre>
+<ol start="2">
+<li>
+<p>Routing behavior is provided by the <code>&lt;Router/&gt;</code> component. This should usually be somewhere near the root of your application, the rest of the app.</p>
+</li>
+<li>
+<p>You shouldn’t try to use multiple <code>&lt;Router/&gt;</code>s in your app. Remember that the router drives global state: if you have multiple routers, which one decides what to do when the URL changes?</p>
+</li>
+<li>
+<p>The <code>&lt;Routes/&gt;</code> component is where you define all the routes to which a user can navigate in your application. Each possible route is defined by a <code>&lt;Route/&gt;</code> component.</p>
+</li>
+<li>
+<p>Everything outside <code>&lt;Routes/&gt;</code> will be present on every page, so you leave things like a navigation bar or many outside a <code>&lt;Routes/&gt;</code>.</p>
+</li>
+<li>
+<p>Here is an example code that uses a <code>&lt;Router/&gt;</code> and <code>&lt;Routes/&gt;</code>, and a couple <code>&lt;Route/&gt;</code>;</p>
+</li>
+</ol>
+<pre><code class="language-rs">use leptos::*;
+use leptos_router::*;
+
+#[component]
+pub fn App() -&gt; impl IntoView {
+  view! {
+    &lt;Router&gt;
+      &lt;nav&gt;
+        /* ... */
+      &lt;/nav&gt;
+      &lt;main&gt;
+        // all our routes will appear inside &lt;main&gt;
+        &lt;Routes&gt;
+          /* ... */
+          &lt;Route path=&quot;/&quot; view=Home/&gt;
+          &lt;Route path=&quot;/users&quot; view=Users/&gt;
+          &lt;Route path=&quot;/users/:id&quot; view=UserProfile/&gt;
+          &lt;Route path=&quot;/*any&quot; view=|| view! { &lt;h1&gt;&quot;Not Found&quot;&lt;/h1&gt; }/&gt;
+        &lt;/Routes&gt;
+      &lt;/main&gt;
+    &lt;/Router&gt;
+  }
+}
+</code></pre>
+<ol start="7">
+<li><code>&lt;Route/&gt;</code> takes a <em>path</em> and a <em>view</em>. When the current location matches path, the view will be created and displayed. The <code>path</code> can include;</li>
+</ol>
+<ul>
+<li>a static path (<code>/user</code>),</li>
+<li>dynamic, named parameters beginning with a colon (<code>/:id</code>),</li>
+<li>and/or a wildcard beginning with an asterisk (<code>/user/*any</code>)</li>
+</ul>
+<ol start="8">
+<li>view takes a <code>Fn() -&gt; impl IntoView</code>. If a component has no props, it can be passed directly into the <code>view</code>. In this case, <code>view=Home</code> is just a shorthand for <code>|| view! { &lt;Home/&gt; }</code>.</li>
+</ol>
+<hr />
+<p>CONDITIONAL ROUTES</p>
+<ol start="9">
+<li>Examine this conditional code for inspiration;</li>
+</ol>
+<pre><code class="language-rs">// ✅ do this instead!
+view! {
+  &lt;Routes&gt;
+    // parent route
+    &lt;Route path=&quot;/&quot; view=move || {
+      view! {
+        // only show the outlet if data have loaded
+        &lt;Show when=|| is_loaded() fallback=|| view! { &lt;p&gt;&quot;Loading&quot;&lt;/p&gt; }&gt;
+          &lt;Outlet/&gt;
+        &lt;/Show&gt;
+      }
+    }&gt;
+      // nested child route
+      &lt;Route path=&quot;/&quot; view=Home/&gt;
+    &lt;/Route&gt;
+  &lt;/Routes&gt;
+}
+</code></pre>
+<hr />
+<p>NESTED ROUTING</p>
+<ol start="10">
+<li>Example nested routing code (with <code>&lt;Outlet/&gt;</code> specified);</li>
+</ol>
+<pre><code class="language-rs">&lt;Routes&gt;
+  &lt;Route path=&quot;/users&quot; view=Users&gt; // * specify '&lt;Outlet/&gt; inside 'Users'
+  // ... &lt;Outlet/&gt; is how you tell a parent component where to render any nested components inside its view
+    &lt;Route path=&quot;:id&quot; view=UserProfile/&gt;
+    &lt;Route path=&quot;&quot; view=NoUser/&gt;
+  &lt;/Route&gt;
+&lt;/Routes&gt;
+</code></pre>
+<p><em>Now:</em></p>
+<ul>
+<li>if you go to path <code>/users/3</code>, the path matches <code>&lt;Users/&gt;</code> and <code>&lt;UserProfile/&gt;</code>.</li>
+<li>if you go to <code>/users</code>, the path matches <code>&lt;Users/&gt;</code> and <code>&lt;NoUser/&gt;</code>.</li>
+</ul>
+<p><em>Each 'path' can match mutiple routes, as in, each URL can render views provided by multiple <code>Route/&gt;</code> components nested inside it, at the same time, on the same page. You can imagine it being useful for something like a contacts app for example.</em></p>
+<ol start="11">
+<li>Another nested routing code example;</li>
+</ol>
+<pre><code class="language-rs">&lt;Routes&gt;
+  &lt;Route path=&quot;/contacts&quot; view=ContactList&gt; // specify &lt;Outlet/&gt; inside 'ContactList' to state where its children will be nested, i.e, the view for its &quot;&quot; and &quot;:id&quot; paths below
+    &lt;Route path=&quot;:id&quot; view=ContactInfo&gt;
+      &lt;Route path=&quot;&quot; view=EmailAndPhone/&gt;
+      &lt;Route path=&quot;address&quot; view=Address/&gt;
+      &lt;Route path=&quot;messages&quot; view=Messages/&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;&quot; view=|| view! {
+      &lt;p&gt;&quot;Select a contact to view more info.&quot;&lt;/p&gt;
+    }/&gt;
+  &lt;/Route&gt;
+&lt;/Routes&gt;
+</code></pre>
+<p>PARAMS AND QUERIES</p>
+<ol start="12">
+<li>Accessing params and queries is pretty simple with a couple of hooks.</li>
+</ol>
+<ul>
+<li><code>use_query</code> (typed) or <code>use_query_map</code> (untyped, flexible, and recommended).</li>
+<li><code>use_params</code> (typed) or <code>use_params_map</code> (untyped, flexible, and recommended).</li>
+</ul>
+<ol start="13">
+<li>It is recommended that you use <code>use_query_map</code> and <code>use_params_map</code> for ease, but in case that you're interested in using thier counterpart, then visit this URL (Parmas and Queries more info)[https://leptos-rs.github.io/leptos/router/18_params_and_queries.html].</li>
+</ol>
+<p><em>Look at item 21 (the routing comprehensive demo code) for inspiration of how you might use a <code>use_param_map</code> for example.</em></p>
+<hr />
+<p>THE <code>&lt;A/&gt;</code> COMPONENT</p>
+<p><em>N.B: Note that <code>&lt;A/&gt;</code> is basically an <code>&lt;a&gt;</code> with some upgrades which you will soon see.</em></p>
+<ol start="14">
+<li>
+<p>The <code>Router</code> will only try to do a client-side navigation both for <code>&lt;a&gt;</code> and <code>&lt;A&gt;</code> when it's pretty sure that it can handle it (on the client-side).</p>
+</li>
+<li>
+<p>Both <code>&lt;a&gt;</code> and <code>&lt;A/&gt;</code> will do client-side navigation unless these circumstances occur;</p>
+</li>
+</ol>
+<ul>
+<li>the click event (to a link) has had <code>prevent_default()</code> called on it.</li>
+<li>the <code>Meta</code>, <code>Alt</code>, <code>Ctrl</code>, or <code>Shift</code> keys were held during a click.</li>
+<li>the <code>&lt;a&gt;</code> or <code>&lt;A/&gt;</code> has a <code>target</code> or <code>download</code> attributes, or <code>rel=&quot;external&quot;</code>.</li>
+<li>the link has a different origin from the current location. For this use <code>&lt;a rel=&quot;external&quot;&gt;</code>.</li>
+</ul>
+<ol start="16">
+<li>Here are <code>&lt;A/&gt;</code>'s upgrades over <code>&lt;a&gt;</code>, hence you should choose <code>&lt;A/&gt;</code> over <code>&lt;a&gt;</code> under the following circumstances;</li>
+</ol>
+<ul>
+<li>you need this form of quick, short relative nested-route for path <code>/path/:id</code>, as <code>&lt;A href=&quot;1&quot;</code>, instead of <code>&lt;a href=&quot;/path/1&quot;</code>.</li>
+<li>you need <code>aria-current</code> attribute to <code>page</code> auto-set for you.</li>
+</ul>
+<hr />
+<p>NAVIGATING PROGRAMMATICALLY</p>
+<ol start="17">
+<li>
+<p>Using links and forms to navigate is the best solution for accessibility and graceful degradation, hence, you would mostly use either <code>&lt;a&gt;</code> and <code>&lt;form&gt;</code>, or their upgraded counterparts - <code>&lt;A/&gt;</code> and <code>&lt;Form/&gt;</code>. Bear this in mind.</p>
+</li>
+<li>
+<p>On the occassion that you want to navigate programmatically (as, in call a function that can and will navigate to a new page) though, you the <code>use_navigate</code> function.</p>
+</li>
+<li>
+<p><code>use_navigate</code> when used, should be called on the client. It does nothing when during server rendering.</p>
+</li>
+<li>
+<p>Here is an example code snippet of <code>use_navigate</code>;</p>
+</li>
+</ol>
+<pre><code class="language-rs">let navigate = leptos_router::use_navigate();
+navigate(&quot;/to-some-link&quot;, Default::default());
+</code></pre>
+<p><em>N.B: Its (required) second argument is a set of <code>NavigateOptions</code> - (NavigateOption)[https://docs.rs/leptos_router/latest/leptos_router/struct.NavigateOptions.html], which has the following construction function, as in, default implmentations;</em></p>
+<pre><code class="language-rs">impl Default for NavigateOptions {
+    fn default() -&gt; Self {
+        Self {
+            resolve: true,
+            replace: false,
+            scroll: true,
+            state: State(None),
+        }
+    }
+}
+</code></pre>
+<p>For accessibility reasons, Do not programmatically navigate to a link like this;</p>
+<pre><code class="language-rs">&lt;button on:click=move |_| navigate(/* ... */)&gt;
+</code></pre>
+<p>Again, any <code>on:click</code> that navigates should be an <code>&lt;a&gt;</code>, for reasons of accessibility.</p>
+<hr />
+<p>ROUTING COMPREHENSIVE DEMO CODE</p>
+<ol start="21">
+<li>Examine the following comprehensive routing code for some routing guide and inspiration;</li>
+</ol>
+<pre><code class="language-rs">use leptos::*;
+use leptos_router::*;
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;Router&gt;
+            &lt;h1&gt;&quot;Contact App&quot;&lt;/h1&gt;
+            // this &lt;nav&gt; will show on every routes,
+            // because it's outside the &lt;Routes/&gt;
+            // note: we can just use normal &lt;a&gt; tags
+            // and the router will use client-side navigation
+            &lt;nav&gt;
+                &lt;h2&gt;&quot;Navigation&quot;&lt;/h2&gt;
+                &lt;a href=&quot;/&quot;&gt;&quot;Home&quot;&lt;/a&gt;
+                &lt;a href=&quot;/contacts&quot;&gt;&quot;Contacts&quot;&lt;/a&gt;
+            &lt;/nav&gt;
+            &lt;main&gt;
+                &lt;Routes&gt;
+                    // / just has an un-nested &quot;Home&quot;
+                    &lt;Route path=&quot;/&quot; view=|| view! {
+                        &lt;h3&gt;&quot;Home&quot;&lt;/h3&gt;
+                    }/&gt;
+                    // /contacts has nested routes
+                    &lt;Route
+                        path=&quot;/contacts&quot;
+                        view=ContactList
+                      &gt;
+                        // if no id specified, fall back
+                        &lt;Route path=&quot;:id&quot; view=ContactInfo&gt;
+                            &lt;Route path=&quot;&quot; view=|| view! {
+                                &lt;div class=&quot;tab&quot;&gt;
+                                    &quot;(Contact Info)&quot;
+                                &lt;/div&gt;
+                            }/&gt;
+                            &lt;Route path=&quot;conversations&quot; view=|| view! {
+                                &lt;div class=&quot;tab&quot;&gt;
+                                    &quot;(Conversations)&quot;
+                                &lt;/div&gt;
+                            }/&gt;
+                        &lt;/Route&gt;
+                        // if no id specified, fall back
+                        &lt;Route path=&quot;&quot; view=|| view! {
+                            &lt;div class=&quot;select-user&quot;&gt;
+                                &quot;Select a user to view contact info.&quot;
+                            &lt;/div&gt;
+                        }/&gt;
+                    &lt;/Route&gt;
+                &lt;/Routes&gt;
+            &lt;/main&gt;
+        &lt;/Router&gt;
+    }
+}
+
+#[component]
+fn ContactList() -&gt; impl IntoView {
+    view! {
+        &lt;div class=&quot;contact-list&quot;&gt;
+            // here's our contact list component itself
+            &lt;div class=&quot;contact-list-contacts&quot;&gt;
+                &lt;h3&gt;&quot;Contacts&quot;&lt;/h3&gt;
+                &lt;A href=&quot;alice&quot;&gt;&quot;Alice&quot;&lt;/A&gt;
+                &lt;A href=&quot;bob&quot;&gt;&quot;Bob&quot;&lt;/A&gt;
+                &lt;A href=&quot;steve&quot;&gt;&quot;Steve&quot;&lt;/A&gt;
+            &lt;/div&gt;
+
+            // &lt;Outlet/&gt; will show the nested child route
+            // we can position this outlet wherever we want
+            // within the layout
+            &lt;Outlet/&gt;
+        &lt;/div&gt;
+    }
+}
+
+#[component]
+fn ContactInfo() -&gt; impl IntoView {
+    // we can access the :id param reactively with `use_params_map`
+    let params = use_params_map();
+    let id = move || params.with(|params| params.get(&quot;id&quot;).cloned().unwrap_or_default());
+
+    // imagine we're loading data from an API here
+    let name = move || match id().as_str() {
+        &quot;alice&quot; =&gt; &quot;Alice&quot;,
+        &quot;bob&quot; =&gt; &quot;Bob&quot;,
+        &quot;steve&quot; =&gt; &quot;Steve&quot;,
+        _ =&gt; &quot;User not found.&quot;,
+    };
+
+    view! {
+        &lt;div class=&quot;contact-info&quot;&gt;
+            &lt;h4&gt;{name}&lt;/h4&gt;
+            &lt;div class=&quot;tabs&quot;&gt;
+                &lt;A href=&quot;&quot; exact=true&gt;&quot;Contact Info&quot;&lt;/A&gt;
+                &lt;A href=&quot;conversations&quot;&gt;&quot;Conversations&quot;&lt;/A&gt;
+            &lt;/div&gt;
+
+            // &lt;Outlet/&gt; here is the tabs that are nested
+            // underneath the /contacts/:id route
+            &lt;Outlet/&gt;
+        &lt;/div&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../6-Global State Management/leptos-analysis-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../7-Routing/leptos-analysis-2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../6-Global State Management/leptos-analysis-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../7-Routing/leptos-analysis-2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

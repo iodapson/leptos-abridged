@@ -1,0 +1,427 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Global State Management - Leptos Book Abridged</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html" class="active"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leptos Book Abridged</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4>
+GLOBAL STATE MANAGEMENT
+</h4>
+<p>You generally don't need global state management except for special cases like;</p>
+<ul>
+<li>Theming</li>
+<li>Saving user settings</li>
+<li>Or sharing data between components in different parts of your UI</li>
+</ul>
+<ol>
+<li>The three best approaches to global state are;</li>
+</ol>
+<ul>
+<li>Using the router to drive global state via the URL.</li>
+<li>Passing signals through context.</li>
+<li>Creating a global state struct and creating lenses into it with <code>create_slice</code>.</li>
+</ul>
+<ol start="2">
+<li>
+<p>For details about the first two options, check (Option1)[https://leptos-rs.github.io/leptos/15_global_state.html#option-1-url-as-global-state] and (Option2)[https://leptos-rs.github.io/leptos/15_global_state.html#option-1-url-as-global-state]</p>
+</li>
+<li>
+<p>Option three example code of creating a Global state struct and slices (<code>create_slice</code>) in which each signal only updates when the particular piece of a larger state struct it accessess updates.</p>
+</li>
+</ol>
+<p>The code demo;</p>
+<pre><code class="language-rs">use leptos::*;
+
+// So far, we've only been working with local state in components
+// We've only seen how to communicate between parent and child components
+// But there are also more general ways to manage global state
+//
+// The three best approaches to global state are
+// 1. Using the router to drive global state via the URL
+// 2. Passing signals through context
+// 3. Creating a global state struct and creating lenses into it with `create_slice`
+//
+// Option #1: URL as Global State
+// The next few sections of the tutorial will be about the router.
+// So for now, we'll just look at options #2 and #3.
+
+// Option #2: Pass Signals through Context
+//
+// In virtual DOM libraries like React, using the Context API to manage global
+// state is a bad idea: because the entire app exists in a tree, changing
+// some value provided high up in the tree can cause the whole app to render.
+//
+// In fine-grained reactive libraries like Leptos, this is simply not the case.
+// You can create a signal in the root of your app and pass it down to other
+// components using provide_context(). Changing it will only cause rerendering
+// in the specific places it is actually used, not the whole app.
+#[component]
+fn Option2() -&gt; impl IntoView {
+    // here we create a signal in the root that can be consumed
+    // anywhere in the app.
+    let (count, set_count) = create_signal(0);
+    // we'll pass the setter to specific components,
+    // but provide the count itself to the whole app via context
+    provide_context(count);
+
+    view! {
+        &lt;h1&gt;&quot;Option 2: Passing Signals&quot;&lt;/h1&gt;
+        // SetterButton is allowed to modify the count
+        &lt;SetterButton set_count/&gt;
+        // These consumers can only read from it
+        // But we could give them write access by passing `set_count` if we wanted
+        &lt;div style=&quot;display: flex&quot;&gt;
+            &lt;FancyMath/&gt;
+            &lt;ListItems/&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A button that increments our global counter.
+#[component]
+fn SetterButton(set_count: WriteSignal&lt;u32&gt;) -&gt; impl IntoView {
+    view! {
+        &lt;div class=&quot;provider red&quot;&gt;
+            &lt;button on:click=move |_| set_count.update(|count| *count += 1)&gt;
+                &quot;Increment Global Count&quot;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that does some &quot;fancy&quot; math with the global count
+#[component]
+fn FancyMath() -&gt; impl IntoView {
+    // here we consume the global count signal with `use_context`
+    let count = use_context::&lt;ReadSignal&lt;u32&gt;&gt;()
+        // we know we just provided this in the parent component
+        .expect(&quot;there to be a `count` signal provided&quot;);
+    let is_even = move || count() &amp; 1 == 0;
+
+    view! {
+        &lt;div class=&quot;consumer blue&quot;&gt;
+            &quot;The number &quot;
+            &lt;strong&gt;{count}&lt;/strong&gt;
+            {move || if is_even() {
+                &quot; is&quot;
+            } else {
+                &quot; is not&quot;
+            }}
+            &quot; even.&quot;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that shows a list of items generated from the global count.
+#[component]
+fn ListItems() -&gt; impl IntoView {
+    // again, consume the global count signal with `use_context`
+    let count = use_context::&lt;ReadSignal&lt;u32&gt;&gt;().expect(&quot;there to be a `count` signal provided&quot;);
+
+    let squares = move || {
+        (0..count())
+            .map(|n| view! { &lt;li&gt;{n}&lt;sup&gt;&quot;2&quot;&lt;/sup&gt; &quot; is &quot; {n * n}&lt;/li&gt; })
+            .collect::&lt;Vec&lt;_&gt;&gt;()
+    };
+
+    view! {
+        &lt;div class=&quot;consumer green&quot;&gt;
+            &lt;ul&gt;{squares}&lt;/ul&gt;
+        &lt;/div&gt;
+    }
+}
+
+// Option #3: Create a Global State Struct
+//
+// You can use this approach to build a single global data structure
+// that holds the state for your whole app, and then access it by
+// taking fine-grained slices using `create_slice` or `create_memo`,
+// so that changing one part of the state doesn't cause parts of your
+// app that depend on other parts of the state to change.
+
+#[derive(Default, Clone, Debug)]
+struct GlobalState {
+    count: u32,
+    name: String,
+}
+
+#[component]
+fn Option3() -&gt; impl IntoView {
+    // we'll provide a single signal that holds the whole state
+    // each component will be responsible for creating its own &quot;lens&quot; into it
+    let state = create_rw_signal(GlobalState::default());
+    provide_context(state);
+
+    view! {
+        &lt;h1&gt;&quot;Option 3: Passing Signals&quot;&lt;/h1&gt;
+        &lt;div class=&quot;red consumer&quot; style=&quot;width: 100%&quot;&gt;
+            &lt;h2&gt;&quot;Current Global State&quot;&lt;/h2&gt;
+            &lt;pre&gt;
+                {move || {
+                    format!(&quot;{:#?}&quot;, state.get())
+                }}
+            &lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;display: flex&quot;&gt;
+            &lt;GlobalStateCounter/&gt;
+            &lt;GlobalStateInput/&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that updates the count in the global state.
+#[component]
+fn GlobalStateCounter() -&gt; impl IntoView {
+    let state = use_context::&lt;RwSignal&lt;GlobalState&gt;&gt;().expect(&quot;state to have been provided&quot;);
+
+    // `create_slice` lets us create a &quot;lens&quot; into the data
+    let (count, set_count) = create_slice(
+
+        // we take a slice *from* `state`
+        state,
+        // our getter returns a &quot;slice&quot; of the data
+        |state| state.count, // ** GlobalStateCounter is only concerned about the 'count' slice of the 'GlobalState' struct
+        // our setter describes how to mutate that slice, given a new value
+        |state, n| state.count = n, // ** 'n' comes from the argument passed to 'set_count' of the 'create_slice'
+    );
+
+    view! {
+        &lt;div class=&quot;consumer blue&quot;&gt;
+            &lt;button
+                on:click=move |_| {
+                    set_count(count() + 1);
+                }
+            &gt;
+                &quot;Increment Global Count&quot;
+            &lt;/button&gt;
+            &lt;br/&gt;
+            &lt;span&gt;&quot;Count is: &quot; {count}&lt;/span&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that updates the count in the global state.
+#[component]
+fn GlobalStateInput() -&gt; impl IntoView {
+    let state = use_context::&lt;RwSignal&lt;GlobalState&gt;&gt;().expect(&quot;state to have been provided&quot;);
+
+    // this slice is completely independent of the `count` slice
+    // that we created in the other component
+    // neither of them will cause the other to rerun
+    let (name, set_name) = create_slice(
+        // we take a slice *from* `state`
+        state,
+        // our getter returns a &quot;slice&quot; of the data
+        |state| state.name.clone(),
+        // our setter describes how to mutate that slice, given a new value
+        |state, n| state.name = n,
+    );
+
+    view! {
+        &lt;div class=&quot;consumer green&quot;&gt;
+            &lt;input
+                type=&quot;text&quot;
+                prop:value=name
+                on:input=move |ev| {
+                    set_name(event_target_value(&amp;ev));
+                }
+            /&gt;
+            &lt;br/&gt;
+            &lt;span&gt;&quot;Name is: &quot; {name}&lt;/span&gt;
+        &lt;/div&gt;
+    }
+}
+// This `main` function is the entry point into the app
+// It just mounts our component to the &lt;body&gt;
+// Because we defined it as `fn App`, we can now use it in a
+// template as &lt;App/&gt;
+fn main() {
+    leptos::mount_to_body(|| view! { &lt;Option2/&gt;&lt;Option3/&gt; })
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../5-Interlude - Projecting Children/leptos-analysis-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../7-Routing/leptos-analysis-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../5-Interlude - Projecting Children/leptos-analysis-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../7-Routing/leptos-analysis-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

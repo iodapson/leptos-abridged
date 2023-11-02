@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Control Flow - Leptos Book Abridged</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html" class="active"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leptos Book Abridged</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4>
+BUILDING USER INTERFACES::
+CONTROL FLOW
+</h4>
+<ol>
+<li>The best way for complex renders, using <code>&lt;Show /&gt;</code>:</li>
+</ol>
+<pre><code class="language-rs">let (value, set_value) = create_signal(0);
+
+view! {
+  &lt;Show
+    when=move || { value() &gt; 5 }
+    fallback=|| view! { &lt;Small/&gt; }
+  &gt;
+    &lt;Big/&gt;
+  &lt;/Show&gt;
+}
+</code></pre>
+<p>&quot;<code>&lt;Show/&gt;</code> memoizes the when condition, so it only renders its <code>&lt;Small/&gt;</code> once, continuing to show the same component until value is greater than five; then it renders <code>&lt;Big/&gt;</code> once, continuing to show it indefinitely or until value goes below five and then renders <code>&lt;Small/&gt;</code> again.
+This is a helpful tool to avoid rerendering when using dynamic <code>if</code> expressions. As always, there's some overhead: for a very simple node (like updating a single text node, or updating a class or attribute), a <code>move || if ...</code> will be more efficient. But it's at all expensive to render either branch, reach for <code>&lt;Show/&gt;</code>.</p>
+<hr />
+<p>Other Ways To Conditionally Render A Component (Recommended for Simple Renders):</p>
+<ol start="2">
+<li>The primitive <code>if</code> statement way</li>
+</ol>
+<p>You can reactively and conditionally render elements/components. Here is an example code;</p>
+<pre><code class="language-rs">// create a signal to make the render target reactive
+let (value, set_value) = create_signal(0);
+// create a logic that returns a boolean based on the state of value of the signal
+let is_odd_example_logic = move || value() % 1 == 1;
+
+// conditionally render a component or HTML element using an if statement
+view! {
+    &lt;p&gt;
+      {move || if is_odd_example_logic() {
+        &quot;Render - is odd&quot;
+      } else {
+        &quot;Render - is even&quot;
+      }
+      }
+    &lt;/p&gt;
+}
+</code></pre>
+<ol start="3">
+<li>Using an <code>if</code> statement that returns an <code>Option&lt;T&gt;</code> value;</li>
+</ol>
+<p>You can reactively and conditionally render elements/components. Here is an example code;</p>
+<pre><code class="language-rs">// create a signal to make the render target reactive
+let (value, set_value) = create_signal(0);
+// create a logic that returns a boolean based on the state of value of the signal
+let is_odd_example_logic = move || value() % 1 == 1;
+
+// store a conditionally obtained Some( value, component or HTML element ) or Option::None using an if statment that returns an option value
+let message = move || {
+    if is_odd_example_logic() {
+        Some(&quot;Ding ding ding!&quot;)
+    } else {
+        None
+    }
+}
+view! {
+    &lt;p&gt;
+      {message}
+    &lt;/p&gt;
+}
+</code></pre>
+<ol start="4">
+<li>The primitive <code>match</code> statement way;</li>
+</ol>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">// create a signal to make the render target reactive
+let (value, set_value) = create_signal(0);
+// create a logic that returns a boolean based on the state of value of the signal
+let is_odd_example_logic = move || value() % 1 == 1;
+
+// store a match obtained value, component or HTML element
+let message = move || {
+    match value() {
+        0 =&gt; &quot;Zero&quot;,
+        1 =&gt; &quot;One&quot;,
+        n if is_odd() =&gt; &quot;Odd&quot;,
+        _ =&gt; &quot;Even&quot;
+    }
+};
+
+view! {
+    &lt;p&gt;{message}&lt;/p&gt;
+}
+</code></pre>
+<hr />
+<p>Returning Different HTML Elements From Different Branches Of A Conditional</p>
+<p>Here is an example code where there is multiple <code>HtmlElement</code> types that are converted into <code>HtmlElement&lt;AnyElement&gt;</code> with method <code>.into_any()</code>;</p>
+<pre><code class="language-rs">use leptos::*;
+
+#[component]
+fn App() -&gt; impl IntoView {
+
+  let (value, set_value) = create_signal(0);
+  // define boolean logic that decides what gets rendered
+  let is_odd_logic_example = move || value() &amp; 1 == 1;
+
+  view! {
+    &lt;main&gt;
+      // Simple UI to update and show a value
+      &lt;button on:click=move |_| set_value.update(
+        |n| *n += 1
+      )&gt;
+        &quot;+1&quot;
+      &lt;/button&gt;
+      &lt;p&gt;&quot;Value is: &quot; {value}&lt;/p&gt;
+      // Simple dynamic style based on a condition
+      &lt;p class:hidden=is_odd_logic_example&gt;
+      &quot;Appears if even.&quot;
+      &lt;/p&gt;
+
+      // ** Take Note Of This Conditional Render **//
+      {move || match is_odd() {
+          true if value() == 1 =&gt; {
+              // returns HtmlElement&lt;Pre&gt;
+              view! { &lt;pre&gt;&quot;One&quot;&lt;/pre&gt; }.into_any()
+          },
+          false if value() == 2 =&gt; {
+              // returns HtmlElement&lt;P&gt;
+              view! { &lt;p&gt;&quot;Two&quot;&lt;/p&gt; }.into_any()
+          }
+          // returns HtmlElement&lt;Textarea&gt;
+          _ =&gt; view! { &lt;textarea&gt;{value()}&lt;/textarea&gt; }.into_any()
+      }}
+    &lt;/main&gt;
+  }
+}
+</code></pre>
+<h6 id="note-if-you-have-a-variety-of-view-types-that-are-not-all-htmlelement-convert-them-into-views-with-into_view"><a class="header" href="#note-if-you-have-a-variety-of-view-types-that-are-not-all-htmlelement-convert-them-into-views-with-into_view">Note: If you have a variety of view types that are not all 'HtmlElement', convert them into 'View's with '.into_view()'</a></h6>
+<p>Perhaps you can even go futher and concatenate function calls 'into_view()' and 'into_any()' like so, <code>.into_view().into_any()</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1-Building_user_interfaces/leptos-analysis-4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../1-Building_user_interfaces/leptos-analysis-6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1-Building_user_interfaces/leptos-analysis-4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../1-Building_user_interfaces/leptos-analysis-6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

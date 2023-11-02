@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Interlude: Projecting Children - Leptos Book Abridged</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html" class="active"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leptos Book Abridged</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4>
+INTERLUDE: PROJECTING CHILDREN
+</h4>
+<p>You would sometimes find that you need to be able to project components as childrens to deeper sub-components.</p>
+<ol>
+<li>Use the <code>store_value</code> primitive to project children. This essentially stores a value in the reactive system, handling ownership off to the framework in exchange for a reference that is, like signals, <code>Copy</code> and <code>'static</code>, which we can access or modify through certain methods.</li>
+</ol>
+<p>Example code;</p>
+<pre><code class="language-rs">pub fn LoggedIn&lt;F, IV&gt;(fallback: F, children: ChildrenFn) -&gt; impl IntoView
+where
+    F: Fn() -&gt; IV + 'static,
+    IV: IntoView,
+{
+    let fallback = store_value(fallback);
+    let children = store_value(children);
+    view! {
+        &lt;Suspense
+            fallback=|| ()
+        &gt;
+            &lt;Show
+                when=|| todo!()
+                fallback=move || fallback.with_value(|fallback| fallback())
+            &gt;
+                {children.with_value(|children| children())}
+            &lt;/Show&gt;
+        &lt;/Suspense&gt;
+    }
+}
+</code></pre>
+<p>At the top level, we store both <code>fallback</code> and <code>children</code> in the reactive scope owned by <code>LoggedIn</code>. Now we can simply move those references down through other layers into the <code>&lt;Show/&gt;</code> component and call them there.</p>
+<p><em>Note that this works because <code>&lt;Show/&gt;</code> and <code>&lt;Susspense/&gt;</code> only need an immutable refernce to their children (which <code>.with_value</code> can give it), not ownership.</em></p>
+<ol start="2">
+<li>In other cases, you may need to project owned props through a function that takes <code>ChildrenFn</code> and therfore needs to be called more than once. In this case, you may find the <code>clone</code>: helper in the <code>view</code> macro helpful.</li>
+</ol>
+<p>Consider this code example</p>
+<pre><code class="language-rs">#[component]
+pub fn App() -&gt; impl IntoView {
+    let name = &quot;Alice&quot;.to_string();
+    view! {
+        &lt;Outer&gt;
+            &lt;Inner&gt;
+                &lt;Inmost name=name.clone()/&gt;
+            &lt;/Inner&gt;
+        &lt;/Outer&gt;
+    }
+}
+
+#[component]
+pub fn Outer(ChildrenFn) -&gt; impl IntoView {
+    children()
+}
+
+#[component]
+pub fn Inner(ChildrenFn) -&gt; impl IntoView {
+    children()
+}
+
+#[component]
+pub fn Inmost(ng) -&gt; impl IntoView {
+    view! {
+        &lt;p&gt;{name}&lt;/p&gt;
+    }
+}
+
+// You should not name=name.clone(), as this gives the error;
+// connot move out of `name`, a captured variable in an `Fn` closure.
+// use the `clone:name` syntax instead;
+view! {
+    &lt;Outer&gt;
+      &lt;Inner clone:name&gt;
+        &lt;Inmost name=name.clone()/&gt;
+    &lt;/Outer&gt;
+}
+</code></pre>
+<p>These issues can be a little tricky to understand or debug because of the opacity of the <code>view</code> macro. But in general, they can always be solved.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../4-Async/leptos-analysis-3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../6-Global State Management/leptos-analysis-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../4-Async/leptos-analysis-3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../6-Global State Management/leptos-analysis-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

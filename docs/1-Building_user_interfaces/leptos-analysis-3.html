@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Interating Lists Statically Or Dynamically - Leptos Book Abridged</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html" class="active"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leptos Book Abridged</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4>
+BUILDING USER INTERFACES::
+ITERATING LISTS STATICALLY OR DYNAMICALLY
+</h4>
+<ol>
+<li>
+<p>Whether you're listing todos, displaying a table, or showing product images, iterating over a list of items is a common task in web applications.</p>
+<p>Leptos provides two different patterns for iterating over items:</p>
+<ul>
+<li>For static views: <code>Vec&lt;_&gt;</code></li>
+<li>For dynamic lists (e.g, controlled by signals): <code>&lt;For/&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>Example code of iterating a list <code>Vec&lt;IV&gt;</code> where <code>IV: IntoView</code>;</p>
+</li>
+</ol>
+<pre><code class="language-rs">// the list
+let values = vec![0, 1, 2];
+// time to render the list
+view! {
+    //  render the list as-is, bundled together
+    &lt;p&gt;{values.clone()}&lt;/p&gt;
+    // or iterate over the list for precise renders
+    &lt;ul&gt;
+      {values.into_iter().map(
+        |item| view! {
+            &lt;li&gt;{item}&lt;/item&gt;
+        }
+      ).collect::&lt;Vec&lt;_&gt;&gt;()}
+    &lt;/ul&gt;
+}
+</code></pre>
+<ol start="3">
+<li>Example code of iterating a list <code>Vec&lt;IV</code> where <code>IV: IntoView</code>, using Leptos iterator helper-function - <code>.collect_view()</code></li>
+</ol>
+<pre><code class="language-rs">// the list
+let values = vec![0, 1, 2];
+// time to render the list
+view! {
+    // again, render the list as-is, bundled together
+    &lt;p&gt;{values.clone()}&lt;/p&gt;
+    // or iterate over the list for precise renders
+    &lt;ul&gt;
+      {values.into_iter().map(
+        |item| view! {
+            &lt;li&gt;{item}&lt;/li&gt;
+        }
+      ).collect_view()}
+    &lt;/ul&gt;
+}
+</code></pre>
+<ol start="4">
+<li>Example of making a list of signals whose individual items can change reactively, but the entire list as a whole would remain unreactive.</li>
+</ol>
+<pre><code class="language-rs">// define the signal list's length
+let signal_list_length = 5;
+// create a list of 5 counter signals
+let counters_list = (1..=signal_list_length).map(
+    |current_index| create_signal(current_index)
+);
+
+// each item manages a reactive view
+// ...but, the list itself will never change
+let counter_buttons = counters_list.map(
+    |(count, set_count)| {
+        // display a rendered list of buttons, each with their own independent signals
+        view! {
+            &lt;li&gt;
+              &lt;button on:click=move |_| {set_count.update(
+                |its_current_count| *its_current_count += 1
+              )}&gt;
+                {count}
+              &lt;/button&gt;
+            &lt;/li&gt;
+        }
+    }
+).collect_view(); // This, 'counter_buttons' is an unordered list of signals, each list with its own internally managed reactive view
+
+view! {
+    &lt;ul&gt;{counter_buttons}&lt;/ul&gt;
+}
+</code></pre>
+<ol start="5">
+<li>Here is an example code that creates a list of signals, whereby the entire list is a signal, hence new new list item additions can be added, or even old list items removed, and the list would get updated dynamically;</li>
+</ol>
+<p><em>N.B: The iteration is done using <code>&lt;For/&gt;</code></em></p>
+<pre><code class="language-rs">use leptos::*;
+
+/// A list of counters that allows you to add or
+/// remove counters.
+#[component]
+fn DynamicList(
+    /// The number of counters to begin with.
+    initial_length: usize,
+) -&gt; impl IntoView {
+    // This dynamic list will use the &lt;For/&gt; component.
+    // &lt;For/&gt; is a keyed list. This means that each row
+    // has a defined key. If the key does not change, the row
+    // will not be re-rendered. When the list changes, only
+    // the minimum number of changes will be made to the DOM.
+
+    // `next_counter_id` will let us generate unique IDs
+    // we do this by simply incrementing the ID by one
+    // each time we create a counter
+    let mut next_counter_id = initial_length;
+
+    // we generate an initial list as in &lt;StaticList/&gt;
+    // but this time we include the ID along with the signal
+    let initial_counters = (0..initial_length)
+        .map(|id| (id, create_signal(id + 1)))
+        .collect::&lt;Vec&lt;_&gt;&gt;();
+
+    // now we store that initial list in a signal
+    // this way, we'll be able to modify the list over time,
+    // adding and removing counters, and it will change reactively
+    let (counters, set_counters) = create_signal(initial_counters);
+
+    // clousure to update list-signal - 'initial_counters'
+    let add_counter = move |_| {
+        // create a signal for the new counter
+        let sig = create_signal(next_counter_id + 1);
+        // add this counter to the list of counters
+        set_counters.update(move |counters| {
+            // since `.update()` gives us `&amp;mut T`
+            // we can just use normal Vec methods like `push`
+            counters.push((next_counter_id, sig))
+        });
+        // increment the ID so it's always unique
+        next_counter_id += 1;
+    };
+
+    view! {
+        &lt;div&gt;
+            &lt;button on:click=add_counter&gt;
+                &quot;Add Counter&quot;
+            &lt;/button&gt;
+            &lt;ul&gt;
+                // The &lt;For/&gt; component is central here
+                // This allows for efficient, key list rendering
+                &lt;For
+                    // `each` takes any function (in this case, a ReadSignal&lt;_&gt;) that returns an iterator (usually a list of signals or derived signal)
+                    // if the list is not reactive, just render a Vec&lt;_&gt; instead of &lt;For/&gt;
+                    each=counters
+                    // the key should be unique and stable for each row
+                    // using an index is usually a bad idea, unless your list
+                    // can only grow, because moving items around inside the list
+                    // means their indices will change and they will all rerender
+                    key=|counter| counter.0
+                    // `children` receives each item from your `each` iterator
+                    // and returns a view
+                    children=move |(id, (count, set_count))| {
+                        view! {
+                            &lt;li&gt;
+                                &lt;button
+                                    on:click=move |_| set_count.update(|n| *n += 1)
+                                &gt;
+                                    {count}
+                                &lt;/button&gt;
+                                &lt;button
+                                    on:click=move |_| {
+                                        set_counters.update(|counters| {
+                                            counters.retain(|(counter_id, _)| counter_id != &amp;id)
+                                        });
+                                    }
+                                &gt;
+                                    &quot;Remove&quot;
+                                &lt;/button&gt;
+                            &lt;/li&gt;
+                        }
+                    }
+                /&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    }
+}
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;h2&gt;&quot;Dynamic List&quot;&lt;/h2&gt;
+        &lt;p&gt;&quot;Use this pattern if the rows in your list will change.&quot;&lt;/p&gt;
+        &lt;DynamicList initial_length=5/&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+
+</code></pre>
+<p>Click this link to see its result: https://pwdn2y-8000.csb.app/</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../1-Building_user_interfaces/leptos-analysis-2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../1-Building_user_interfaces/leptos-analysis-4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../1-Building_user_interfaces/leptos-analysis-2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../1-Building_user_interfaces/leptos-analysis-4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

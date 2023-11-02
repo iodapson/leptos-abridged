@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>&lt; Form/&gt; - Leptos Book Abridged</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html" class="active"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leptos Book Abridged</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4>
+LEPTOS ROUTING::
+`< FORM />`
+</h4>
+<p>THE <code>&lt;Form/&gt;</code> COMPONENT</p>
+<ol>
+<li>
+<p>The router provides a <code>&lt;Form&gt;</code> component, which works like the HTML <code>&lt;form&gt;</code> element, but uses client-side navigations instead of full page reloads.</p>
+</li>
+<li>
+<p><code>&lt;Form/&gt;</code> works with both <code>GET</code> and <code>POST</code> requests. With <code>method=&quot;GET&quot;</code>, it will navigate to the URL encoded in the form data. With <code>method=&quot;POST&quot;</code> it will make a <code>POST</code> request and handle the server’s response.</p>
+</li>
+<li>
+<p><code>&lt;Form/&gt;</code> provides the basis for some components like <code>&lt;ActionForm/&gt;</code> and <code>&lt;MultiActionForm/&gt;</code> that we’ll see in later chapters. But it also enables some powerful patterns of its own.</p>
+</li>
+<li>
+<p>Here is an example <code>&lt;Form/&gt;</code> code for searching with a URL query (as a signal) tied to an (uncontrolled) input element as its source;</p>
+</li>
+</ol>
+<pre><code class="language-rs">async fn fetch_results() {
+    // some async function to fetch our search results
+}
+
+#[component]
+pub fn FormExample() -&gt; impl IntoView {
+    // reactive access to URL query strings
+    let query = use_query_map();
+    // search stored as ?q=
+    let search = move || query().get(&quot;q&quot;).cloned().unwrap_or_default();
+    // a resource driven by the search string
+    let search_results = create_resource(search, fetch_results);
+
+    view! {
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            &lt;input type=&quot;search&quot; name=&quot;search&quot; value=search/&gt;
+            &lt;input type=&quot;submit&quot;/&gt;
+        &lt;/Form&gt;
+        &lt;Transition fallback=move || ()&gt;
+            /* render search results */
+        &lt;/Transition&gt;
+    }
+}
+</code></pre>
+<p>In the above code sample,</p>
+<ul>
+<li>whenever the <code>submit</code> type input is clicked, the <code>&lt;Form/&gt;</code> will navigate to <code>?q={search}</code>, but because this navigation is done on the client side, there's no page flicker or reload.</li>
+<li>because <code>search</code> is the source signal for the <code>search_results</code> resource, this triggers <code>search_results</code> to reload its resource.</li>
+<li>the <code>&lt;Transition/&gt;</code> continues displaying the current search results until the new ones have loaded, and when they complete, it switches to displaying the new result until yet another one reloads (again).</li>
+</ul>
+<ol start="5">
+<li>Here is an example <code>&lt;Form/&gt;</code> code for searching with a URL query (as a signal) tied to an (controlled) input element as its source;</li>
+</ol>
+<pre><code class="language-rs">async fn fetch_results() {
+    // some async function to fetch our search results
+}
+
+#[component]
+pub fn FormExample() -&gt; impl IntoView {
+    // reactive access to URL query strings
+    let query = use_query_map();
+    // search stored as ?q=
+    let search = move || query().get(&quot;q&quot;).cloned().unwrap_or_default();
+    // a resource driven by the search string
+    let search_results = create_resource(search, fetch_results);
+
+    view! {
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            // pay attention to the input here
+            &lt;input type=&quot;search&quot;
+              name=&quot;search&quot;
+              value=search
+              oninput=&quot;this.form.requestSubmit()&quot;
+            /&gt;
+        &lt;/Form&gt;
+        &lt;Transition fallback=move || ()&gt;
+            /* render search results */
+        &lt;/Transition&gt;
+    }
+}
+</code></pre>
+<p>In the above sample code;</p>
+<ul>
+<li>The <code>submit</code> type input has been removed in favor of a input with HTML attribut <code>oninput</code> that does its own submission, such that, it reloads data each time its received input changes.</li>
+<li>the input's <code>oninput</code>'s <code>this.form</code> gives the form element (in this case <code>&lt;Form/&gt;</code>) that the input is attached to.</li>
+<li>the input's <code>oninput</code>'s <code>this.form.requestSubmit()</code> is the JavaScript function that actually fires the <code>submit</code> event on the <code>&lt;form&gt;</code>, which is caught by the <code>&lt;Form/&gt;</code>, just as if you had clicked a submit button.</li>
+</ul>
+<ol start="6">
+<li>Here is a bigger code example of using <code>&lt;Form/&gt;</code>;</li>
+</ol>
+<pre><code class="language-rs">use leptos::*;
+use leptos_router::*;
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;Router&gt;
+            &lt;h1&gt;&lt;code&gt;&quot;&lt;Form/&gt;&quot;&lt;/code&gt;&lt;/h1&gt;
+            &lt;main&gt;
+                &lt;Routes&gt;
+                    &lt;Route path=&quot;&quot; view=FormExample/&gt;
+                &lt;/Routes&gt;
+            &lt;/main&gt;
+        &lt;/Router&gt;
+    }
+}
+
+#[component]
+pub fn FormExample() -&gt; impl IntoView {
+    // reactive access to URL query
+    let query = use_query_map();
+    let name = move || query().get(&quot;name&quot;).cloned().unwrap_or_default();
+    let number = move || query().get(&quot;number&quot;).cloned().unwrap_or_default();
+    let select = move || query().get(&quot;select&quot;).cloned().unwrap_or_default();
+
+    view! {
+        // read out the URL query strings
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;code&gt;&quot;name&quot;&lt;/code&gt;&lt;/td&gt;
+                &lt;td&gt;{name}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;code&gt;&quot;number&quot;&lt;/code&gt;&lt;/td&gt;
+                &lt;td&gt;{number}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;code&gt;&quot;select&quot;&lt;/code&gt;&lt;/td&gt;
+                &lt;td&gt;{select}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+
+        // &lt;Form/&gt; will navigate whenever submitted
+        &lt;h2&gt;&quot;Manual Submission&quot;&lt;/h2&gt;
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            // input names determine query string key
+            &lt;input type=&quot;text&quot; name=&quot;name&quot; value=name/&gt;
+            &lt;input type=&quot;number&quot; name=&quot;number&quot; value=number/&gt;
+            &lt;select name=&quot;select&quot;&gt;
+                // `selected` will set which starts as selected
+                &lt;option selected=move || select() == &quot;A&quot;&gt;
+                    &quot;A&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;B&quot;&gt;
+                    &quot;B&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;C&quot;&gt;
+                    &quot;C&quot;
+                &lt;/option&gt;
+            &lt;/select&gt;
+            // submitting should cause a client-side
+            // navigation, not a full reload
+            &lt;input type=&quot;submit&quot;/&gt;
+        &lt;/Form&gt;
+
+        // This &lt;Form/&gt; uses some JavaScript to submit
+        // on every input
+        &lt;h2&gt;&quot;Automatic Submission&quot;&lt;/h2&gt;
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            &lt;input
+                type=&quot;text&quot;
+                name=&quot;name&quot;
+                value=name
+                // this oninput attribute will cause the
+                // form to submit on every input to the field
+                oninput=&quot;this.form.requestSubmit()&quot;
+            /&gt;
+            &lt;input
+                type=&quot;number&quot;
+                name=&quot;number&quot;
+                value=number
+                oninput=&quot;this.form.requestSubmit()&quot;
+            /&gt;
+            &lt;select name=&quot;select&quot;
+                onchange=&quot;this.form.requestSubmit()&quot;
+            &gt;
+                &lt;option selected=move || select() == &quot;A&quot;&gt;
+                    &quot;A&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;B&quot;&gt;
+                    &quot;B&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;C&quot;&gt;
+                    &quot;C&quot;
+                &lt;/option&gt;
+            &lt;/select&gt;
+            // submitting should cause a client-side
+            // navigation, not a full reload
+            &lt;input type=&quot;submit&quot;/&gt;
+        &lt;/Form&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../7-Routing/leptos-analysis-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../7-Routing/leptos-analysis-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

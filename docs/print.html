@@ -1,0 +1,2928 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Leptos Book Abridged</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-2.html"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leptos Book Abridged</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="leptos-abridged"><a class="header" href="#leptos-abridged">Leptos Abridged</a></h2>
+<p>This is a compressed version of <a href="https://leptos-rs.github.io/leptos/">the Leptos frontend framework documentation</a> powered by the programming language, <a href="https:///www.rust-lang.org/learn">Rust</a>.</p>
+<p>This book focuses more on the code to get things done. It does not cover Leptos specific concepts in detail. Rather, it extracts and sometimes annotates code examples from the official Leptos documentation in the context of frontend development.</p>
+<p>You can use it a quick reference material, in complement with the official leptos documentaion for a more detailed Leptos concepts explainer.</p>
+<p>Enjoy!</p>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+COMPONENTS, 
+EVENT LISTENERS, 
+SIGNALS, 
+DYNAMICALLY-DERIVED VALUES, 
+ATTRIBUTES, 
+STYLES, AND HTML INJECTION
+</h4>
+<p>A - A BASIC COMPONENT</p>
+<ul>
+<li>Has either <code>#[component]</code> or <code>#[server]</code> at the start of its definition</li>
+<li>Is a function that is CamelCase</li>
+<li>Returns <code>impl IntoView</code></li>
+<li>Returns value <code>view! {...}</code></li>
+</ul>
+<p>Example;</p>
+<pre><code class="language-rs">#[component]
+fn {{TheNameOfTheComponent}}() -&gt; impl IntoView {
+  view! {
+    &lt;p&gt;&quot;This is a sub-component&quot;&lt;/p&gt;
+  }
+}
+
+// Now render the component you define
+#[component]
+fn App() -&gt; impl IntoView {
+  let (count, set_count) = create_signal(0);
+  view! {
+    &lt;{{TheNameOfTheComponet}}/&gt;
+  }
+}
+
+fn main() {
+  leptos::mount_to_body(|| view! { &lt;App/&gt; })
+}
+</code></pre>
+<p>B - VIEW: DYNAMIC CLASSES, STYLES, AND ATTRIBUTES</p>
+<ol>
+<li>Event listeners have the following syntax;</li>
+</ol>
+<pre><code class="language-rs">  on:{{event-name}} = move |_| {
+      ...
+  }
+</code></pre>
+<p>OR</p>
+<pre><code class="language-rs">  on:{{event-name}} = move |{{received_event_value}} {
+      ...
+  }
+</code></pre>
+<ol start="2">
+<li>
+<p>Event listener functions (always closures) usually change the value of a signal. Check No.5 to see how to change the value of a signal dynamically.</p>
+</li>
+<li>
+<p>Signal Syntax Looks Like This:</p>
+</li>
+</ol>
+<pre><code class="language-rs">  let ({{signal_name}}, {{set_signal_name}}) = create_signal({{intial-value}})
+</code></pre>
+<ol start="4">
+<li>Reading a signal syntax: Inside a button value, as in;</li>
+</ol>
+<pre><code class="language-rs">  &lt;button /*...*/&gt;
+    &quot;Click me: &quot;
+    {count}
+  &lt;/button&gt; ----&gt; // The value will dynamically change as the signal changes
+</code></pre>
+<p>OR</p>
+<pre><code class="language-rs">  &lt;button /*...*/&gt;
+    &quot;Click me: &quot;
+    {count()}
+  &lt;/button&gt; ----&gt; // The value will not dynamically change as the signal changes. The calue is evaluated once only throughout the entire lifetime of the component
+</code></pre>
+<ol start="5">
+<li>Update a Signal Dynamically;</li>
+</ol>
+<pre><code class="language-rs">  &lt;button on:click=move |_| {
+      set_count.update(|n| *n += 1);
+  }&gt;
+    &quot;Click me: &quot;
+    {move || count()}
+  &lt;/button&gt;
+</code></pre>
+<ol start="6">
+<li>
+<p>Only Event Handlers and signal-derived values (like in no.5) require Closures.</p>
+</li>
+<li>
+<p>Dynamic Values Are Controlled By Signals. See An Example Below.</p>
+</li>
+<li>
+<p>Dynamic class Syntax looks like this:
+...inside an HTML/Leptos element or component as an attribute;</p>
+</li>
+</ol>
+<pre><code class="language-rs">  class:red=move || count() % 2 == 1
+</code></pre>
+<p>OR</p>
+<pre><code class="language-rs">  class=(&quot;button-20&quot;, move || count() % 2 == 1) ----&gt; // For class names with dashes
+</code></pre>
+<ol start="9">
+<li>Dynamic Styles syntax</li>
+</ol>
+<pre><code class="language-rs">// First create a signal that would control the value fo the style
+let (o, set_o) = create_signal(0);
+let (p, set_p) = create_signal(0);
+view! {
+    &lt;div
+      style=&quot;position: absolute&quot;
+      // Now create dynamic style
+      style:left=move || format!(&quot;{}px&quot;, o() + 100)
+      style:top=move || format!(&quot;{}px&quot;, p() + 100)
+      style:background-color=move || format!(&quot;rgb{}, {}, 100)&quot;, o() p())
+      style=(&quot;--columns&quot;, x)
+    &gt;
+      &quot;Moves when coordinates change&quot;
+    &lt;/div&gt;
+}
+</code></pre>
+<p>STRONG ADVICE; SKIP THIS. YOU ALREADY POSSESS FUNCTIONING KNOWLEDGE. DON'T GET CAUGHT BY THIS TRIPPER. 10. Derived Signals. Signals are functions, e.g, the tuple values from 'create_signal()', while derived signals are signal' tuple values function calls made inside a closure, hence, such closure access the signal.
+Derived signals are closures which access a signal.</p>
+<p>Derived signal example:</p>
+<pre><code class="language-rs">let double_count = move || count() * 2; // double_count is a derived signal
+</code></pre>
+<p>OR</p>
+<pre><code class="language-rs">&lt;progress
+  max=&quot;50&quot;
+  value=move || count() * 2 // value is a derived signal
+/&gt;
+</code></pre>
+<ol start="11">
+<li>Derived Signal syntax;</li>
+</ol>
+<pre><code class="language-rs">// First create a Read &amp; Write signal
+let (count, set_count) = create_signal(0);
+// The create a closure that calls a Read signal to clone its value, and returns a double of the value as a variable
+let double_count = move || count() * 2;
+// Now setup an HTML element with an attribute whose value is to change dynamically
+&lt;progress
+  max=&quot;50&quot;
+  value=double_count
+/&gt;
+// Another example
+&lt;p&gt;
+  &quot;Double Count: &quot;
+  {double_count}
+&lt;/p&gt;
+</code></pre>
+<ol start="12">
+<li>You can have;</li>
+</ol>
+<ul>
+<li>dynamic HTML values. Check No.4</li>
+<li>dynamic event-listeners. Check No.5</li>
+<li>dynamic classes. Check No.8</li>
+<li>dynamic styles. Check No.9</li>
+<li>&amp; dynamic attributes. Check No.11</li>
+</ul>
+<ol start="13">
+<li>
+<p>Derived signals compute twice or more times. A derived signal will run once for the variable that stores, and once for/inside each and every place where the variable that stores it is used.</p>
+</li>
+<li>
+<p>Use memos for resource intensive values that need to change like a signal.</p>
+</li>
+<li>
+<p>You can inject HTML directly into a DOM element or Component's render using the <code>inner_html</code> Leptos property like this;</p>
+</li>
+</ol>
+<pre><code class="language-rs">let html = &quot;&lt;p&gt;This HTML will be injected.&lt;/p&gt;&quot;;
+view! {
+  &lt;div inner_html=html/&gt;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+COMPONENTS, SUB-COMPONENT PROPS (1). (See part2 in leptos-analysis-8)
+</h4>
+<ol>
+<li>Specifying a component prop for a sub-component looks like this;</li>
+</ol>
+<pre><code class="language-rs">#[component]
+fn {{TheNameOfTheSubComponent}}(
+    {{the_name_of_prop_1}}: {{its_data_type}} // e.g, progress: ReadSignal&lt;i32&gt;
+) -&gt; impl IntoView {
+    view! {
+        &lt;progress
+          max=&quot;50&quot;
+          value={{the_name_of_prop_1}}
+        /&gt;
+    }
+}
+
+// And here is how you would use such component with a property
+#[component]
+fn App() -&gt; impl IntoView {
+    let (count, set_count) = create_signal(0);
+    view! {
+        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=count/&gt;
+    }
+}
+</code></pre>
+<hr />
+<p>Optional Sub-component Prop</p>
+<ol start="2">
+<li>Specifying an optional component prop for a sub-component looks like this;</li>
+</ol>
+<pre><code class="language-rs">#[component]
+fn {{TheNameOfTheSubComponent}}(
+    // You need the '#[prop(optional)]' annotation
+    #[prop(optional)]
+    {{the_name_of_optional_prop_1}}: {{its_data_type}}
+) -&gt; impl IntoView {
+    view! {
+        &lt;progress
+          max=&quot;14&quot;
+          value={{the_name_optional_prop_1}}
+        /&gt;
+    }
+}
+
+// And here is how you would use such component with a property
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;{{TheNameOfTheSubComponent}}/&gt; // notice how {{the_name_of_optional_prop_1}} was entirely skipped!
+    }
+}
+</code></pre>
+<hr />
+<p>Optional Sub-component Prop With Default Value</p>
+<ol start="3">
+<li>Specifying an optional component with a default value when skipped for a sub-component;</li>
+</ol>
+<pre><code class="language-rs">#[component]
+fn {{TheNameOfTheSubComponent}}(
+    // You need the '#[prop(optional)]' annotation
+    #[prop(default = 20)]
+    {{the_name_of_optional_prop_1}}: {{its_data_type}}
+) -&gt; impl IntoView {
+    view! {
+        &lt;progress
+          max={{the_name_of_optional_prop_1}}
+          value=&quot;14&quot;
+        /&gt;
+    }
+}
+
+// And here is how you would use such component with a property
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;{{TheNameOfTheSubComponent}}/&gt; // ** notice how {{the_name_of_optional_prop_1}} was entirely skipped!
+    }
+}
+</code></pre>
+<hr />
+<p>Generic Sub-component Prop</p>
+<ol start="4">
+<li>
+<p>Specifying a generic sub-component prop lets you use a value that is of a certain data-type such as, and i32, or use a closure that returns a value of the same data-type (i32).</p>
+</li>
+<li>
+<p>Here is a (trait-style) demonstration of specifying a generic sub-component prop;</p>
+</li>
+</ol>
+<pre><code class="language-rs">#[component]
+fn {{TheNameOfTheSubComponent}}&lt;F&gt;(
+    {{the_name_of_prop_1}}: F
+) -&gt; impl IntoView
+where
+  F: Fn() -&gt; i32 + 'static, // &quot;F: impl F() -&gt; i32 + 'static &quot; not allowed in Leptos yet
+{
+    view! {
+        &lt;progress
+          max=&quot;14&quot;
+          value={{the_name_of_prop_1}}
+        /&gt;
+    }
+}
+
+// Usage:
+#[component]
+fn App() -&gt; impl IntoView {
+    let (count, set_count) = create_signal(0); // count is an i32 type of value
+    let double_count = move || { count() * 2 }; // double_count is closure that returns an i32 type of value
+    view! {
+        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=count/&gt; // direct value of type i32
+        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=double_count&gt; // closure that evaluates to a value of type i32
+    }
+}
+</code></pre>
+<ol start="6">
+<li>Here is an (attribute-style) demonstration of specifying a generic sub-component prop;</li>
+</ol>
+<pre><code class="language-rs">#[component]
+fn {{TheNameOfTheSubComponent}}(
+    #[prop(into)]
+    {{the_name_of_prop_1}}: Signal&lt;i32&gt;
+) -&gt; impl IntoView
+{
+    view! {
+        &lt;progress
+          max=&quot;14&quot;
+          value={{the_name_of_prop_1}}
+        /&gt;
+    }
+}
+
+// Usage:
+#[component]
+fn App() -&gt; impl IntoView {
+    let (count, set_count) = create_signal(0); // count is an i32 type of value
+    let double_count = move || { count() * 2 }; // double_count is closure that returns an i32 type of value
+    view! {
+        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=count/&gt; // direct value of type i32
+        // ** Take Note Here **
+        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=Signal::derive(double_count)/&gt; // closure that evaluates to a value of type i32
+    }
+}
+</code></pre>
+<hr />
+<p>Optional Generic Sub-component Prop</p>
+<ol start="7">
+<li>Usually, you can't specify optional generic props for a sub-component, but there is a workaround for this, which is <code>Option&lt;Box&lt;dyn Fn() -&gt; {{DataType}}&gt;&gt;</code>.</li>
+</ol>
+<p>Example code;</p>
+<pre><code class="language-rs">#[component]
+fn {{TheNameOfTheSubComponent}}(
+    {{the_name_of_optional_generic_prop_1}}: Option:&lt;Box&lt;dyn Fn() -&gt; i32&gt;&gt;, // change i32 to your desired data-type
+) -&gt; impl IntoView {
+
+  {{the_name_of_optional_generic_prop_1}}.map( |{{optional_generic_prop_1_value}}| {
+    view! {
+        &lt;progress
+          max=&quot;14&quot;
+          value={{optional_generic_prop_1_value}}
+        /&gt;
+    }
+  })
+}
+
+// Usage:
+#[component]
+fn App() -&gt; impl IntoView {
+    let (count, set_count) = create_signal(3); // count is an i32 type of value
+    let double_count = move || { count() * 2 }; // double_count is closure that returns an i32 type of value
+    view! {
+        // ** providing no optional generic prop
+        &lt;{{TheNameOfTheSubComponent}}/&gt;
+        // ** providing the optional generic prop as an i32 type
+        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_optional_generic_prop_1}}=count/&gt;
+        // ** providing the optional generic optional prop as a double type
+        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_optional_generic_prop_1}}=double_count/&gt;
+    }
+}
+</code></pre>
+<hr />
+<p>Documenting Components</p>
+<ol start="8">
+<li>Here is a demonstration of how you would document components. It is very simple. You do so with three slashes, as in, <code>///</code>.</li>
+</ol>
+<pre><code class="language-rs">/// Shows progress toward a goal.
+#[component]
+fn ProgressBar(
+    /// The maximum value of the progress bar.
+    #[prop(default = 100)]
+    max: u16,
+    /// How much progress should be displayed.
+    #[prop(into)]
+    progress: Signal&lt;i32&gt;,
+) -&gt; impl IntoView {
+    /* ...the body of your component... */
+}
+</code></pre>
+<hr />
+<ol start="9">
+<li>Dispalying Data Directly Without Any Additional Wrapping</li>
+</ol>
+<p>To do so, you would need to use attribute <code>#[component(transparent)]</code> when writing such component that needs to display data directly without any additional wrapping.</p>
+<p>&quot;Note: In general, you should not need to use transparent components unless you are creating custom wrapping components that fall into one of these two categories</p>
+<ul>
+<li>
+<p>Creating wrappers around <code>&lt;Suspense/&gt;</code> or <code>&lt;Transition/&gt;</code>, which return a transparent suspense structure to integrate with SSR and hydration properly.</p>
+</li>
+<li>
+<p>Refactoring <code>&lt;Route/&gt;</code> definitions for <code>leptos_router</code> out into separate components, because <code>&lt;Route/&gt;</code> is a transparent component that returns a <code>RouteDefinition</code> struct rather than a view.</p>
+</li>
+</ul>
+<hr />
+<p><em>Sefini</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+ITERATING LISTS STATICALLY OR DYNAMICALLY
+</h4>
+<ol>
+<li>
+<p>Whether you're listing todos, displaying a table, or showing product images, iterating over a list of items is a common task in web applications.</p>
+<p>Leptos provides two different patterns for iterating over items:</p>
+<ul>
+<li>For static views: <code>Vec&lt;_&gt;</code></li>
+<li>For dynamic lists (e.g, controlled by signals): <code>&lt;For/&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>Example code of iterating a list <code>Vec&lt;IV&gt;</code> where <code>IV: IntoView</code>;</p>
+</li>
+</ol>
+<pre><code class="language-rs">// the list
+let values = vec![0, 1, 2];
+// time to render the list
+view! {
+    //  render the list as-is, bundled together
+    &lt;p&gt;{values.clone()}&lt;/p&gt;
+    // or iterate over the list for precise renders
+    &lt;ul&gt;
+      {values.into_iter().map(
+        |item| view! {
+            &lt;li&gt;{item}&lt;/item&gt;
+        }
+      ).collect::&lt;Vec&lt;_&gt;&gt;()}
+    &lt;/ul&gt;
+}
+</code></pre>
+<ol start="3">
+<li>Example code of iterating a list <code>Vec&lt;IV</code> where <code>IV: IntoView</code>, using Leptos iterator helper-function - <code>.collect_view()</code></li>
+</ol>
+<pre><code class="language-rs">// the list
+let values = vec![0, 1, 2];
+// time to render the list
+view! {
+    // again, render the list as-is, bundled together
+    &lt;p&gt;{values.clone()}&lt;/p&gt;
+    // or iterate over the list for precise renders
+    &lt;ul&gt;
+      {values.into_iter().map(
+        |item| view! {
+            &lt;li&gt;{item}&lt;/li&gt;
+        }
+      ).collect_view()}
+    &lt;/ul&gt;
+}
+</code></pre>
+<ol start="4">
+<li>Example of making a list of signals whose individual items can change reactively, but the entire list as a whole would remain unreactive.</li>
+</ol>
+<pre><code class="language-rs">// define the signal list's length
+let signal_list_length = 5;
+// create a list of 5 counter signals
+let counters_list = (1..=signal_list_length).map(
+    |current_index| create_signal(current_index)
+);
+
+// each item manages a reactive view
+// ...but, the list itself will never change
+let counter_buttons = counters_list.map(
+    |(count, set_count)| {
+        // display a rendered list of buttons, each with their own independent signals
+        view! {
+            &lt;li&gt;
+              &lt;button on:click=move |_| {set_count.update(
+                |its_current_count| *its_current_count += 1
+              )}&gt;
+                {count}
+              &lt;/button&gt;
+            &lt;/li&gt;
+        }
+    }
+).collect_view(); // This, 'counter_buttons' is an unordered list of signals, each list with its own internally managed reactive view
+
+view! {
+    &lt;ul&gt;{counter_buttons}&lt;/ul&gt;
+}
+</code></pre>
+<ol start="5">
+<li>Here is an example code that creates a list of signals, whereby the entire list is a signal, hence new new list item additions can be added, or even old list items removed, and the list would get updated dynamically;</li>
+</ol>
+<p><em>N.B: The iteration is done using <code>&lt;For/&gt;</code></em></p>
+<pre><code class="language-rs">use leptos::*;
+
+/// A list of counters that allows you to add or
+/// remove counters.
+#[component]
+fn DynamicList(
+    /// The number of counters to begin with.
+    initial_length: usize,
+) -&gt; impl IntoView {
+    // This dynamic list will use the &lt;For/&gt; component.
+    // &lt;For/&gt; is a keyed list. This means that each row
+    // has a defined key. If the key does not change, the row
+    // will not be re-rendered. When the list changes, only
+    // the minimum number of changes will be made to the DOM.
+
+    // `next_counter_id` will let us generate unique IDs
+    // we do this by simply incrementing the ID by one
+    // each time we create a counter
+    let mut next_counter_id = initial_length;
+
+    // we generate an initial list as in &lt;StaticList/&gt;
+    // but this time we include the ID along with the signal
+    let initial_counters = (0..initial_length)
+        .map(|id| (id, create_signal(id + 1)))
+        .collect::&lt;Vec&lt;_&gt;&gt;();
+
+    // now we store that initial list in a signal
+    // this way, we'll be able to modify the list over time,
+    // adding and removing counters, and it will change reactively
+    let (counters, set_counters) = create_signal(initial_counters);
+
+    // clousure to update list-signal - 'initial_counters'
+    let add_counter = move |_| {
+        // create a signal for the new counter
+        let sig = create_signal(next_counter_id + 1);
+        // add this counter to the list of counters
+        set_counters.update(move |counters| {
+            // since `.update()` gives us `&amp;mut T`
+            // we can just use normal Vec methods like `push`
+            counters.push((next_counter_id, sig))
+        });
+        // increment the ID so it's always unique
+        next_counter_id += 1;
+    };
+
+    view! {
+        &lt;div&gt;
+            &lt;button on:click=add_counter&gt;
+                &quot;Add Counter&quot;
+            &lt;/button&gt;
+            &lt;ul&gt;
+                // The &lt;For/&gt; component is central here
+                // This allows for efficient, key list rendering
+                &lt;For
+                    // `each` takes any function (in this case, a ReadSignal&lt;_&gt;) that returns an iterator (usually a list of signals or derived signal)
+                    // if the list is not reactive, just render a Vec&lt;_&gt; instead of &lt;For/&gt;
+                    each=counters
+                    // the key should be unique and stable for each row
+                    // using an index is usually a bad idea, unless your list
+                    // can only grow, because moving items around inside the list
+                    // means their indices will change and they will all rerender
+                    key=|counter| counter.0
+                    // `children` receives each item from your `each` iterator
+                    // and returns a view
+                    children=move |(id, (count, set_count))| {
+                        view! {
+                            &lt;li&gt;
+                                &lt;button
+                                    on:click=move |_| set_count.update(|n| *n += 1)
+                                &gt;
+                                    {count}
+                                &lt;/button&gt;
+                                &lt;button
+                                    on:click=move |_| {
+                                        set_counters.update(|counters| {
+                                            counters.retain(|(counter_id, _)| counter_id != &amp;id)
+                                        });
+                                    }
+                                &gt;
+                                    &quot;Remove&quot;
+                                &lt;/button&gt;
+                            &lt;/li&gt;
+                        }
+                    }
+                /&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    }
+}
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;h2&gt;&quot;Dynamic List&quot;&lt;/h2&gt;
+        &lt;p&gt;&quot;Use this pattern if the rows in your list will change.&quot;&lt;/p&gt;
+        &lt;DynamicList initial_length=5/&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+
+</code></pre>
+<p>Click this link to see its result: https://pwdn2y-8000.csb.app/</p>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+FORMS AND INPUTS
+</h4>
+<p>Uncontrolled Inputs (Useful for Form submissions)</p>
+<p>Here is an example code of an uncontrolled input;</p>
+<pre><code class="language-rs">// You need to import leptos::ev::SubmitEvent
+use leptos::{ev::SubmitEvent, *};
+
+#[component]
+fn {{TheNameOfTheFormComponent}}() -&gt; impl IntoView {
+
+  // import the type for &lt;input&gt;
+  use leptos::html::Input;
+
+  // create a signal companion for the target uncontrolled input
+  let (input_signal_1, set_input_signal_1) = create_signal(&quot;The Uncontrolled input's initial value&quot;.to_string());
+  // create a NodeRef&lt;Input&gt; to store a reference to the target uncontrolled input
+  let input_element_1: NodeRef&lt;Input&gt; = create_node_ref();
+  // store the &lt;input&gt;'s value inside signal (name, set_name) on event 'submit'
+  let on_submit = move |event: SubmitEvent| {
+    // stop the page from reloading!
+    event.prevent_default();
+    // extract the uncontrolled input's current value
+    let extracted_value = input_element_1().expect(&quot;&lt;input&gt; to exist&quot;).value();
+    // assign new 'value' to the 'input_element
+    set_input_signal_1(extracted_value);
+  }
+
+
+  // Create an uncontrolled input
+  view! {
+    &lt;form on:submit=on_submit&gt;
+      // the input below is the target uncontrolled input
+      &lt;input type=&quot;text&quot; value=input_signal_1 node_ref=input_element_1/&gt;
+      // create the submit input
+      &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;/&gt;
+    &lt;/form&gt;
+    &lt;p&gt;&quot;Name is: &quot; {name}&lt;/p&gt;
+  }
+}
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;h2&gt;&quot;Uncontrolled Component&quot;&lt;/h2&gt;
+        &lt;UncontrolledComponent/&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+<hr />
+<p>Controlled Inputs (Useful when you want to user to see current changes in realtime)</p>
+<p>Here is an example code of a controlled input</p>
+<pre><code class="language-rs">use leptos::*;
+
+#[component]
+fn {{TheNameOfTheControlledInputComponent}}() -&gt; impl IntoView {
+  // create a signal to hold the controlled input 'name' value
+  let (name, set_name) = create_signal(&quot;Controlled input initial value&quot;.to_string())
+
+  // render the input that would be controlled by signal
+  view! {
+    &lt;input
+      type=&quot;text&quot;
+      on:input=move |event| {
+        set_name(event_target_value(&amp;event));
+      }
+      // the 'prop' syntax lets you update a DOM property
+      // tl;dr: use prop:value for form inputs
+      prop:value=name
+    /&gt;
+  }
+}
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;h2&gt;&quot;Controlled Component&quot;&lt;/h2&gt;
+        &lt;ControlledComponent/&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+CONTROL FLOW
+</h4>
+<ol>
+<li>The best way for complex renders, using <code>&lt;Show /&gt;</code>:</li>
+</ol>
+<pre><code class="language-rs">let (value, set_value) = create_signal(0);
+
+view! {
+  &lt;Show
+    when=move || { value() &gt; 5 }
+    fallback=|| view! { &lt;Small/&gt; }
+  &gt;
+    &lt;Big/&gt;
+  &lt;/Show&gt;
+}
+</code></pre>
+<p>&quot;<code>&lt;Show/&gt;</code> memoizes the when condition, so it only renders its <code>&lt;Small/&gt;</code> once, continuing to show the same component until value is greater than five; then it renders <code>&lt;Big/&gt;</code> once, continuing to show it indefinitely or until value goes below five and then renders <code>&lt;Small/&gt;</code> again.
+This is a helpful tool to avoid rerendering when using dynamic <code>if</code> expressions. As always, there's some overhead: for a very simple node (like updating a single text node, or updating a class or attribute), a <code>move || if ...</code> will be more efficient. But it's at all expensive to render either branch, reach for <code>&lt;Show/&gt;</code>.</p>
+<hr />
+<p>Other Ways To Conditionally Render A Component (Recommended for Simple Renders):</p>
+<ol start="2">
+<li>The primitive <code>if</code> statement way</li>
+</ol>
+<p>You can reactively and conditionally render elements/components. Here is an example code;</p>
+<pre><code class="language-rs">// create a signal to make the render target reactive
+let (value, set_value) = create_signal(0);
+// create a logic that returns a boolean based on the state of value of the signal
+let is_odd_example_logic = move || value() % 1 == 1;
+
+// conditionally render a component or HTML element using an if statement
+view! {
+    &lt;p&gt;
+      {move || if is_odd_example_logic() {
+        &quot;Render - is odd&quot;
+      } else {
+        &quot;Render - is even&quot;
+      }
+      }
+    &lt;/p&gt;
+}
+</code></pre>
+<ol start="3">
+<li>Using an <code>if</code> statement that returns an <code>Option&lt;T&gt;</code> value;</li>
+</ol>
+<p>You can reactively and conditionally render elements/components. Here is an example code;</p>
+<pre><code class="language-rs">// create a signal to make the render target reactive
+let (value, set_value) = create_signal(0);
+// create a logic that returns a boolean based on the state of value of the signal
+let is_odd_example_logic = move || value() % 1 == 1;
+
+// store a conditionally obtained Some( value, component or HTML element ) or Option::None using an if statment that returns an option value
+let message = move || {
+    if is_odd_example_logic() {
+        Some(&quot;Ding ding ding!&quot;)
+    } else {
+        None
+    }
+}
+view! {
+    &lt;p&gt;
+      {message}
+    &lt;/p&gt;
+}
+</code></pre>
+<ol start="4">
+<li>The primitive <code>match</code> statement way;</li>
+</ol>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">// create a signal to make the render target reactive
+let (value, set_value) = create_signal(0);
+// create a logic that returns a boolean based on the state of value of the signal
+let is_odd_example_logic = move || value() % 1 == 1;
+
+// store a match obtained value, component or HTML element
+let message = move || {
+    match value() {
+        0 =&gt; &quot;Zero&quot;,
+        1 =&gt; &quot;One&quot;,
+        n if is_odd() =&gt; &quot;Odd&quot;,
+        _ =&gt; &quot;Even&quot;
+    }
+};
+
+view! {
+    &lt;p&gt;{message}&lt;/p&gt;
+}
+</code></pre>
+<hr />
+<p>Returning Different HTML Elements From Different Branches Of A Conditional</p>
+<p>Here is an example code where there is multiple <code>HtmlElement</code> types that are converted into <code>HtmlElement&lt;AnyElement&gt;</code> with method <code>.into_any()</code>;</p>
+<pre><code class="language-rs">use leptos::*;
+
+#[component]
+fn App() -&gt; impl IntoView {
+
+  let (value, set_value) = create_signal(0);
+  // define boolean logic that decides what gets rendered
+  let is_odd_logic_example = move || value() &amp; 1 == 1;
+
+  view! {
+    &lt;main&gt;
+      // Simple UI to update and show a value
+      &lt;button on:click=move |_| set_value.update(
+        |n| *n += 1
+      )&gt;
+        &quot;+1&quot;
+      &lt;/button&gt;
+      &lt;p&gt;&quot;Value is: &quot; {value}&lt;/p&gt;
+      // Simple dynamic style based on a condition
+      &lt;p class:hidden=is_odd_logic_example&gt;
+      &quot;Appears if even.&quot;
+      &lt;/p&gt;
+
+      // ** Take Note Of This Conditional Render **//
+      {move || match is_odd() {
+          true if value() == 1 =&gt; {
+              // returns HtmlElement&lt;Pre&gt;
+              view! { &lt;pre&gt;&quot;One&quot;&lt;/pre&gt; }.into_any()
+          },
+          false if value() == 2 =&gt; {
+              // returns HtmlElement&lt;P&gt;
+              view! { &lt;p&gt;&quot;Two&quot;&lt;/p&gt; }.into_any()
+          }
+          // returns HtmlElement&lt;Textarea&gt;
+          _ =&gt; view! { &lt;textarea&gt;{value()}&lt;/textarea&gt; }.into_any()
+      }}
+    &lt;/main&gt;
+  }
+}
+</code></pre>
+<h6 id="note-if-you-have-a-variety-of-view-types-that-are-not-all-htmlelement-convert-them-into-views-with-into_view"><a class="header" href="#note-if-you-have-a-variety-of-view-types-that-are-not-all-htmlelement-convert-them-into-views-with-into_view">Note: If you have a variety of view types that are not all 'HtmlElement', convert them into 'View's with '.into_view()'</a></h6>
+<p>Perhaps you can even go futher and concatenate function calls 'into_view()' and 'into_any()' like so, <code>.into_view().into_any()</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+ERROR HANDLING
+</h4>
+<p>You can use Leptos' built-in component <code>&lt;ErrorBoundary/&gt;</code> to cater to displaying error messages if an unexpected input has been provided.</p>
+<p><code>&lt;ErrorBoundary/&gt;</code> works almost similarly to <code>&lt;Show/&gt;</code> conditional render component. Here is how <code>&lt;ErrorBoundary&gt;</code> works;
+If everything is <code>Ok(_)</code> - it renders its children. But if there's an <code>Err(_)</code> rendered among those children, it will trigger the <code>&lt;ErrorBoundary/&gt;</code>'s <code>fallback</code></p>
+<p>Here is an example code of <code>&lt;ErrorBoundary/&gt;</code> in action;</p>
+<pre><code class="language-rs">use leptos::*;
+
+#[component]
+fn App() -&gt; impl IntoView {
+    let (value, set_value) = create_signal(Ok(0));
+
+    // when input changes, try to parse a number from the input
+    let on_input = move |ev| set_value(event_target_value(&amp;ev).parse::&lt;i32&gt;());
+
+    view! {
+        &lt;h1&gt;&quot;Error Handling&quot;&lt;/h1&gt;
+        &lt;label&gt;
+            &quot;Type a number (or something that's not a number!)&quot;
+            &lt;input type=&quot;number&quot; on:input=on_input/&gt;
+            // If an `Err(_) had been rendered inside the &lt;ErrorBoundary/&gt;,
+            // the fallback will be displayed. Otherwise, the children of the
+            // &lt;ErrorBoundary/&gt; will be displayed.
+            &lt;ErrorBoundary
+                // the fallback receives a signal containing current errors
+                fallback=|errors| view! {
+                    &lt;div class=&quot;error&quot;&gt;
+                        &lt;p&gt;&quot;Not a number! Errors: &quot;&lt;/p&gt;
+                        // we can render a list of errors
+                        // as strings, if we'd like
+                        &lt;ul&gt;
+                            {move || errors.get()
+                                .into_iter()
+                                .map(|(_, e)| view! { &lt;li&gt;{e.to_string()}&lt;/li&gt;})
+                                .collect::&lt;Vec&lt;_&gt;&gt;()
+                            }
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                }
+            &gt;
+                &lt;p&gt;
+                    &quot;You entered &quot;
+                    // because `value` is `Result&lt;i32, _&gt;`,
+                    // it will render the `i32` if it is `Ok`,
+                    // and render nothing and trigger the error boundary
+                    // if it is `Err`. It's a signal, so this will dynamically
+                    // update when `value` changes
+                    &lt;strong&gt;{value}&lt;/strong&gt; // ** If this cannot be evaluated into its expected type, 'ErrorBoundary' would render its 'fallback' value
+                &lt;/p&gt;
+            &lt;/ErrorBoundary&gt;
+        &lt;/label&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+PARENT-CHILD COMMUNICATION (PASSING PROPS TO GRAND-SUB-COMPONENTS, MAKING A PARENT COMPONENT AWARE OF CHANGES MADE TO ITS PROP FROM A SUB-COMPONENT)
+</h4>
+<p>How can a child send notifications about signal(state) changes back up to the parent?</p>
+<hr />
+<p>Using <code>WriteSignal</code> in Sub-Component</p>
+<ol>
+<li>You can pass a <code>WriteSignal</code> from the parent down to the child, and update it in the child. This lets you manipulate the state of the parent from inside the child.</li>
+</ol>
+<p>Example code;</p>
+<pre><code class="language-rs">#[component]
+pub fn App() -&gt; impl IntoView {
+    let (toggled, set_toggled) = create_signal(false);
+    view! {
+        &lt;p&gt;&quot;Toggled? &quot; {toggled}&lt;/p&gt;
+        &lt;ButtonA setter=set_toggled/&gt; // ** Take Note **
+    }
+}
+
+// The {{SubComponent}} here is 'ButtonA'
+#[component]
+// ** Take note of the prop's data-type
+pub fn ButtonA(setter: WriteSignal&lt;bool&gt;) -&gt; impl IntoView {
+    view! {
+        &lt;button
+            // and now you can freely control the state of the parent component, which of course would impact the parent component too
+            on:click=move |_| setter.update(|value| *value = !*value)
+        &gt;
+            &quot;Toggle&quot;
+        &lt;/button&gt;
+    }
+}
+</code></pre>
+<p>This pattern is simple, but you should be careful with it: passing around a WriteSignal can make it hard to reason about your code. It is not all clear when or how it will change.</p>
+<hr />
+<p>How can you pass data from a component, across to its sub-component, and then its grand-sub-component(s), great-grand-sub-component(s), e.t.c.</p>
+<ol start="2">
+<li>By Providing a Context</li>
+</ol>
+<p>Example code of using the Context API. This version is actually a variant of Option 1;</p>
+<pre><code class="language-rs">#[component]
+pub fn App() -&gt; impl IntoView {
+    let (toggled, set_toggled) = create_signal(false);
+
+    // share `set_toggled` with all children of this component
+    provide_context(set_toggled);
+
+    view! {
+        &lt;p&gt;&quot;Toggled? &quot; {toggled}&lt;/p&gt;
+        &lt;Layout/&gt;
+    }
+}
+
+#[component]
+pub fn Layout(set_toggled: WriteSignal&lt;bool&gt;) -&gt; impl IntoView {
+    view! {
+        &lt;header&gt;
+            &lt;h1&gt;&quot;My Page&quot;&lt;/h1&gt;
+        &lt;/header&gt;
+        &lt;main&gt;
+            &lt;Content set_toggled/&gt;
+        &lt;/main&gt;
+    }
+}
+#[component]
+pub fn Content(set_toggled: WriteSignal&lt;bool&gt;) -&gt; impl IntoView {
+    view! {
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;ButtonD set_toggled/&gt;
+        &lt;/div&gt;
+    }
+}
+
+
+#[component]
+pub fn ButtonD() -&gt; impl IntoView {
+    // use_context searches up the context tree, hoping to
+    // find a `WriteSignal&lt;bool&gt;`
+    // in this case, I .expect() because I know I provided it
+    let setter = use_context::&lt;WriteSignal&lt;bool&gt;&gt;()
+        .expect(&quot;to have found the setter provided&quot;);
+
+    view! {
+        &lt;button
+            on:click=move |_| setter.update(|value| *value = !*value)
+        &gt;
+            &quot;Toggle&quot;
+        &lt;/button&gt;
+    }
+}
+</code></pre>
+<p>Again, passing a WriteSignal around should be done with caution, as it allows you to mutate state from arbitrary parts of your code. But when done carefully, this can be one of the most effective techniques for global state management in Leptos: simply provide the state at the highest level you’ll need it, and use it wherever you need it lower down.</p>
+<hr />
+<p>How can a child send notifications about events that occured inside a child-parent back up to the parent?</p>
+<ol start="3">
+<li>By Using a Callback (callback function) prop</li>
+</ol>
+<p>The callback function prop for the sub-component can accept an event, e.g, <code>MouseEvent</code> as its argument.</p>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">// ** Take note of how the sub-component takes a callback function that responds to a MouseEvent **
+#[component]
+pub fn ButtonC&lt;F&gt;({{prop_name}}: F) -&gt; impl IntoView
+where
+    F: Fn(MouseEvent) + 'static,
+{
+    view! {
+        &lt;button on:click={{prop_name}}&gt;
+            &quot;Toggle&quot;
+        &lt;/button&gt;
+    }
+}
+
+#[component]
+pub fn App() -&gt; impl IntoView {
+    let (toggled, set_toggled) = create_signal(false);
+    view! {
+        &lt;p&gt;&quot;Toggled? &quot; {toggled}&lt;/p&gt;
+        // ** Take note of how a callback function that changes a signal in the parent is passed to a sub-component, and would get fired up ONLY when a 'click' mouse event happens to the child/sub-component, from inside the parent component of course
+        &lt;ButtonC {{prop_name}}=move |_| set_toggled.update(|value| *value = !*value)/&gt;
+    }
+}
+</code></pre>
+<hr />
+<p>Another way a child can send notifications about events that occured inside a child-parent back up to the parent is:</p>
+<ol start="4">
+<li>By using an Event Listener</li>
+</ol>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">#[component]
+pub fn App() -&gt; impl IntoView {
+    let (toggled, set_toggled) = create_signal(false);
+    view! {
+        &lt;p&gt;&quot;Toggled? &quot; {toggled}&lt;/p&gt;
+        // note the on:click instead of on_click
+        // this is the same syntax as an HTML element event listener
+        &lt;ButtonC on:click=move |_| set_toggled.update(|value| *value = !*value)/&gt;
+    }
+}
+
+
+#[component]
+pub fn ButtonC&lt;F&gt;() -&gt; impl IntoView {
+    view! {
+        &lt;button&gt;&quot;Toggle&quot;&lt;/button&gt;
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+BUILDING USER INTERFACES::
+COMPONENT CHILDREN (PASSING COMPONENT[S] TO ANOTHER COMPONENT AS PROPS)
+</h4>
+<p>Pass A Component To Another Component</p>
+<p>In leptos, there are two ways to go about passing a component into another component. They are:</p>
+<ol>
+<li><code>render_prop</code>: This is a special property that takes a function that return a view.</li>
+</ol>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">#[component]
+pub fn TakesRenderProp&lt;F&gt;(
+    render_prop: F
+) -&gt; impl IntoView
+where
+    F: Fn() -&gt; IV,
+    IV: IntoView,
+{
+    view! {
+        &lt;h2&gt;&quot;Render Prop&quot;&lt;/h2&gt;
+        {render_prop()}
+    }
+}
+
+// usage:
+pub fn App() -&gt; IntoView {
+    view! {
+        &lt;TakesRenderProp render_prop=|| view! {
+            &lt;p&gt;&quot;Hi, there!&quot;&lt;/p&gt;
+        }&gt;
+    }
+}
+</code></pre>
+<p><code>render_prop</code> is a function, so you can call it to generate the appropriate view, as done in the sample code above.</p>
+<ol start="2">
+<li><code>Children</code>: This is a special component property that includes anything you pass a child to the component (with the <code>children</code> property).</li>
+</ol>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">#[component]
+pub fn TakesChildren(children: Children) -&gt; IntoView {
+    view! {
+        &lt;h2&gt;&quot;Children&quot;&lt;/h2&gt;
+        {children()}
+    }
+}
+
+// usage:
+pub fn App() -&gt; IntoView {
+    &lt;TakesChildren&gt;
+      &quot;Some text&quot;
+      &lt;span&gt;&quot;A span&quot;&lt;/span&gt;
+    &lt;/TakesChildren&gt;
+}
+</code></pre>
+<p><code>children</code> is a function, so you can call it to generate the appropriate view, as done in the sample code above.</p>
+<h6 id="please-note"><a class="header" href="#please-note">Please note:</a></h6>
+<ul>
+<li>
+<p><em><code>ChildrenFn</code> can be used if you need to call <code>children</code> more than once. And <code>ChildrenMut</code> is available if you not only need to call <code>children</code> more than once, but also actually mutate its value.</em></p>
+</li>
+<li>
+<p><em><code>Children</code> in particular, is an alias for <code>Box&lt;dyn FnOnce() -&gt; Fragment&gt;</code>. And the <code>Fragment</code> type is basically a way of wrapping <code>Vec&lt;View&gt;</code>. You can insert it anywhere into your view.</em></p>
+</li>
+</ul>
+<ol start="3">
+<li>You can use <code>render_props</code> and <code>Children</code> together inside the same component.</li>
+</ol>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">#[component]
+pub fn TakesRenderPropAndChildren&lt;F, IV&gt;(
+    /// Takes a function (type F) that returns anything that can be
+    /// converted into a View (type IV)
+    render_prop: F,
+    /// `children` takes the `Children` type
+    children: Children,
+) -&gt; impl IntoView
+where
+    F: Fn() -&gt; IV,
+    IV: IntoView,
+{
+    view! {
+        &lt;h2&gt;&quot;Render Prop&quot;&lt;/h2&gt;
+        {render_prop()}
+
+        &lt;h2&gt;&quot;Children&quot;&lt;/h2&gt;
+        {children()}
+    }
+}
+
+// usage:
+view! {
+    &lt;TakesRenderPropAndChildren render_prop=|| view! { &lt;p&gt;&quot;Hi, there!&quot;&lt;/p&gt; }&gt;
+        // these get passed to `children`
+        &quot;Some text&quot;
+        &lt;span&gt;&quot;A span&quot;&lt;/span&gt;
+    &lt;/TakesRenderPropAndChildren&gt;
+}
+</code></pre>
+<hr />
+<p>Iterating/Manipulating Children, or ChildrenFn, or ChildrenMut</p>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">#[component]
+pub fn WrapsChildren(children: Children) -&gt; impl IntoView {
+    // Fragment has `nodes` field that contains a Vec&lt;View&gt;
+    let children = children()
+        .nodes
+        .into_iter()
+        .map(|child| view! { &lt;li&gt;{child}&lt;/li&gt; })
+        .collect_view();
+
+    view! {
+        &lt;ul&gt;{children}&lt;/ul&gt;
+    }
+}
+
+// usage:
+pub fn App() -&gt; IntoView {
+    view! {
+    &lt;WrapsChildren&gt;
+        &quot;A&quot;
+        &quot;B&quot;
+        &quot;C&quot;
+    &lt;/WrapsChildren&gt;
+}
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+REACTIVITY::
+WORKING WITH SIGNALS (THE DIFFERENT SIGNAL METHODS)
+</h4>
+<p>There Are Four Basic Signal Operations:</p>
+<ul>
+<li><code>.get()</code></li>
+<li><code>.with()</code></li>
+<li><code>.update()</code></li>
+<li><code>.set()</code></li>
+</ul>
+<ol>
+<li>The signal getters:</li>
+</ol>
+<ul>
+<li><code>.get()</code> clones the current value of the signal and tracks any future changes to the value reactively.</li>
+</ul>
+<p>Example code:</p>
+<pre><code class="language-rs">let (count, set_count) = create_signal(0);
+view! {
+    &lt;p&gt;&quot;The count is: &quot; {count.get()}&lt;/p&gt;
+    // OR
+    &lt;p&gt;&quot;The count is: &quot; {count()}&lt;/p&gt;
+}
+</code></pre>
+<ul>
+<li><code>.with()</code> takes a function, which receives the current value of the signal by reference (&amp;T), and then tracks any future changes</li>
+</ul>
+<p>Example code:</p>
+<pre><code class="language-rs">let (count, set_count) = create_signal(0);
+view! {
+    &lt;p&gt;&quot;The count is: &quot; {count.with(|n| n)}&lt;/p&gt; // n is a reference, as in, &amp;T.
+    // To make .with() analogous with .get(), do this
+    &lt;p&gt;&quot;The count is: &quot; {count.with(|n| n.clone())}&lt;/p&gt;
+}
+</code></pre>
+<ol start="2">
+<li>The setters:</li>
+</ol>
+<ul>
+<li><code>.update()</code> takes a function, which recieves a mutable reference to the current value of the signal (&amp;mut T), and notifies any subsribers that they need to update. (<code>.update()</code> doesn't return the value returned by the closure, but you can use <code>.try_update()</code> if you need to; for example, if you're removing an item from a <code>Vec&lt;_&gt;</code> and want the removed item.)</li>
+</ul>
+<p>Example code:</p>
+<pre><code class="language-rs">let (count, set_count) = create_signal(0);
+view! {
+    &lt;button on:click=move |_| {set_count.update(|n| *n * 2)}&gt;
+      &quot;doubler button&quot;
+    &lt;/button&gt;
+}
+</code></pre>
+<ul>
+<li><code>.set()</code> replaces the current value of the signal with an entirely new value, and notifies any subscribers that they need to update.</li>
+</ul>
+<p>Example code:</p>
+<pre><code class="language-rs">let (count, set_count) = create_signal(0);
+view! {
+    &lt;button on:click=move |_| {set_count.set(1)}&gt;
+      &quot;reset button&quot;
+    &lt;/button&gt;
+    // OR
+    &lt;button on:click=move |_| {set_count(1)}&gt;
+
+    // To make .set() analogous with .update(), do this
+    &lt;button on:click=move |_| {set_count.update(|n| *n = 1)}&gt;
+}
+</code></pre>
+<hr />
+<p>The Efficient Signal Methods.</p>
+<p>It is much efficient to use <code>.with()</code>, and <code>.update()</code> in general, especially for large signal values.</p>
+<p>Examine this <code>.with()</code>&amp;<code>.update()</code> code snippet example for reference;</p>
+<pre><code class="language-rs">let (names, set_names) = create_signal(Vec::new());
+if names.with(|names| names.is_empty()) {
+    set_names.update(|names| names.push(&quot;Alice&quot;.to_string()));
+}
+</code></pre>
+<p>Or this better alternate <code>.with()</code>&amp;<code>.update()</code> code snippet;</p>
+<pre><code class="language-rs">let (names, set_names) = create_signal(Vec::new());
+if names.with(Vec::is_empty) {
+    set_names.update(|names| names.push(&quot;Alice&quot;.to_string()));
+}
+</code></pre>
+<hr />
+<ol start="3">
+<li>Access Multiple Signals In One Go.</li>
+</ol>
+<p>You have macros like <code>with!</code>, <code>update!</code>, <code>with_value</code>, and <code>update_value!</code> to acccess multiple signals and perform various operations with them in one go.</p>
+<p>Here is a <code>.with!</code> code example snippet;</p>
+<pre><code class="language-rs">let name = move || with!(|first, middle, last| format!(&quot;{first} {middle} {last}&quot;));
+</code></pre>
+<p>The above code snippet example is a replacement for this much longer version;</p>
+<pre><code class="language-rs">let name = move || {
+    first.with(|first| {
+        middle.with(|middle| last.with(|last| format!(&quot;{first} {middle} {last}&quot;)))
+    })
+};
+</code></pre>
+<p>Making signals depend on each other. (Changing A Signal Based On A Change That Happens To Another Signal's Value)</p>
+<p>There are two major ways to make signals depend on each other.</p>
+<ul>
+<li>using a derived signal</li>
+<li>using a memo</li>
+</ul>
+<p>Demos:</p>
+<ol start="4">
+<li>Signal B is a function of signal A (i.e, signal B depends on signal A), you can create either a derived signal or memo from signal A like this;</li>
+</ol>
+<pre><code class="language-rs">// signal A
+let (count, set_count) = create_signal(1);
+// anytime 'count' changes, 'derived_signal_double_count' would also change
+let derived_signal_double_count =  move || count() * 2;
+// anytime 'count' changes, 'memoized_double_count' would also change. Open this link (https://docs.rs/leptos/latest/leptos/fn.create_memo.html) to understand the difference between a momoized signal and a derived signal, or read 'Reactivity - leptos-analysis-2'
+let memoized_double_count = create_memo(move |_| count() * 2);
+</code></pre>
+<h6 id="nb"><a class="header" href="#nb">N.B:</a></h6>
+<p>Take note that <code>create_memo</code> memoizes (stores) a state value so that it can be accessed repeatedly without be re-computed. This is very helpful if the computation of the signal's value is heavy. <code>create_memo</code> will only re-compute a signal's value, if the signal's value is changed.</p>
+<ol start="5">
+<li>Signal C is a function of signal A and some other signal B (i.e, signal C depends on signals A, and B), you can create either a derived signal or memo from signals A and B like this;</li>
+</ol>
+<pre><code class="language-rs">// signal A
+let (first_name, set_first_name) = create_signal(&quot;Bridget&quot;.to_string());
+// signal B
+let (last_name, set_last_name) = create_signal(&quot;Jones&quot;.to_string());
+// derived signal C
+let full_name = move || format!(&quot;{} {}&quot;, first_name(), last_name());
+// memoized signal C
+let full_name = create_memo(move |_| format!(&quot;{} {}&quot;, first_name(), last_name()));
+</code></pre>
+<ol start="6">
+<li>Signal A and signal B are independent signals, but sometimes updated at the same time.
+Imagine this example being great for reseting two or more signals to a value at the same time.</li>
+</ol>
+<p>Code example;</p>
+<pre><code class="language-rs">let (age, set_age) = create_signal(32);
+let (favorite_number, set_favorite_number) = create_signal(42);
+// use this to handle a click on a `Clear` button
+let clear_handler = move |_| {
+  set_age(0);
+  set_favorite_number(0);
+};
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+REACTIVITY::
+RESPONDING TO CHANGES WITH 'create_effect'
+</h4>
+<p>You can decide to research the docs for broader information and methods beyond what's covered in this entire page here - https://docs.rs/leptos_reactive/latest/leptos_reactive/index.html</p>
+<hr />
+<p>ABOUT 'create_effect'</p>
+<p>Without effects, signals can change within the reactive system but never observed in a way that interacts with the outside world.
+Without signals, effects run once but never again, as there's no observable value to subscribe to.</p>
+<p>Why Do Effects (created by <code>create_effect()</code>) Exist</p>
+<p>They exist (only) to synchronize the reactive system with the non-reactive world outside it.</p>
+<p><code>create_effect</code> - takes a function as its argument. It immediately runs the function, and if you access any reactive signal inside that function, it registers the fact that the effect depends on that signal with the reactive runtime.
+Whenever one of the signals that the effect depends on (i.e, subscribes to) changes, the effect runs again.</p>
+<hr />
+<ol>
+<li>Here is how you create a <code>create_effect</code> in leptos</li>
+</ol>
+<p><code>create_effect</code> example code;</p>
+<pre><code class="language-rs">let (a, set_a) = create_signal(0);
+let (b, set_b) = create_signal(0);
+
+create_effect(move |_| {
+  // immediately prints &quot;Value: 0&quot; and subscribes to `a`
+  log::debug!(&quot;Value: {}&quot;, a());
+});
+</code></pre>
+<h6 id="nb-1"><a class="header" href="#nb-1">N.B:</a></h6>
+<p>By default, effects do not run on the server. This means you can call browser-specific APIs within the effect function without causing issues. If you need an effect to run on the server, use <code>create_isomorphic_effect</code>.</p>
+<ol start="2">
+<li>Here is another <code>create_effect</code> example code;</li>
+</ol>
+<pre><code class="language-rs">let (first, set_first) = create_signal(String::new());
+let (last, set_last) = create_signal(String::new());
+let (use_last, set_use_last) = create_signal(true);
+
+// this will add the name to the log
+// any time one of the source signals changes
+create_effect(move |_| {
+    log(
+        // 'first()' and 'last()' will be auto-subscribed to if 'use_last()' evaluates to true, and will be dynamically removed from its subscribe-list when false. Leptos' effects are that smart!
+        if use_last() {
+            format!(&quot;{} {}&quot;, first(), last())
+        } else {
+            first()
+        },
+    )
+});
+</code></pre>
+<ol start="3">
+<li>Effects That Can Run Both On the Client and Server - <code>create_isomorphic_effect</code>.</li>
+</ol>
+<p>Here is an example code;</p>
+<pre><code class="language-rs">let (a, set_a) = create_signal(0);
+
+// ✅ use effects to interact between reactive state and the outside world
+create_isomorphic_effect(move |_| {
+  // immediately prints &quot;Value: 0&quot; and subscribes to `a`
+  log::debug!(&quot;Value: {}&quot;, a.get());
+});
+
+set_a.set(1);
+// ✅ because it's subscribed to `a` and its value is changed here, the effect reruns and prints &quot;Value: 1&quot;
+
+</code></pre>
+<ol start="3">
+<li>Cancellable Effects</li>
+</ol>
+<p>There's an effect creation function called <code>watch</code>. Like <code>create_resource</code>, <code>watch</code> takes a first argument, which is reactively tracked, and a second, which is not. Whenever a reactive value in its &quot;deps&quot; argument is changed, the &quot;callback&quot; is run. <code>watch</code> returns a function that can be called to stop tracking the dependencies.</p>
+<p>Example code;</p>
+<pre><code class="language-rs">let (num, set_num) = create_signal(0);
+
+let stop = watch(
+    // num will be reactively tracked, depended on, subscribed to. The &quot;deps&quot; closure -
+    move || num.get(),
+    // prev_num will not be reactively tracked, the &quot;callback&quot;
+    move |num, prev_num, _| {
+        log::debug!(&quot;Number: {}; Prev: {:?}&quot;, num, prev_num);
+    },
+    // &quot;immediate&quot; boolean
+    false,
+);
+
+set_num.set(1); // &gt; &quot;Number: 1; Prev: Some(0)&quot;
+
+stop(); // stop watching / tracking / depending-on /subcription
+
+set_num.set(2); // (nothing happens)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+TESTING
+</h4>
+<p><em>NOTE: You can find examples to testing Leptos code from the 'examples' directory of the Leptos repository here - https://github.com/leptos-rs/leptos/tree/main/examples</em></p>
+<ol>
+<li>Test Business Logic With Ordinary Rust Tests</li>
+</ol>
+<p>In many cases, it makes sense to pull the logic out of your components and test it separately. For some simple componenents, ther's no particular logic to test, but for many it's worth using a testable wrapping type and implementing the logic in ordinary Rust <code>impl</code> blocks.</p>
+<p>Example code;</p>
+<pre><code class="language-rs">pub struct Todos(Vec&lt;Todo&gt;);
+
+impl Todos {
+    pub fn num_remaining(&amp;self) -&gt; usize {
+        todos.iter().filter(|todo| !todo.completed).sum()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_remaining() {
+        // ...
+    }
+}
+
+#[component]
+pub fn TodoApp() -&gt; impl IntoView {
+    let (todos, set_todos) = create_signal(Todos(vec![Todo { /* ... */ }]));
+    // ✅ this has a test associated with it
+    let num_remaining = move || todos.with(Todos::num_remaining);
+}
+</code></pre>
+<p>In general, the less of your logic is wrapped into your components themselves, the more idiomatic your code with feel and the easier it will be to test.</p>
+<ol start="2">
+<li>Test Components With End-to-End (e2e) Testing</li>
+</ol>
+<ul>
+<li><code>wasm-bindgen-test</code> with counter example;</li>
+</ul>
+<pre><code class="language-rs">#[wasm_bindgen_test]
+fn clear() {
+    let document = leptos::document();
+    let test_wrapper = document.create_element(&quot;section&quot;).unwrap();
+    let _ = document.body().unwrap().append_child(&amp;test_wrapper);
+
+    mount_to(
+        test_wrapper.clone().unchecked_into(),
+        || view! { &lt;SimpleCounter initial_value=10 step=1/&gt; },
+    );
+
+    let div = test_wrapper.query_selector(&quot;div&quot;).unwrap().unwrap();
+    let clear = test_wrapper
+        .query_selector(&quot;button&quot;)
+        .unwrap()
+        .unwrap()
+        .unchecked_into::&lt;web_sys::HtmlElement&gt;();
+
+    clear.click();
+
+assert_eq!(
+    div.outer_html(),
+    // here we spawn a mini reactive system to render the test case
+    run_scope(create_runtime(), || {
+        // it's as if we're creating it with a value of 0, right?
+        let (value, set_value) = create_signal(0);
+
+        // we can remove the event listeners because they're not rendered to HTML
+        view! {
+            &lt;div&gt;
+                &lt;button&gt;&quot;Clear&quot;&lt;/button&gt;
+                &lt;button&gt;&quot;-1&quot;&lt;/button&gt;
+                &lt;span&gt;&quot;Value: &quot; {value} &quot;!&quot;&lt;/span&gt;
+                &lt;button&gt;&quot;+1&quot;&lt;/button&gt;
+            &lt;/div&gt;
+        }
+        // the view returned an HtmlElement&lt;Div&gt;, which is a smart pointer for
+        // a DOM element. So we can still just call .outer_html()
+        .outer_html()
+    })
+);
+}
+</code></pre>
+<ul>
+<li><code>wasm-bindgen-test</code> with counters_stable.</li>
+</ul>
+<p>This more developed test suite uses a system of fixtures to refactor the manual DOM manipulation of the <code>counter</code> tests and easily test a wide range of cases.</p>
+<pre><code class="language-rs">use super::*;
+use crate::counters_page as ui;
+use pretty_assertions::assert_eq;
+
+#[wasm_bindgen_test]
+fn should_increase_the_total_count() {
+    // Given
+    ui::view_counters();
+    ui::add_counter();
+
+    // When
+    ui::increment_counter(1);
+    ui::increment_counter(1);
+    ui::increment_counter(1);
+
+    // Then
+    assert_eq!(ui::total(), 3);
+}
+</code></pre>
+<ul>
+<li>&quot;Playwright&quot; with counters_stable.</li>
+</ul>
+<p>These tests use the common JavaScript testing tool Playwright to run end-to-end tests on the same example, using a library and testing approach familiar to many who have done frontedn development before.</p>
+<p>Example code;</p>
+<pre><code class="language-rs">import { test, expect } from &quot;@playwright/test&quot;;
+import { CountersPage } from &quot;./fixtures/counters_page&quot;;
+
+test.describe(&quot;Increment Count&quot;, () =&gt; {
+  test(&quot;should increase the total count&quot;, async ({ page }) =&gt; {
+    const ui = new CountersPage(page);
+    await ui.goto();
+    await ui.addCounter();
+
+    await ui.incrementCount();
+    await ui.incrementCount();
+    await ui.incrementCount();
+
+    await expect(ui.total).toHaveText(&quot;3&quot;);
+  });
+});
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>ASYNC::
+LOADING DATA WITH RESOURCES - `create_resource`
+</h4>
+<ol>
+<li><code>create_resource</code> is great for waiting for a single asynchronous task <code>Future</code> inside Leptos synchronous reactive system. It takes two arguments</li>
+</ol>
+<ul>
+<li>i. a source signal, which will generate a new <code>Future</code> whenever it changes</li>
+<li>ii. a fetcher function, which takes the data from that signal and returns a <code>Future</code>.</li>
+</ul>
+<ol start="2">
+<li><code>create_resource</code> also provides a <code>refetch()</code> method that allows you to manually reload data (for example, in response to a button click) and a <code>loading()</code> method that returns a <code>ReadSignal&lt;bool&gt;</code> indicating whether the resource is currently loading or not.</li>
+</ol>
+<p>Example <code>create_resource()</code> code;</p>
+<pre><code class="language-rs">use gloo_timers::future::TimeoutFuture;
+use leptos::*;
+
+// Here we define an async function
+// This could be anything: a network request, database read, e.t.c
+// Here, we just multiply a number by 10
+async fn load_data(value: i32) -&gt; i32 {
+    // fake a one-second delay
+    TimeoutFuture::new(1_000).await;
+    value * 10
+}
+
+#[component]
+fn App() -&gt; IntoView {
+  // our source signal: some synchronous, local state
+  let (count, set_count) = create_signal(0);
+
+  // our resource
+  let async_data = create_resource(
+    // synchronous 'count' triggers an asynchronous action (the second argument to 'create_resource') everytime 'count' changes
+    count,
+    // every time `count` changes, this will run
+    // ..'value' is the value of 'count', this fetcher function receives it
+    |value| async move {
+        logging::log!(&quot;loading data from API&quot;);
+        load_data(value).await
+    },
+  );
+
+// Usage:
+    // we can access the resource values with .read()
+    // this will reactively return None before the Future has resolved
+    // and update to Some(T) when it has resolved
+    let async_result = move || {
+        async_data
+            .read()
+            .map(|value| format!(&quot;Server returned {value:?}&quot;))
+            // This loading state will only show before the first load
+            .unwrap_or_else(|| &quot;Loading...&quot;.into())
+    };
+
+    // the resource's loading() method gives us a
+    // signal to indicate whether it's currently loading
+    let loading = async_data.loading();
+    let is_loading = move || if loading() { &quot;Loading...&quot; } else { &quot;Idle.&quot; };
+
+  view! {
+    &lt;button
+        on:click=move |_| {
+            set_count.update(|n| *n += 1);
+        }
+    &gt;
+        &quot;Click me&quot;
+    &lt;/button&gt;
+    // display 'async_result' of 'async_data'
+    &lt;p&gt;
+        &lt;code&gt;&quot;async_value&quot;&lt;/code&gt;&quot;: &quot;
+        {async_result}
+        &lt;br/&gt;
+        {is_loading}
+    &lt;/p&gt;
+  }
+}
+</code></pre>
+<ol start="3">
+<li>To create a resource that simply runs once, you can pass a non-reactive, empty source signal:</li>
+</ol>
+<pre><code class="language-rs">// an async function
+async fn load_data(value: i32) -&gt; i32 {
+    // fake a one-second delay
+    TimeoutFuture::new(1_000).await;
+    value * 10
+}
+
+let once = create_resource(|| (), |_| async move { load_data(1).await }); //  this resource does not receive, depend on, or utilize any source signal
+
+// Usage:
+view! {
+    // ✅ Option 1:
+    &lt;h1&gt;&quot;My Data&quot;&lt;/h1&gt;
+    {move || match once.get() {
+        None =&gt; view! { &lt;p&gt;&quot;Loading...&quot;&lt;/p&gt; }.into_view(),
+        Some(data) =&gt; view! { &lt;ShowData data/&gt; }.into_view()
+    }}
+    // Option 2:
+    &lt;p&gt;
+        &lt;code&gt;&quot;stable&quot;&lt;/code&gt;&quot;: &quot; {move || stable.read()}
+    &lt;/p&gt;
+    &lt;p&gt;
+        &quot;Render something else&quot;
+    &lt;/p&gt;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>ASYNC::
+SUSPENSE,
+AWAIT,
+TRANSITION
+</h4>
+<ol>
+<li><code>&lt;Suspense&gt; &lt;/Suspense/&gt;</code> lets you work with multiple <code>create_resource</code>. <code>&lt;Suspense&gt;&lt;Suspense/&gt;</code> provides a <code>fallback</code> component when two or more resources not yet available, and then lets you render the resources once available at its <code>children</code>.</li>
+</ol>
+<p>Code example;</p>
+<pre><code class="language-rs">let (count_a, set_count) = create_signal(0);
+let (count_b_ set_count2) = create_signal(0);
+
+// async operations
+async fn load_data_a(value: i32) -&gt; i32 {
+    // ...imagine some api call or something ...
+}
+async fn load_data_b(value: i32) -&gt; i32 {
+    // ...imagine some api call or something ...
+}
+
+// create_resource a
+let loaded_data_a = create_resource(
+    count_a,
+    |count| async move { load_data_a(count_a).await }
+);
+// create_resource b
+let loaded_data_b = create_resource(
+    count_b,
+    |count| async move { load_data_b(count_b).await }
+);
+
+// render the loaded resources from 'create_resource'
+view! {
+    &lt;h2&gt;&quot;The Data&quot;&lt;/h2&gt;
+    // Use Suspense to provide 'fallback' in-case, resource-data not loaded
+    &lt;Suspense
+      fallback=move || view! {
+        &lt;p&gt;&quot;Loading...&quot;&lt;/p&gt;
+      }
+    &gt;
+    // The children now
+      &lt;h2&gt;&quot;Now Loaded!&quot;&lt;/h2&gt;
+      &lt;br/&gt;
+      &lt;h3&gt;&quot;Loaded data a:&quot;&lt;/h3&gt;
+      {
+        move || {
+            // Note that you do not need to match or call unwrap on the created resource
+            loaded_data_a.get().map(
+                |a| view! { &lt;ShowA a/&gt; }
+            )
+        }
+      }
+      &lt;h3&gt;&quot;Loaded data b:&quot;&lt;/h3&gt;
+      {
+        move || {
+            loaded_data_b.get().map(
+                |b| view! { &lt;ShowB b/&gt; }
+            )
+        }
+      }
+    &lt;/Suspense&gt;
+}
+</code></pre>
+<ol start="2">
+<li><code>&lt;Await&gt;&lt;/Await&gt;</code> lets you poll a future once, wait for it to finish, and then render its content without ever reactively re-polling.
+It is the equivalent of a <code>create_resource</code> that does not depend on anything and runs just once, except that it's great for having two or more of such <code>create_resource</code> received data' render.</li>
+</ol>
+<p>Code example;</p>
+<pre><code class="language-rs">// the async function
+async fn fetch_monkeys(monkey: i32) -&gt; i32 {
+    // maybe this didn't need to be async
+    monkey * 2
+}
+view! {
+    &lt;Await
+        // `future` provides the `Future` to be resolved
+        future=|| fetch_monkeys(3)
+        // the data is bound to whatever variable name you provide - in this case, it's also called 'data'
+        let:data
+    &gt;
+        // you receive the data by reference and can use it in your view here
+        &lt;p&gt;{*data} &quot; little monkeys, jumping on the bed.&quot;&lt;/p&gt;
+    &lt;/Await&gt;
+}
+</code></pre>
+<ol start="3">
+<li>
+<p>Take note that <code>&lt;Suspense&gt;&lt;/Suspense&gt;</code> would keep flickering its <code>fallback</code> if you keep reloading the data, as in, each time any one of its embedded <code>create_resource</code> dep signal changes.
+To avoid this flickering, consider using a <code>&lt;Transition&gt;&lt;/Transition&gt;</code> instead.</p>
+</li>
+<li>
+<p><code>&lt;Transition&gt;&lt;/Transition&gt;</code> behaves exactly as <code>&lt;Suspense&gt;&lt;/Suspense&gt;</code>, but instead of falling back every time, it only shows the fallback the first time. On all subsequent loads, it continues showing the old data until the new data are ready. This can be really handy to prevent the flickering effect, and to allow users to continue interacting with your application.</p>
+</li>
+</ol>
+<p>Code example;</p>
+<pre><code class="language-rs">let (count_a, set_count) = create_signal(0);
+let (count_b_ set_count2) = create_signal(0);
+
+// async operations
+async fn load_data_a(value: i32) -&gt; i32 {
+    // ...imagine some api call or something ...
+}
+async fn load_data_b(value: i32) -&gt; i32 {
+    // ...imagine some api call or something ...
+}
+
+// create_resource a
+let loaded_data_a = create_resource(
+    count_a,
+    |count| async move { load_data_a(count_a).await }
+);
+// create_resource b
+let loaded_data_b = create_resource(
+    count_b,
+    |count| async move { load_data_b(count_b).await }
+);
+
+// render the loaded resources from 'create_resource'
+view! {
+    &lt;h2&gt;&quot;The Data&quot;&lt;/h2&gt;
+    // Use Transition to provide 'fallback' in-case, resource-data not loaded, this fallback loads once, and remains upon subsequent `create_resource`' data reloads without ever flickering
+    &lt;Transition
+      fallback=move || view! {
+        &lt;p&gt;&quot;Loading...&quot;&lt;/p&gt;
+      }
+    &gt;
+    // The children now
+      &lt;h2&gt;&quot;Now Loaded!&quot;&lt;/h2&gt;
+      &lt;br/&gt;
+      &lt;h3&gt;&quot;Loaded data a:&quot;&lt;/h3&gt;
+      {
+        move || {
+            // Note that you do not need to match or call unwrap on the created resource
+            loaded_data_a.get().map(
+                |a| view! { &lt;ShowA a/&gt; }
+            )
+        }
+      }
+      &lt;h3&gt;&quot;Loaded data b:&quot;&lt;/h3&gt;
+      {
+        move || {
+            loaded_data_b.get().map(
+                |b| view! { &lt;ShowB b/&gt; }
+            )
+        }
+      }
+    &lt;/Transition&gt;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>ASYNC::
+MUTATING DATA WITH ACTIONS
+</h4>
+<p>What if you just want to call an arbitrary <code>async</code> function, and keep track of what it's doing?</p>
+<p>Depend on an input, a non-signal, or even nothing, and perform an asynchronous action by using <code>create_action</code>.</p>
+<ol>
+<li>
+<p><code>create_action</code> purpose - If you are trying to occasionally run an <code>async</code> function in response to something like a user clicking a button (not neccessarily a signal??), you probably want to use <code>create_action</code>.</p>
+</li>
+<li>
+<p><code>create_action</code> takes an <code>async</code> function that takes a reference to a single argument, which you can think of as the &quot;input type&quot;</p>
+</li>
+</ol>
+<p>Example <code>create_action</code> code;</p>
+<pre><code class="language-rs">// ✅
+// if there's a single argument, just use that
+let action1 = create_action(|input: &amp;String| {
+   let input = input.clone();
+   async move { todo!() }
+});
+
+// if there are no arguments (inputs/deps), use the unit type `()`
+let action2 = create_action(|input: &amp;()| async {
+    // no need to clone 'input' here since there are no args provided as 'input'
+    todo!()
+});
+
+// if there are multiple arguments (inputs/deps), use a tuple
+let action3 = create_action(
+  |input: &amp;(usize, String)| async {
+    let input = input.clone();
+    todo!()
+  }
+);
+</code></pre>
+<p><em>N.B: Because the action function takes a reference but the <code>Future</code> needs to have <code>'static</code> lifetime, you'll usually need to clone the input valuen(as done above) to pass it into the <code>Future</code>. This is admittedly awkward but it unlocks some powerful features like optimistic UI.</em></p>
+<ol start="3">
+<li>Here is another <code>create_action</code> in action, no pun intended.</li>
+</ol>
+<pre><code class="language-rs">let add_todo_action = create_action(|input: &amp;String| {
+  let input = input.to_owned(); // this essentially clones input
+  async move {
+    add_todo_request(&amp;input).await
+  }
+})
+</code></pre>
+<ol start="4">
+<li>Rather than call the above action <code>add_todo_action</code> in no.3 directly, you have to call it with a <code>.dispatch()</code>, as in;</li>
+</ol>
+<pre><code class="language-rs">add_todo_action.dispatch(&quot;Some value&quot;.to_string()); // &quot;some value&quot;.to_string() becomes the argument value of 'add_todo_action'.
+</code></pre>
+<ol start="5">
+<li>
+<p>Because <code>.dispatch()</code> isn't an <code>async</code> function, it can be called from a synchronous context. You can do this from an event listener, a timeout, or anywhere.</p>
+</li>
+<li>
+<p>Actions provide access to a few signals that synchronize between the asynchronous action you're calling and the synchronous reactive system:</p>
+</li>
+<li>
+<p>Actions provide access to a few signals that synchronize between an asynchronous action and a synchronous reactive system;</p>
+</li>
+</ol>
+<pre><code class="language-rs">let submitted = add_todo_action.input(); // RwSignal&lt;Option&lt;String&gt;&gt;
+let pending = add_todo_action.pending(); // ReadSignal&lt;bool&gt;
+let todo_id = add_todo_action.value(); // RwSignal&lt;Option&lt;Uuid&gt;&gt;
+</code></pre>
+<ol start="8">
+<li>With actions, you can track the current state of your request, or do &quot;optimistic UI&quot; based on the assumption that the submission will succeed.</li>
+</ol>
+<p>Example code;</p>
+<pre><code class="language-rs">use gloo_timers::future::TimeoutFuture;
+use leptos::{html::Input, *};
+use uuid::Uuid;
+
+// Here we define an async function
+// This could be anything: a network request, database read, etc.
+// Think of it as a mutation: some imperative async action you run,
+// whereas a resource would be some async data you load
+async fn add_todo(text: &amp;str) -&gt; Uuid {
+    _ = text;
+    // fake a one-second delay
+    TimeoutFuture::new(1_000).await;
+    // pretend this is a post ID or something
+    Uuid::new_v4()
+}
+
+#[component]
+fn App() -&gt; impl IntoView {
+    // an action takes an async function with single argument
+    // it can be a simple type, a struct, or ()
+    let add_todo = create_action(|input: &amp;String| {
+        // the input is a reference, but we need the Future to own it
+        // this is important: we need to clone and move into the Future
+        // so it has a 'static lifetime
+        let input = input.to_owned();
+        async move { add_todo(&amp;input).await }
+    });
+
+    // actions provide a bunch of synchronous, reactive variables
+    // that tell us different things about the state of the action
+    let submitted = add_todo.input();
+    let pending = add_todo.pending();
+    let todo_id = add_todo.value();
+
+    let input_ref = create_node_ref::&lt;Input&gt;();
+
+    view! {
+        &lt;form
+            on:submit=move |ev| {
+                ev.prevent_default(); // don't reload the page...
+                let input = input_ref.get().expect(&quot;input to exist&quot;);
+                add_todo.dispatch(input.value());
+            }
+        &gt;
+            &lt;label&gt;
+                &quot;What do you need to do?&quot;
+                &lt;input type=&quot;text&quot;
+                    node_ref=input_ref
+                /&gt;
+            &lt;/label&gt;
+            &lt;button type=&quot;submit&quot;&gt;&quot;Add Todo&quot;&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;p&gt;{move || pending().then(|| &quot;Loading...&quot;)}&lt;/p&gt;
+        &lt;p&gt;
+            &quot;Submitted: &quot;
+            &lt;code&gt;{move || format!(&quot;{:#?}&quot;, submitted())}&lt;/code&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &quot;Pending: &quot;
+            &lt;code&gt;{move || format!(&quot;{:#?}&quot;, pending())}&lt;/code&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &quot;Todo ID: &quot;
+            &lt;code&gt;{move || format!(&quot;{:#?}&quot;, todo_id())}&lt;/code&gt;
+        &lt;/p&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+<ol start="9">
+<li>You would often use <code>create_action</code> along-side server functions <code>create_server_action</code>, and the <code>&lt;ActionForm&gt;</code> component to create really powerful progressively-enhance forms.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+INTERLUDE: PROJECTING CHILDREN
+</h4>
+<p>You would sometimes find that you need to be able to project components as childrens to deeper sub-components.</p>
+<ol>
+<li>Use the <code>store_value</code> primitive to project children. This essentially stores a value in the reactive system, handling ownership off to the framework in exchange for a reference that is, like signals, <code>Copy</code> and <code>'static</code>, which we can access or modify through certain methods.</li>
+</ol>
+<p>Example code;</p>
+<pre><code class="language-rs">pub fn LoggedIn&lt;F, IV&gt;(fallback: F, children: ChildrenFn) -&gt; impl IntoView
+where
+    F: Fn() -&gt; IV + 'static,
+    IV: IntoView,
+{
+    let fallback = store_value(fallback);
+    let children = store_value(children);
+    view! {
+        &lt;Suspense
+            fallback=|| ()
+        &gt;
+            &lt;Show
+                when=|| todo!()
+                fallback=move || fallback.with_value(|fallback| fallback())
+            &gt;
+                {children.with_value(|children| children())}
+            &lt;/Show&gt;
+        &lt;/Suspense&gt;
+    }
+}
+</code></pre>
+<p>At the top level, we store both <code>fallback</code> and <code>children</code> in the reactive scope owned by <code>LoggedIn</code>. Now we can simply move those references down through other layers into the <code>&lt;Show/&gt;</code> component and call them there.</p>
+<p><em>Note that this works because <code>&lt;Show/&gt;</code> and <code>&lt;Susspense/&gt;</code> only need an immutable refernce to their children (which <code>.with_value</code> can give it), not ownership.</em></p>
+<ol start="2">
+<li>In other cases, you may need to project owned props through a function that takes <code>ChildrenFn</code> and therfore needs to be called more than once. In this case, you may find the <code>clone</code>: helper in the <code>view</code> macro helpful.</li>
+</ol>
+<p>Consider this code example</p>
+<pre><code class="language-rs">#[component]
+pub fn App() -&gt; impl IntoView {
+    let name = &quot;Alice&quot;.to_string();
+    view! {
+        &lt;Outer&gt;
+            &lt;Inner&gt;
+                &lt;Inmost name=name.clone()/&gt;
+            &lt;/Inner&gt;
+        &lt;/Outer&gt;
+    }
+}
+
+#[component]
+pub fn Outer(ChildrenFn) -&gt; impl IntoView {
+    children()
+}
+
+#[component]
+pub fn Inner(ChildrenFn) -&gt; impl IntoView {
+    children()
+}
+
+#[component]
+pub fn Inmost(ng) -&gt; impl IntoView {
+    view! {
+        &lt;p&gt;{name}&lt;/p&gt;
+    }
+}
+
+// You should not name=name.clone(), as this gives the error;
+// connot move out of `name`, a captured variable in an `Fn` closure.
+// use the `clone:name` syntax instead;
+view! {
+    &lt;Outer&gt;
+      &lt;Inner clone:name&gt;
+        &lt;Inmost name=name.clone()/&gt;
+    &lt;/Outer&gt;
+}
+</code></pre>
+<p>These issues can be a little tricky to understand or debug because of the opacity of the <code>view</code> macro. But in general, they can always be solved.</p>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+GLOBAL STATE MANAGEMENT
+</h4>
+<p>You generally don't need global state management except for special cases like;</p>
+<ul>
+<li>Theming</li>
+<li>Saving user settings</li>
+<li>Or sharing data between components in different parts of your UI</li>
+</ul>
+<ol>
+<li>The three best approaches to global state are;</li>
+</ol>
+<ul>
+<li>Using the router to drive global state via the URL.</li>
+<li>Passing signals through context.</li>
+<li>Creating a global state struct and creating lenses into it with <code>create_slice</code>.</li>
+</ul>
+<ol start="2">
+<li>
+<p>For details about the first two options, check (Option1)[https://leptos-rs.github.io/leptos/15_global_state.html#option-1-url-as-global-state] and (Option2)[https://leptos-rs.github.io/leptos/15_global_state.html#option-1-url-as-global-state]</p>
+</li>
+<li>
+<p>Option three example code of creating a Global state struct and slices (<code>create_slice</code>) in which each signal only updates when the particular piece of a larger state struct it accessess updates.</p>
+</li>
+</ol>
+<p>The code demo;</p>
+<pre><code class="language-rs">use leptos::*;
+
+// So far, we've only been working with local state in components
+// We've only seen how to communicate between parent and child components
+// But there are also more general ways to manage global state
+//
+// The three best approaches to global state are
+// 1. Using the router to drive global state via the URL
+// 2. Passing signals through context
+// 3. Creating a global state struct and creating lenses into it with `create_slice`
+//
+// Option #1: URL as Global State
+// The next few sections of the tutorial will be about the router.
+// So for now, we'll just look at options #2 and #3.
+
+// Option #2: Pass Signals through Context
+//
+// In virtual DOM libraries like React, using the Context API to manage global
+// state is a bad idea: because the entire app exists in a tree, changing
+// some value provided high up in the tree can cause the whole app to render.
+//
+// In fine-grained reactive libraries like Leptos, this is simply not the case.
+// You can create a signal in the root of your app and pass it down to other
+// components using provide_context(). Changing it will only cause rerendering
+// in the specific places it is actually used, not the whole app.
+#[component]
+fn Option2() -&gt; impl IntoView {
+    // here we create a signal in the root that can be consumed
+    // anywhere in the app.
+    let (count, set_count) = create_signal(0);
+    // we'll pass the setter to specific components,
+    // but provide the count itself to the whole app via context
+    provide_context(count);
+
+    view! {
+        &lt;h1&gt;&quot;Option 2: Passing Signals&quot;&lt;/h1&gt;
+        // SetterButton is allowed to modify the count
+        &lt;SetterButton set_count/&gt;
+        // These consumers can only read from it
+        // But we could give them write access by passing `set_count` if we wanted
+        &lt;div style=&quot;display: flex&quot;&gt;
+            &lt;FancyMath/&gt;
+            &lt;ListItems/&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A button that increments our global counter.
+#[component]
+fn SetterButton(set_count: WriteSignal&lt;u32&gt;) -&gt; impl IntoView {
+    view! {
+        &lt;div class=&quot;provider red&quot;&gt;
+            &lt;button on:click=move |_| set_count.update(|count| *count += 1)&gt;
+                &quot;Increment Global Count&quot;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that does some &quot;fancy&quot; math with the global count
+#[component]
+fn FancyMath() -&gt; impl IntoView {
+    // here we consume the global count signal with `use_context`
+    let count = use_context::&lt;ReadSignal&lt;u32&gt;&gt;()
+        // we know we just provided this in the parent component
+        .expect(&quot;there to be a `count` signal provided&quot;);
+    let is_even = move || count() &amp; 1 == 0;
+
+    view! {
+        &lt;div class=&quot;consumer blue&quot;&gt;
+            &quot;The number &quot;
+            &lt;strong&gt;{count}&lt;/strong&gt;
+            {move || if is_even() {
+                &quot; is&quot;
+            } else {
+                &quot; is not&quot;
+            }}
+            &quot; even.&quot;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that shows a list of items generated from the global count.
+#[component]
+fn ListItems() -&gt; impl IntoView {
+    // again, consume the global count signal with `use_context`
+    let count = use_context::&lt;ReadSignal&lt;u32&gt;&gt;().expect(&quot;there to be a `count` signal provided&quot;);
+
+    let squares = move || {
+        (0..count())
+            .map(|n| view! { &lt;li&gt;{n}&lt;sup&gt;&quot;2&quot;&lt;/sup&gt; &quot; is &quot; {n * n}&lt;/li&gt; })
+            .collect::&lt;Vec&lt;_&gt;&gt;()
+    };
+
+    view! {
+        &lt;div class=&quot;consumer green&quot;&gt;
+            &lt;ul&gt;{squares}&lt;/ul&gt;
+        &lt;/div&gt;
+    }
+}
+
+// Option #3: Create a Global State Struct
+//
+// You can use this approach to build a single global data structure
+// that holds the state for your whole app, and then access it by
+// taking fine-grained slices using `create_slice` or `create_memo`,
+// so that changing one part of the state doesn't cause parts of your
+// app that depend on other parts of the state to change.
+
+#[derive(Default, Clone, Debug)]
+struct GlobalState {
+    count: u32,
+    name: String,
+}
+
+#[component]
+fn Option3() -&gt; impl IntoView {
+    // we'll provide a single signal that holds the whole state
+    // each component will be responsible for creating its own &quot;lens&quot; into it
+    let state = create_rw_signal(GlobalState::default());
+    provide_context(state);
+
+    view! {
+        &lt;h1&gt;&quot;Option 3: Passing Signals&quot;&lt;/h1&gt;
+        &lt;div class=&quot;red consumer&quot; style=&quot;width: 100%&quot;&gt;
+            &lt;h2&gt;&quot;Current Global State&quot;&lt;/h2&gt;
+            &lt;pre&gt;
+                {move || {
+                    format!(&quot;{:#?}&quot;, state.get())
+                }}
+            &lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;display: flex&quot;&gt;
+            &lt;GlobalStateCounter/&gt;
+            &lt;GlobalStateInput/&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that updates the count in the global state.
+#[component]
+fn GlobalStateCounter() -&gt; impl IntoView {
+    let state = use_context::&lt;RwSignal&lt;GlobalState&gt;&gt;().expect(&quot;state to have been provided&quot;);
+
+    // `create_slice` lets us create a &quot;lens&quot; into the data
+    let (count, set_count) = create_slice(
+
+        // we take a slice *from* `state`
+        state,
+        // our getter returns a &quot;slice&quot; of the data
+        |state| state.count, // ** GlobalStateCounter is only concerned about the 'count' slice of the 'GlobalState' struct
+        // our setter describes how to mutate that slice, given a new value
+        |state, n| state.count = n, // ** 'n' comes from the argument passed to 'set_count' of the 'create_slice'
+    );
+
+    view! {
+        &lt;div class=&quot;consumer blue&quot;&gt;
+            &lt;button
+                on:click=move |_| {
+                    set_count(count() + 1);
+                }
+            &gt;
+                &quot;Increment Global Count&quot;
+            &lt;/button&gt;
+            &lt;br/&gt;
+            &lt;span&gt;&quot;Count is: &quot; {count}&lt;/span&gt;
+        &lt;/div&gt;
+    }
+}
+
+/// A component that updates the count in the global state.
+#[component]
+fn GlobalStateInput() -&gt; impl IntoView {
+    let state = use_context::&lt;RwSignal&lt;GlobalState&gt;&gt;().expect(&quot;state to have been provided&quot;);
+
+    // this slice is completely independent of the `count` slice
+    // that we created in the other component
+    // neither of them will cause the other to rerun
+    let (name, set_name) = create_slice(
+        // we take a slice *from* `state`
+        state,
+        // our getter returns a &quot;slice&quot; of the data
+        |state| state.name.clone(),
+        // our setter describes how to mutate that slice, given a new value
+        |state, n| state.name = n,
+    );
+
+    view! {
+        &lt;div class=&quot;consumer green&quot;&gt;
+            &lt;input
+                type=&quot;text&quot;
+                prop:value=name
+                on:input=move |ev| {
+                    set_name(event_target_value(&amp;ev));
+                }
+            /&gt;
+            &lt;br/&gt;
+            &lt;span&gt;&quot;Name is: &quot; {name}&lt;/span&gt;
+        &lt;/div&gt;
+    }
+}
+// This `main` function is the entry point into the app
+// It just mounts our component to the &lt;body&gt;
+// Because we defined it as `fn App`, we can now use it in a
+// template as &lt;App/&gt;
+fn main() {
+    leptos::mount_to_body(|| view! { &lt;Option2/&gt;&lt;Option3/&gt; })
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+ROUTER::
+DEFINING `< Routes/>`
+NESTED ROUTING
+</h4>
+<hr />
+<p>A router is the answer to the question, &quot;Give this URL, what should appear on the page?&quot;</p>
+<ul>
+<li>
+<p>A URL consists of many parts. For example, the URL <code>https://my-cool-blog.com/blog/search?q=Search#resuts</code> consists of</p>
+<ul>
+<li>a sheme: <code>https</code></li>
+<li>a domain: <code>my-cool-blog.com</code></li>
+<li>a path: <code>/blog/search</code></li>
+<li>a query (or search): <code>?q=Search</code></li>
+<li>a hash: <code>#result</code></li>
+</ul>
+</li>
+<li>
+<p>The Leptos Router works with the path and query (<code>blog/search/?=Search</code>). Given this piece of the URL, what should the app render on the page?</p>
+</li>
+<li>
+<p>A Router also helps with layouts in some cases, which you are about to see.</p>
+</li>
+<li>
+<p>For most major applications, most major changes in the state of the app should be reflected in the URL. If you copy and paste the URL and open it in another tab, you should find yourself more or less in the same place.
+In this sense, the router is really at the heart of the global state management for your application. More than anything else, it drives what is displayed on the page.
+The router handles most of this work for you by mapping the current loaction to particular components.</p>
+</li>
+</ul>
+<hr />
+<ol>
+<li>To use a <code>Router</code> in your leptos code, import the relevant types from the <code>leptos_router</code> package to your code as dependencies using either syntax;</li>
+</ol>
+<pre><code class="language-rs">use leptos_router::{Route, RouteProps, Router, RouterProps, Routes, RoutesProps};
+</code></pre>
+<p>OR</p>
+<pre><code>use leptos_router::*;
+</code></pre>
+<ol start="2">
+<li>
+<p>Routing behavior is provided by the <code>&lt;Router/&gt;</code> component. This should usually be somewhere near the root of your application, the rest of the app.</p>
+</li>
+<li>
+<p>You shouldn’t try to use multiple <code>&lt;Router/&gt;</code>s in your app. Remember that the router drives global state: if you have multiple routers, which one decides what to do when the URL changes?</p>
+</li>
+<li>
+<p>The <code>&lt;Routes/&gt;</code> component is where you define all the routes to which a user can navigate in your application. Each possible route is defined by a <code>&lt;Route/&gt;</code> component.</p>
+</li>
+<li>
+<p>Everything outside <code>&lt;Routes/&gt;</code> will be present on every page, so you leave things like a navigation bar or many outside a <code>&lt;Routes/&gt;</code>.</p>
+</li>
+<li>
+<p>Here is an example code that uses a <code>&lt;Router/&gt;</code> and <code>&lt;Routes/&gt;</code>, and a couple <code>&lt;Route/&gt;</code>;</p>
+</li>
+</ol>
+<pre><code class="language-rs">use leptos::*;
+use leptos_router::*;
+
+#[component]
+pub fn App() -&gt; impl IntoView {
+  view! {
+    &lt;Router&gt;
+      &lt;nav&gt;
+        /* ... */
+      &lt;/nav&gt;
+      &lt;main&gt;
+        // all our routes will appear inside &lt;main&gt;
+        &lt;Routes&gt;
+          /* ... */
+          &lt;Route path=&quot;/&quot; view=Home/&gt;
+          &lt;Route path=&quot;/users&quot; view=Users/&gt;
+          &lt;Route path=&quot;/users/:id&quot; view=UserProfile/&gt;
+          &lt;Route path=&quot;/*any&quot; view=|| view! { &lt;h1&gt;&quot;Not Found&quot;&lt;/h1&gt; }/&gt;
+        &lt;/Routes&gt;
+      &lt;/main&gt;
+    &lt;/Router&gt;
+  }
+}
+</code></pre>
+<ol start="7">
+<li><code>&lt;Route/&gt;</code> takes a <em>path</em> and a <em>view</em>. When the current location matches path, the view will be created and displayed. The <code>path</code> can include;</li>
+</ol>
+<ul>
+<li>a static path (<code>/user</code>),</li>
+<li>dynamic, named parameters beginning with a colon (<code>/:id</code>),</li>
+<li>and/or a wildcard beginning with an asterisk (<code>/user/*any</code>)</li>
+</ul>
+<ol start="8">
+<li>view takes a <code>Fn() -&gt; impl IntoView</code>. If a component has no props, it can be passed directly into the <code>view</code>. In this case, <code>view=Home</code> is just a shorthand for <code>|| view! { &lt;Home/&gt; }</code>.</li>
+</ol>
+<hr />
+<p>CONDITIONAL ROUTES</p>
+<ol start="9">
+<li>Examine this conditional code for inspiration;</li>
+</ol>
+<pre><code class="language-rs">// ✅ do this instead!
+view! {
+  &lt;Routes&gt;
+    // parent route
+    &lt;Route path=&quot;/&quot; view=move || {
+      view! {
+        // only show the outlet if data have loaded
+        &lt;Show when=|| is_loaded() fallback=|| view! { &lt;p&gt;&quot;Loading&quot;&lt;/p&gt; }&gt;
+          &lt;Outlet/&gt;
+        &lt;/Show&gt;
+      }
+    }&gt;
+      // nested child route
+      &lt;Route path=&quot;/&quot; view=Home/&gt;
+    &lt;/Route&gt;
+  &lt;/Routes&gt;
+}
+</code></pre>
+<hr />
+<p>NESTED ROUTING</p>
+<ol start="10">
+<li>Example nested routing code (with <code>&lt;Outlet/&gt;</code> specified);</li>
+</ol>
+<pre><code class="language-rs">&lt;Routes&gt;
+  &lt;Route path=&quot;/users&quot; view=Users&gt; // * specify '&lt;Outlet/&gt; inside 'Users'
+  // ... &lt;Outlet/&gt; is how you tell a parent component where to render any nested components inside its view
+    &lt;Route path=&quot;:id&quot; view=UserProfile/&gt;
+    &lt;Route path=&quot;&quot; view=NoUser/&gt;
+  &lt;/Route&gt;
+&lt;/Routes&gt;
+</code></pre>
+<p><em>Now:</em></p>
+<ul>
+<li>if you go to path <code>/users/3</code>, the path matches <code>&lt;Users/&gt;</code> and <code>&lt;UserProfile/&gt;</code>.</li>
+<li>if you go to <code>/users</code>, the path matches <code>&lt;Users/&gt;</code> and <code>&lt;NoUser/&gt;</code>.</li>
+</ul>
+<p><em>Each 'path' can match mutiple routes, as in, each URL can render views provided by multiple <code>Route/&gt;</code> components nested inside it, at the same time, on the same page. You can imagine it being useful for something like a contacts app for example.</em></p>
+<ol start="11">
+<li>Another nested routing code example;</li>
+</ol>
+<pre><code class="language-rs">&lt;Routes&gt;
+  &lt;Route path=&quot;/contacts&quot; view=ContactList&gt; // specify &lt;Outlet/&gt; inside 'ContactList' to state where its children will be nested, i.e, the view for its &quot;&quot; and &quot;:id&quot; paths below
+    &lt;Route path=&quot;:id&quot; view=ContactInfo&gt;
+      &lt;Route path=&quot;&quot; view=EmailAndPhone/&gt;
+      &lt;Route path=&quot;address&quot; view=Address/&gt;
+      &lt;Route path=&quot;messages&quot; view=Messages/&gt;
+    &lt;/Route&gt;
+    &lt;Route path=&quot;&quot; view=|| view! {
+      &lt;p&gt;&quot;Select a contact to view more info.&quot;&lt;/p&gt;
+    }/&gt;
+  &lt;/Route&gt;
+&lt;/Routes&gt;
+</code></pre>
+<p>PARAMS AND QUERIES</p>
+<ol start="12">
+<li>Accessing params and queries is pretty simple with a couple of hooks.</li>
+</ol>
+<ul>
+<li><code>use_query</code> (typed) or <code>use_query_map</code> (untyped, flexible, and recommended).</li>
+<li><code>use_params</code> (typed) or <code>use_params_map</code> (untyped, flexible, and recommended).</li>
+</ul>
+<ol start="13">
+<li>It is recommended that you use <code>use_query_map</code> and <code>use_params_map</code> for ease, but in case that you're interested in using thier counterpart, then visit this URL (Parmas and Queries more info)[https://leptos-rs.github.io/leptos/router/18_params_and_queries.html].</li>
+</ol>
+<p><em>Look at item 21 (the routing comprehensive demo code) for inspiration of how you might use a <code>use_param_map</code> for example.</em></p>
+<hr />
+<p>THE <code>&lt;A/&gt;</code> COMPONENT</p>
+<p><em>N.B: Note that <code>&lt;A/&gt;</code> is basically an <code>&lt;a&gt;</code> with some upgrades which you will soon see.</em></p>
+<ol start="14">
+<li>
+<p>The <code>Router</code> will only try to do a client-side navigation both for <code>&lt;a&gt;</code> and <code>&lt;A&gt;</code> when it's pretty sure that it can handle it (on the client-side).</p>
+</li>
+<li>
+<p>Both <code>&lt;a&gt;</code> and <code>&lt;A/&gt;</code> will do client-side navigation unless these circumstances occur;</p>
+</li>
+</ol>
+<ul>
+<li>the click event (to a link) has had <code>prevent_default()</code> called on it.</li>
+<li>the <code>Meta</code>, <code>Alt</code>, <code>Ctrl</code>, or <code>Shift</code> keys were held during a click.</li>
+<li>the <code>&lt;a&gt;</code> or <code>&lt;A/&gt;</code> has a <code>target</code> or <code>download</code> attributes, or <code>rel=&quot;external&quot;</code>.</li>
+<li>the link has a different origin from the current location. For this use <code>&lt;a rel=&quot;external&quot;&gt;</code>.</li>
+</ul>
+<ol start="16">
+<li>Here are <code>&lt;A/&gt;</code>'s upgrades over <code>&lt;a&gt;</code>, hence you should choose <code>&lt;A/&gt;</code> over <code>&lt;a&gt;</code> under the following circumstances;</li>
+</ol>
+<ul>
+<li>you need this form of quick, short relative nested-route for path <code>/path/:id</code>, as <code>&lt;A href=&quot;1&quot;</code>, instead of <code>&lt;a href=&quot;/path/1&quot;</code>.</li>
+<li>you need <code>aria-current</code> attribute to <code>page</code> auto-set for you.</li>
+</ul>
+<hr />
+<p>NAVIGATING PROGRAMMATICALLY</p>
+<ol start="17">
+<li>
+<p>Using links and forms to navigate is the best solution for accessibility and graceful degradation, hence, you would mostly use either <code>&lt;a&gt;</code> and <code>&lt;form&gt;</code>, or their upgraded counterparts - <code>&lt;A/&gt;</code> and <code>&lt;Form/&gt;</code>. Bear this in mind.</p>
+</li>
+<li>
+<p>On the occassion that you want to navigate programmatically (as, in call a function that can and will navigate to a new page) though, you the <code>use_navigate</code> function.</p>
+</li>
+<li>
+<p><code>use_navigate</code> when used, should be called on the client. It does nothing when during server rendering.</p>
+</li>
+<li>
+<p>Here is an example code snippet of <code>use_navigate</code>;</p>
+</li>
+</ol>
+<pre><code class="language-rs">let navigate = leptos_router::use_navigate();
+navigate(&quot;/to-some-link&quot;, Default::default());
+</code></pre>
+<p><em>N.B: Its (required) second argument is a set of <code>NavigateOptions</code> - (NavigateOption)[https://docs.rs/leptos_router/latest/leptos_router/struct.NavigateOptions.html], which has the following construction function, as in, default implmentations;</em></p>
+<pre><code class="language-rs">impl Default for NavigateOptions {
+    fn default() -&gt; Self {
+        Self {
+            resolve: true,
+            replace: false,
+            scroll: true,
+            state: State(None),
+        }
+    }
+}
+</code></pre>
+<p>For accessibility reasons, Do not programmatically navigate to a link like this;</p>
+<pre><code class="language-rs">&lt;button on:click=move |_| navigate(/* ... */)&gt;
+</code></pre>
+<p>Again, any <code>on:click</code> that navigates should be an <code>&lt;a&gt;</code>, for reasons of accessibility.</p>
+<hr />
+<p>ROUTING COMPREHENSIVE DEMO CODE</p>
+<ol start="21">
+<li>Examine the following comprehensive routing code for some routing guide and inspiration;</li>
+</ol>
+<pre><code class="language-rs">use leptos::*;
+use leptos_router::*;
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;Router&gt;
+            &lt;h1&gt;&quot;Contact App&quot;&lt;/h1&gt;
+            // this &lt;nav&gt; will show on every routes,
+            // because it's outside the &lt;Routes/&gt;
+            // note: we can just use normal &lt;a&gt; tags
+            // and the router will use client-side navigation
+            &lt;nav&gt;
+                &lt;h2&gt;&quot;Navigation&quot;&lt;/h2&gt;
+                &lt;a href=&quot;/&quot;&gt;&quot;Home&quot;&lt;/a&gt;
+                &lt;a href=&quot;/contacts&quot;&gt;&quot;Contacts&quot;&lt;/a&gt;
+            &lt;/nav&gt;
+            &lt;main&gt;
+                &lt;Routes&gt;
+                    // / just has an un-nested &quot;Home&quot;
+                    &lt;Route path=&quot;/&quot; view=|| view! {
+                        &lt;h3&gt;&quot;Home&quot;&lt;/h3&gt;
+                    }/&gt;
+                    // /contacts has nested routes
+                    &lt;Route
+                        path=&quot;/contacts&quot;
+                        view=ContactList
+                      &gt;
+                        // if no id specified, fall back
+                        &lt;Route path=&quot;:id&quot; view=ContactInfo&gt;
+                            &lt;Route path=&quot;&quot; view=|| view! {
+                                &lt;div class=&quot;tab&quot;&gt;
+                                    &quot;(Contact Info)&quot;
+                                &lt;/div&gt;
+                            }/&gt;
+                            &lt;Route path=&quot;conversations&quot; view=|| view! {
+                                &lt;div class=&quot;tab&quot;&gt;
+                                    &quot;(Conversations)&quot;
+                                &lt;/div&gt;
+                            }/&gt;
+                        &lt;/Route&gt;
+                        // if no id specified, fall back
+                        &lt;Route path=&quot;&quot; view=|| view! {
+                            &lt;div class=&quot;select-user&quot;&gt;
+                                &quot;Select a user to view contact info.&quot;
+                            &lt;/div&gt;
+                        }/&gt;
+                    &lt;/Route&gt;
+                &lt;/Routes&gt;
+            &lt;/main&gt;
+        &lt;/Router&gt;
+    }
+}
+
+#[component]
+fn ContactList() -&gt; impl IntoView {
+    view! {
+        &lt;div class=&quot;contact-list&quot;&gt;
+            // here's our contact list component itself
+            &lt;div class=&quot;contact-list-contacts&quot;&gt;
+                &lt;h3&gt;&quot;Contacts&quot;&lt;/h3&gt;
+                &lt;A href=&quot;alice&quot;&gt;&quot;Alice&quot;&lt;/A&gt;
+                &lt;A href=&quot;bob&quot;&gt;&quot;Bob&quot;&lt;/A&gt;
+                &lt;A href=&quot;steve&quot;&gt;&quot;Steve&quot;&lt;/A&gt;
+            &lt;/div&gt;
+
+            // &lt;Outlet/&gt; will show the nested child route
+            // we can position this outlet wherever we want
+            // within the layout
+            &lt;Outlet/&gt;
+        &lt;/div&gt;
+    }
+}
+
+#[component]
+fn ContactInfo() -&gt; impl IntoView {
+    // we can access the :id param reactively with `use_params_map`
+    let params = use_params_map();
+    let id = move || params.with(|params| params.get(&quot;id&quot;).cloned().unwrap_or_default());
+
+    // imagine we're loading data from an API here
+    let name = move || match id().as_str() {
+        &quot;alice&quot; =&gt; &quot;Alice&quot;,
+        &quot;bob&quot; =&gt; &quot;Bob&quot;,
+        &quot;steve&quot; =&gt; &quot;Steve&quot;,
+        _ =&gt; &quot;User not found.&quot;,
+    };
+
+    view! {
+        &lt;div class=&quot;contact-info&quot;&gt;
+            &lt;h4&gt;{name}&lt;/h4&gt;
+            &lt;div class=&quot;tabs&quot;&gt;
+                &lt;A href=&quot;&quot; exact=true&gt;&quot;Contact Info&quot;&lt;/A&gt;
+                &lt;A href=&quot;conversations&quot;&gt;&quot;Conversations&quot;&lt;/A&gt;
+            &lt;/div&gt;
+
+            // &lt;Outlet/&gt; here is the tabs that are nested
+            // underneath the /contacts/:id route
+            &lt;Outlet/&gt;
+        &lt;/div&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h4>
+LEPTOS ROUTING::
+`< FORM />`
+</h4>
+<p>THE <code>&lt;Form/&gt;</code> COMPONENT</p>
+<ol>
+<li>
+<p>The router provides a <code>&lt;Form&gt;</code> component, which works like the HTML <code>&lt;form&gt;</code> element, but uses client-side navigations instead of full page reloads.</p>
+</li>
+<li>
+<p><code>&lt;Form/&gt;</code> works with both <code>GET</code> and <code>POST</code> requests. With <code>method=&quot;GET&quot;</code>, it will navigate to the URL encoded in the form data. With <code>method=&quot;POST&quot;</code> it will make a <code>POST</code> request and handle the server’s response.</p>
+</li>
+<li>
+<p><code>&lt;Form/&gt;</code> provides the basis for some components like <code>&lt;ActionForm/&gt;</code> and <code>&lt;MultiActionForm/&gt;</code> that we’ll see in later chapters. But it also enables some powerful patterns of its own.</p>
+</li>
+<li>
+<p>Here is an example <code>&lt;Form/&gt;</code> code for searching with a URL query (as a signal) tied to an (uncontrolled) input element as its source;</p>
+</li>
+</ol>
+<pre><code class="language-rs">async fn fetch_results() {
+    // some async function to fetch our search results
+}
+
+#[component]
+pub fn FormExample() -&gt; impl IntoView {
+    // reactive access to URL query strings
+    let query = use_query_map();
+    // search stored as ?q=
+    let search = move || query().get(&quot;q&quot;).cloned().unwrap_or_default();
+    // a resource driven by the search string
+    let search_results = create_resource(search, fetch_results);
+
+    view! {
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            &lt;input type=&quot;search&quot; name=&quot;search&quot; value=search/&gt;
+            &lt;input type=&quot;submit&quot;/&gt;
+        &lt;/Form&gt;
+        &lt;Transition fallback=move || ()&gt;
+            /* render search results */
+        &lt;/Transition&gt;
+    }
+}
+</code></pre>
+<p>In the above code sample,</p>
+<ul>
+<li>whenever the <code>submit</code> type input is clicked, the <code>&lt;Form/&gt;</code> will navigate to <code>?q={search}</code>, but because this navigation is done on the client side, there's no page flicker or reload.</li>
+<li>because <code>search</code> is the source signal for the <code>search_results</code> resource, this triggers <code>search_results</code> to reload its resource.</li>
+<li>the <code>&lt;Transition/&gt;</code> continues displaying the current search results until the new ones have loaded, and when they complete, it switches to displaying the new result until yet another one reloads (again).</li>
+</ul>
+<ol start="5">
+<li>Here is an example <code>&lt;Form/&gt;</code> code for searching with a URL query (as a signal) tied to an (controlled) input element as its source;</li>
+</ol>
+<pre><code class="language-rs">async fn fetch_results() {
+    // some async function to fetch our search results
+}
+
+#[component]
+pub fn FormExample() -&gt; impl IntoView {
+    // reactive access to URL query strings
+    let query = use_query_map();
+    // search stored as ?q=
+    let search = move || query().get(&quot;q&quot;).cloned().unwrap_or_default();
+    // a resource driven by the search string
+    let search_results = create_resource(search, fetch_results);
+
+    view! {
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            // pay attention to the input here
+            &lt;input type=&quot;search&quot;
+              name=&quot;search&quot;
+              value=search
+              oninput=&quot;this.form.requestSubmit()&quot;
+            /&gt;
+        &lt;/Form&gt;
+        &lt;Transition fallback=move || ()&gt;
+            /* render search results */
+        &lt;/Transition&gt;
+    }
+}
+</code></pre>
+<p>In the above sample code;</p>
+<ul>
+<li>The <code>submit</code> type input has been removed in favor of a input with HTML attribut <code>oninput</code> that does its own submission, such that, it reloads data each time its received input changes.</li>
+<li>the input's <code>oninput</code>'s <code>this.form</code> gives the form element (in this case <code>&lt;Form/&gt;</code>) that the input is attached to.</li>
+<li>the input's <code>oninput</code>'s <code>this.form.requestSubmit()</code> is the JavaScript function that actually fires the <code>submit</code> event on the <code>&lt;form&gt;</code>, which is caught by the <code>&lt;Form/&gt;</code>, just as if you had clicked a submit button.</li>
+</ul>
+<ol start="6">
+<li>Here is a bigger code example of using <code>&lt;Form/&gt;</code>;</li>
+</ol>
+<pre><code class="language-rs">use leptos::*;
+use leptos_router::*;
+
+#[component]
+fn App() -&gt; impl IntoView {
+    view! {
+        &lt;Router&gt;
+            &lt;h1&gt;&lt;code&gt;&quot;&lt;Form/&gt;&quot;&lt;/code&gt;&lt;/h1&gt;
+            &lt;main&gt;
+                &lt;Routes&gt;
+                    &lt;Route path=&quot;&quot; view=FormExample/&gt;
+                &lt;/Routes&gt;
+            &lt;/main&gt;
+        &lt;/Router&gt;
+    }
+}
+
+#[component]
+pub fn FormExample() -&gt; impl IntoView {
+    // reactive access to URL query
+    let query = use_query_map();
+    let name = move || query().get(&quot;name&quot;).cloned().unwrap_or_default();
+    let number = move || query().get(&quot;number&quot;).cloned().unwrap_or_default();
+    let select = move || query().get(&quot;select&quot;).cloned().unwrap_or_default();
+
+    view! {
+        // read out the URL query strings
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;code&gt;&quot;name&quot;&lt;/code&gt;&lt;/td&gt;
+                &lt;td&gt;{name}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;code&gt;&quot;number&quot;&lt;/code&gt;&lt;/td&gt;
+                &lt;td&gt;{number}&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;code&gt;&quot;select&quot;&lt;/code&gt;&lt;/td&gt;
+                &lt;td&gt;{select}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+
+        // &lt;Form/&gt; will navigate whenever submitted
+        &lt;h2&gt;&quot;Manual Submission&quot;&lt;/h2&gt;
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            // input names determine query string key
+            &lt;input type=&quot;text&quot; name=&quot;name&quot; value=name/&gt;
+            &lt;input type=&quot;number&quot; name=&quot;number&quot; value=number/&gt;
+            &lt;select name=&quot;select&quot;&gt;
+                // `selected` will set which starts as selected
+                &lt;option selected=move || select() == &quot;A&quot;&gt;
+                    &quot;A&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;B&quot;&gt;
+                    &quot;B&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;C&quot;&gt;
+                    &quot;C&quot;
+                &lt;/option&gt;
+            &lt;/select&gt;
+            // submitting should cause a client-side
+            // navigation, not a full reload
+            &lt;input type=&quot;submit&quot;/&gt;
+        &lt;/Form&gt;
+
+        // This &lt;Form/&gt; uses some JavaScript to submit
+        // on every input
+        &lt;h2&gt;&quot;Automatic Submission&quot;&lt;/h2&gt;
+        &lt;Form method=&quot;GET&quot; action=&quot;&quot;&gt;
+            &lt;input
+                type=&quot;text&quot;
+                name=&quot;name&quot;
+                value=name
+                // this oninput attribute will cause the
+                // form to submit on every input to the field
+                oninput=&quot;this.form.requestSubmit()&quot;
+            /&gt;
+            &lt;input
+                type=&quot;number&quot;
+                name=&quot;number&quot;
+                value=number
+                oninput=&quot;this.form.requestSubmit()&quot;
+            /&gt;
+            &lt;select name=&quot;select&quot;
+                onchange=&quot;this.form.requestSubmit()&quot;
+            &gt;
+                &lt;option selected=move || select() == &quot;A&quot;&gt;
+                    &quot;A&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;B&quot;&gt;
+                    &quot;B&quot;
+                &lt;/option&gt;
+                &lt;option selected=move || select() == &quot;C&quot;&gt;
+                    &quot;C&quot;
+                &lt;/option&gt;
+            &lt;/select&gt;
+            // submitting should cause a client-side
+            // navigation, not a full reload
+            &lt;input type=&quot;submit&quot;/&gt;
+        &lt;/Form&gt;
+    }
+}
+
+fn main() {
+    leptos::mount_to_body(App)
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
