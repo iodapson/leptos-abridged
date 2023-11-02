@@ -131,8 +131,10 @@ view! {
 }
 ```
 
-STRONG ADVICE; SKIP THIS. YOU ALREADY POSSESS FUNCTIONING KNOWLEDGE. DON'T GET CAUGHT BY THIS TRIPPER. 10. Derived Signals. Signals are functions, e.g, the tuple values from 'create_signal()', while derived signals are signal' tuple values function calls made inside a closure, hence, such closure access the signal.
-Derived signals are closures which access a signal.
+STRONG ADVICE; SKIP THIS. YOU ALREADY POSSESS FUNCTIONING KNOWLEDGE. DON'T GET CAUGHT BY THIS TRIPPER.
+
+10. Derived Signals. Signals are functions, e.g, the tuple values from 'create_signal()', while derived signals are signal' tuple values function calls made inside a closure, hence, such closure access the signal.
+    Derived signals are closures which access a signal.
 
 Derived signal example:
 
