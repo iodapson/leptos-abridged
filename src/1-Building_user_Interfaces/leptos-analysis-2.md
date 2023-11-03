@@ -1,7 +1,9 @@
 <h4>
 BUILDING USER INTERFACES::
-COMPONENTS, SUB-COMPONENT PROPS (1). (See part2 in leptos-analysis-8)
+COMPONENTS, SUB-COMPONENT PROPS (Part 1).
 </h4>
+
+See Part 2 [here](./leptos-analysis-8.md)
 
 1. Specifying a component prop for a sub-component looks like this;
 

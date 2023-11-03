@@ -1,17 +1,25 @@
-<h4>
-BUILDING USER INTERFACES::
-COMPONENTS, 
-EVENT LISTENERS, 
-SIGNALS, 
-DYNAMICALLY-DERIVED VALUES, 
-ATTRIBUTES, 
-STYLES, AND HTML INJECTION
-</h4>
+<h3 style="text-align:center;">Building User Interfaces</h3>
 
-A - A BASIC COMPONENT
+---
 
-- Has either `#[component]` or `#[server]` at the start of its definition
-- Is a function that is CamelCase
+#### [Components](#a--basic-component),
+
+#### [Event Listeners](#b---event-listeners),
+
+#### [Signals](#c--signals-basics),
+
+#### [Derived Signals for Dynamically Derived Values](#d--derived-signals-for-dynamically-derived-values),
+
+#### [Dynamic Classes, HTML Attributes & Inline-Styles](#e--dynamic-classes-html-attributes--inline-styles),
+
+#### [HTML Injection](#f--html-injection)
+
+---
+
+##### A- BASIC COMPONENT
+
+- Has either `#[component]` (for client-side-render only components) or `#[server]` (for both server-side and client-side rendering with hydration), at the start of its definition.
+- Is a function that is CamelCased
 - Returns `impl IntoView`
 - Returns value `view! {...}`
 
@@ -25,7 +33,14 @@ fn {{TheNameOfTheComponent}}() -> impl IntoView {
   }
 }
 
-// Now render the component you define
+#[server]
+fn {{TheNameOfTheServerComponent}}() -> impl IntoView {
+  view! {
+    <p>"This is a server component"</p>
+  }
+}
+
+// Now render the component you wish to
 #[component]
 fn App() -> impl IntoView {
   let (count, set_count) = create_signal(0);
@@ -39,9 +54,9 @@ fn main() {
 }
 ```
 
-B - VIEW: DYNAMIC CLASSES, STYLES, AND ATTRIBUTES
+##### B - EVENT LISTENERS
 
-1. Event listeners have the following syntax;
+- Event listeners have the following syntax;
 
 ```rs
   on:{{event-name}} = move |_| {
@@ -52,26 +67,75 @@ B - VIEW: DYNAMIC CLASSES, STYLES, AND ATTRIBUTES
 OR
 
 ```rs
-  on:{{event-name}} = move |{{received_event_value}} {
+  on:{{event-name}} = move | {{received_event_value}} | {
       ...
   }
 ```
 
-2. Event listener functions (always closures) usually change the value of a signal. Check No.5 to see how to change the value of a signal dynamically.
+<detail>
+<summary>Usage Example</summary>
 
-3. Signal Syntax Looks Like This:
+Create a module named 'counter_component.rs';
 
 ```rs
-  let ({{signal_name}}, {{set_signal_name}}) = create_signal({{intial-value}})
+use leptos::*;
+/* Imagine component 'CounterComponent' as a stand-alone
+ component inside its own rust module
+*/
+#[component]
+pub fn CounterComponent() -> impl IntoView {
+  // Let's create a signal
+  let (counter, set_counter) = create_signal(0);
+  // Let's return a single view
+  view! {
+    <button on:click = move |_| {
+      set_counter = counter()+1;
+    }>"Increase count"
+    </button>
+  }
+}
 ```
 
-4. Reading a signal syntax: Inside a button value, as in;
+Inside module 'app.rs';
+
+```rs
+use crate::counter_component::CounterComponent;
+use leptos::*;
+// Now render the component you wish to
+// Let's import CounterComponent
+#[component]
+fn App() -> impl IntoView {
+  let (count, set_count) = create_signal(0);
+  view! {
+    <CounterComponent/>
+  }
+}
+
+fn main() {
+  leptos::mount_to_body(|| view! { <App/> })
+}
+```
+
+</detail>
+
+##### C- SIGNALS BASICS
+
+- Creating a signal in Leptos;
+
+```rs
+  let ( {{signal_name}}, {{set_signal_name}} ) = create_signal(
+    {{intial-value}}
+  )
+```
+
+- Reading a signal syntax
 
 ```rs
   <button /*...*/>
     "Click me: "
     {count}
-  </button> ----> // The value will dynamically change as the signal changes
+  </button>
+  // The value will evaluate and dynamically change per signal change
 ```
 
 OR
@@ -80,10 +144,10 @@ OR
   <button /*...*/>
     "Click me: "
     {count()}
-  </button> ----> // The value will not dynamically change as the signal changes. The calue is evaluated once only throughout the entire lifetime of the component
+  </button>
 ```
 
-5. Update a Signal Dynamically;
+- Update a signal dynamically
 
 ```rs
   <button on:click=move |_| {
@@ -94,24 +158,93 @@ OR
   </button>
 ```
 
-6. Only Event Handlers and signal-derived values (like in no.5) require Closures.
+##### D- DERIVED SIGNALS FOR DYNAMICALLY DERIVED VALUES
 
-7. Dynamic Values Are Controlled By Signals. See An Example Below.
+- Derived signals are controlled by signals.
 
-8. Dynamic class Syntax looks like this:
-   ...inside an HTML/Leptos element or component as an attribute;
+- Signals are functions, e.g, the single tuple value returned from 'create_signal()' contains two elements and each elements are the signals. Derived signals on the other hand, are closures which access a signal.
+
+- Derived signal syntax
 
 ```rs
-  class:red=move || count() % 2 == 1
+// double_count is a derived signal
+let double_count = move || count() * 2;
 ```
 
 OR
 
 ```rs
-  class=("button-20", move || count() % 2 == 1) ----> // For class names with dashes
+<progress
+  max="50"
+  value=move || count() * 2 // value is subtly a derived signal
+/>
 ```
 
-9. Dynamic Styles syntax
+- Derived signal usage example
+
+```rs
+// First create a Read & Write signal
+let (count, set_count) = create_signal(0);
+/* Then create a closure that calls a Read signal to clone its value,
+ and returns a double of the value as a variable
+*/
+let double_count = move || count() * 2;
+
+view! {
+  // An HTML element with an attribute whose value dynamically changes
+  <progress
+    max="50"
+    value=double_count
+  />
+  // Another example
+  <p>
+    "Double Count: "
+    {double_count}
+  </p>
+}
+```
+
+- Speaking of derived signals, you can use them to create;
+
+  - dynamic HTML values
+  - dynamic event-listeners updates
+  - dynamic class values
+  - dynamic inline-style values
+  - & dynamic HTML attribute values
+
+- Derived signals compute twice or more times. A derived signal will run once for the variable that stores, and once for/inside each and every place where the variable that stores it is used.
+
+- Use memos for resource intensive values that need to change like a signal.
+
+##### E- DYNAMIC CLASSES, HTML ATTRIBUTES & INLINE STYLES
+
+- Dynamic class' syntax
+
+```rs
+  <p class:red=move || count() % 2 == 1>
+     "Dynamically change the color of this text"
+  </p>
+```
+
+OR
+
+```rs
+  /* Use this approach if your HTML element
+   has a class name with one or more dashes in its definition
+  */
+  class=("button-20", move || count() % 2 == 1)
+```
+
+- Dynamic HTML attribute syntax
+
+```rs
+<progress
+  max="50"
+  value=move || count() * 2 // value is subtly a derived signal
+/>
+```
+
+- Dynamic inline-style syntax
 
 ```rs
 // First create a signal that would control the value fo the style
@@ -131,58 +264,9 @@ view! {
 }
 ```
 
-STRONG ADVICE; SKIP THIS. YOU ALREADY POSSESS FUNCTIONING KNOWLEDGE. DON'T GET CAUGHT BY THIS TRIPPER.
+##### F- HTML INJECTION
 
-10. Derived Signals. Signals are functions, e.g, the tuple values from 'create_signal()', while derived signals are signal' tuple values function calls made inside a closure, hence, such closure access the signal.
-    Derived signals are closures which access a signal.
-
-Derived signal example:
-
-```rs
-let double_count = move || count() * 2; // double_count is a derived signal
-```
-
-OR
-
-```rs
-<progress
-  max="50"
-  value=move || count() * 2 // value is a derived signal
-/>
-```
-
-11. Derived Signal syntax;
-
-```rs
-// First create a Read & Write signal
-let (count, set_count) = create_signal(0);
-// The create a closure that calls a Read signal to clone its value, and returns a double of the value as a variable
-let double_count = move || count() * 2;
-// Now setup an HTML element with an attribute whose value is to change dynamically
-<progress
-  max="50"
-  value=double_count
-/>
-// Another example
-<p>
-  "Double Count: "
-  {double_count}
-</p>
-```
-
-12. You can have;
-
-- dynamic HTML values. Check No.4
-- dynamic event-listeners. Check No.5
-- dynamic classes. Check No.8
-- dynamic styles. Check No.9
-- & dynamic attributes. Check No.11
-
-13. Derived signals compute twice or more times. A derived signal will run once for the variable that stores, and once for/inside each and every place where the variable that stores it is used.
-
-14. Use memos for resource intensive values that need to change like a signal.
-
-15. You can inject HTML directly into a DOM element or Component's render using the `inner_html` Leptos property like this;
+- You can inject HTML directly into a DOM element or Component's render using the `inner_html` Leptos property like this;
 
 ```rs
 let html = "<p>This HTML will be injected.</p>";

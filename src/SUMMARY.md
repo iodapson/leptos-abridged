@@ -4,7 +4,7 @@
 
 # Building User Interfaces
 
-- [Components, Event Listeners, Signals, Dynamically-Derived Values(Derived-Signals), HTML Attributes, Styles, and HTML Injection](./1-Building_user_interfaces/leptos-analysis-1.md)
+- [Components, Event Listeners, Signals, Dynamically-Derived Signals, Dynamic HTML Attributes & Styles, HTML Injection](./1-Building_user_interfaces/leptos-analysis-1.md)
 
 ---
 
