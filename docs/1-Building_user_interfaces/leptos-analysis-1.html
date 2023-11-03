@@ -134,19 +134,19 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h4>
-BUILDING USER INTERFACES::
-COMPONENTS, 
-EVENT LISTENERS, 
-SIGNALS, 
-DYNAMICALLY-DERIVED VALUES, 
-ATTRIBUTES, 
-STYLES, AND HTML INJECTION
-</h4>
-<p>A - A BASIC COMPONENT</p>
+                        <h3 style="text-align:center;">Building User Interfaces</h3>
+<hr />
+<h4 id="components"><a class="header" href="#components"><a href="#a--basic-component">Components</a>,</a></h4>
+<h4 id="event-listeners"><a class="header" href="#event-listeners"><a href="#b---event-listeners">Event Listeners</a>,</a></h4>
+<h4 id="signals"><a class="header" href="#signals"><a href="#c--signals-basics">Signals</a>,</a></h4>
+<h4 id="derived-signals-for-dynamically-derived-values"><a class="header" href="#derived-signals-for-dynamically-derived-values"><a href="#d--derived-signals-for-dynamically-derived-values">Derived Signals for Dynamically Derived Values</a>,</a></h4>
+<h4 id="dynamic-classes-html-attributes--inline-styles"><a class="header" href="#dynamic-classes-html-attributes--inline-styles"><a href="#e--dynamic-classes-html-attributes--inline-styles">Dynamic Classes, HTML Attributes &amp; Inline-Styles</a>,</a></h4>
+<h4 id="html-injection"><a class="header" href="#html-injection"><a href="#f--html-injection">HTML Injection</a></a></h4>
+<hr />
+<h5 id="a--basic-component"><a class="header" href="#a--basic-component">A- BASIC COMPONENT</a></h5>
 <ul>
-<li>Has either <code>#[component]</code> or <code>#[server]</code> at the start of its definition</li>
-<li>Is a function that is CamelCase</li>
+<li>Has either <code>#[component]</code> (for client-side-render only components) or <code>#[server]</code> (for both server-side and client-side rendering with hydration), at the start of its definition.</li>
+<li>Is a function that is CamelCased</li>
 <li>Returns <code>impl IntoView</code></li>
 <li>Returns value <code>view! {...}</code></li>
 </ul>
@@ -158,7 +158,14 @@ fn {{TheNameOfTheComponent}}() -&gt; impl IntoView {
   }
 }
 
-// Now render the component you define
+#[server]
+fn {{TheNameOfTheServerComponent}}() -&gt; impl IntoView {
+  view! {
+    &lt;p&gt;&quot;This is a server component&quot;&lt;/p&gt;
+  }
+}
+
+// Now render the component you wish to
 #[component]
 fn App() -&gt; impl IntoView {
   let (count, set_count) = create_signal(0);
@@ -171,46 +178,83 @@ fn main() {
   leptos::mount_to_body(|| view! { &lt;App/&gt; })
 }
 </code></pre>
-<p>B - VIEW: DYNAMIC CLASSES, STYLES, AND ATTRIBUTES</p>
-<ol>
+<h5 id="b---event-listeners"><a class="header" href="#b---event-listeners">B - EVENT LISTENERS</a></h5>
+<ul>
 <li>Event listeners have the following syntax;</li>
-</ol>
+</ul>
 <pre><code class="language-rs">  on:{{event-name}} = move |_| {
       ...
   }
 </code></pre>
 <p>OR</p>
-<pre><code class="language-rs">  on:{{event-name}} = move |{{received_event_value}} {
+<pre><code class="language-rs">  on:{{event-name}} = move | {{received_event_value}} | {
       ...
   }
 </code></pre>
-<ol start="2">
-<li>
-<p>Event listener functions (always closures) usually change the value of a signal. Check No.5 to see how to change the value of a signal dynamically.</p>
-</li>
-<li>
-<p>Signal Syntax Looks Like This:</p>
-</li>
-</ol>
-<pre><code class="language-rs">  let ({{signal_name}}, {{set_signal_name}}) = create_signal({{intial-value}})
+<detail>
+<summary>Usage Example</summary>
+<p>Create a module named 'counter_component.rs';</p>
+<pre><code class="language-rs">use leptos::*;
+/* Imagine component 'CounterComponent' as a stand-alone
+ component inside its own rust module
+*/
+#[component]
+pub fn CounterComponent() -&gt; impl IntoView {
+  // Let's create a signal
+  let (counter, set_counter) = create_signal(0);
+  // Let's return a single view
+  view! {
+    &lt;button on:click = move |_| {
+      set_counter = counter()+1;
+    }&gt;&quot;Increase count&quot;
+    &lt;/button&gt;
+  }
+}
 </code></pre>
-<ol start="4">
-<li>Reading a signal syntax: Inside a button value, as in;</li>
-</ol>
+<p>Inside module 'app.rs';</p>
+<pre><code class="language-rs">use crate::counter_component::CounterComponent;
+use leptos::*;
+// Now render the component you wish to
+// Let's import CounterComponent
+#[component]
+fn App() -&gt; impl IntoView {
+  let (count, set_count) = create_signal(0);
+  view! {
+    &lt;CounterComponent/&gt;
+  }
+}
+
+fn main() {
+  leptos::mount_to_body(|| view! { &lt;App/&gt; })
+}
+</code></pre>
+</detail>
+<h5 id="c--signals-basics"><a class="header" href="#c--signals-basics">C- SIGNALS BASICS</a></h5>
+<ul>
+<li>Creating a signal in Leptos;</li>
+</ul>
+<pre><code class="language-rs">  let ( {{signal_name}}, {{set_signal_name}} ) = create_signal(
+    {{intial-value}}
+  )
+</code></pre>
+<ul>
+<li>Reading a signal syntax</li>
+</ul>
 <pre><code class="language-rs">  &lt;button /*...*/&gt;
     &quot;Click me: &quot;
     {count}
-  &lt;/button&gt; ----&gt; // The value will dynamically change as the signal changes
+  &lt;/button&gt;
+  // The value will evaluate and dynamically change per signal change
 </code></pre>
 <p>OR</p>
 <pre><code class="language-rs">  &lt;button /*...*/&gt;
     &quot;Click me: &quot;
     {count()}
-  &lt;/button&gt; ----&gt; // The value will not dynamically change as the signal changes. The calue is evaluated once only throughout the entire lifetime of the component
+  &lt;/button&gt;
 </code></pre>
-<ol start="5">
-<li>Update a Signal Dynamically;</li>
-</ol>
+<ul>
+<li>Update a signal dynamically</li>
+</ul>
 <pre><code class="language-rs">  &lt;button on:click=move |_| {
       set_count.update(|n| *n += 1);
   }&gt;
@@ -218,26 +262,93 @@ fn main() {
     {move || count()}
   &lt;/button&gt;
 </code></pre>
-<ol start="6">
+<h5 id="d--derived-signals-for-dynamically-derived-values"><a class="header" href="#d--derived-signals-for-dynamically-derived-values">D- DERIVED SIGNALS FOR DYNAMICALLY DERIVED VALUES</a></h5>
+<ul>
 <li>
-<p>Only Event Handlers and signal-derived values (like in no.5) require Closures.</p>
+<p>Derived signals are controlled by signals.</p>
 </li>
 <li>
-<p>Dynamic Values Are Controlled By Signals. See An Example Below.</p>
+<p>Signals are functions, e.g, the single tuple value returned from 'create_signal()' contains two elements and each elements are the signals. Derived signals on the other hand, are closures which access a signal.</p>
 </li>
 <li>
-<p>Dynamic class Syntax looks like this:
-...inside an HTML/Leptos element or component as an attribute;</p>
+<p>Derived signal syntax</p>
 </li>
-</ol>
-<pre><code class="language-rs">  class:red=move || count() % 2 == 1
+</ul>
+<pre><code class="language-rs">// double_count is a derived signal
+let double_count = move || count() * 2;
 </code></pre>
 <p>OR</p>
-<pre><code class="language-rs">  class=(&quot;button-20&quot;, move || count() % 2 == 1) ----&gt; // For class names with dashes
+<pre><code class="language-rs">&lt;progress
+  max=&quot;50&quot;
+  value=move || count() * 2 // value is subtly a derived signal
+/&gt;
 </code></pre>
-<ol start="9">
-<li>Dynamic Styles syntax</li>
-</ol>
+<ul>
+<li>Derived signal usage example</li>
+</ul>
+<pre><code class="language-rs">// First create a Read &amp; Write signal
+let (count, set_count) = create_signal(0);
+/* Then create a closure that calls a Read signal to clone its value,
+ and returns a double of the value as a variable
+*/
+let double_count = move || count() * 2;
+
+view! {
+  // An HTML element with an attribute whose value dynamically changes
+  &lt;progress
+    max=&quot;50&quot;
+    value=double_count
+  /&gt;
+  // Another example
+  &lt;p&gt;
+    &quot;Double Count: &quot;
+    {double_count}
+  &lt;/p&gt;
+}
+</code></pre>
+<ul>
+<li>
+<p>Speaking of derived signals, you can use them to create;</p>
+<ul>
+<li>dynamic HTML values</li>
+<li>dynamic event-listeners updates</li>
+<li>dynamic class values</li>
+<li>dynamic inline-style values</li>
+<li>&amp; dynamic HTML attribute values</li>
+</ul>
+</li>
+<li>
+<p>Derived signals compute twice or more times. A derived signal will run once for the variable that stores, and once for/inside each and every place where the variable that stores it is used.</p>
+</li>
+<li>
+<p>Use memos for resource intensive values that need to change like a signal.</p>
+</li>
+</ul>
+<h5 id="e--dynamic-classes-html-attributes--inline-styles"><a class="header" href="#e--dynamic-classes-html-attributes--inline-styles">E- DYNAMIC CLASSES, HTML ATTRIBUTES &amp; INLINE STYLES</a></h5>
+<ul>
+<li>Dynamic class' syntax</li>
+</ul>
+<pre><code class="language-rs">  &lt;p class:red=move || count() % 2 == 1&gt;
+     &quot;Dynamically change the color of this text&quot;
+  &lt;/p&gt;
+</code></pre>
+<p>OR</p>
+<pre><code class="language-rs">  /* Use this approach if your HTML element
+   has a class name with one or more dashes in its definition
+  */
+  class=(&quot;button-20&quot;, move || count() % 2 == 1)
+</code></pre>
+<ul>
+<li>Dynamic HTML attribute syntax</li>
+</ul>
+<pre><code class="language-rs">&lt;progress
+  max=&quot;50&quot;
+  value=move || count() * 2 // value is subtly a derived signal
+/&gt;
+</code></pre>
+<ul>
+<li>Dynamic inline-style syntax</li>
+</ul>
 <pre><code class="language-rs">// First create a signal that would control the value fo the style
 let (o, set_o) = create_signal(0);
 let (p, set_p) = create_signal(0);
@@ -254,56 +365,10 @@ view! {
     &lt;/div&gt;
 }
 </code></pre>
-<p>STRONG ADVICE; SKIP THIS. YOU ALREADY POSSESS FUNCTIONING KNOWLEDGE. DON'T GET CAUGHT BY THIS TRIPPER. 10. Derived Signals. Signals are functions, e.g, the tuple values from 'create_signal()', while derived signals are signal' tuple values function calls made inside a closure, hence, such closure access the signal.
-Derived signals are closures which access a signal.</p>
-<p>Derived signal example:</p>
-<pre><code class="language-rs">let double_count = move || count() * 2; // double_count is a derived signal
-</code></pre>
-<p>OR</p>
-<pre><code class="language-rs">&lt;progress
-  max=&quot;50&quot;
-  value=move || count() * 2 // value is a derived signal
-/&gt;
-</code></pre>
-<ol start="11">
-<li>Derived Signal syntax;</li>
-</ol>
-<pre><code class="language-rs">// First create a Read &amp; Write signal
-let (count, set_count) = create_signal(0);
-// The create a closure that calls a Read signal to clone its value, and returns a double of the value as a variable
-let double_count = move || count() * 2;
-// Now setup an HTML element with an attribute whose value is to change dynamically
-&lt;progress
-  max=&quot;50&quot;
-  value=double_count
-/&gt;
-// Another example
-&lt;p&gt;
-  &quot;Double Count: &quot;
-  {double_count}
-&lt;/p&gt;
-</code></pre>
-<ol start="12">
-<li>You can have;</li>
-</ol>
+<h5 id="f--html-injection"><a class="header" href="#f--html-injection">F- HTML INJECTION</a></h5>
 <ul>
-<li>dynamic HTML values. Check No.4</li>
-<li>dynamic event-listeners. Check No.5</li>
-<li>dynamic classes. Check No.8</li>
-<li>dynamic styles. Check No.9</li>
-<li>&amp; dynamic attributes. Check No.11</li>
+<li>You can inject HTML directly into a DOM element or Component's render using the <code>inner_html</code> Leptos property like this;</li>
 </ul>
-<ol start="13">
-<li>
-<p>Derived signals compute twice or more times. A derived signal will run once for the variable that stores, and once for/inside each and every place where the variable that stores it is used.</p>
-</li>
-<li>
-<p>Use memos for resource intensive values that need to change like a signal.</p>
-</li>
-<li>
-<p>You can inject HTML directly into a DOM element or Component's render using the <code>inner_html</code> Leptos property like this;</p>
-</li>
-</ol>
 <pre><code class="language-rs">let html = &quot;&lt;p&gt;This HTML will be injected.&lt;/p&gt;&quot;;
 view! {
   &lt;div inner_html=html/&gt;
