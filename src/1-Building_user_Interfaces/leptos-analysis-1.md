@@ -72,11 +72,7 @@ OR
   }
 ```
 
-<<<<<<< HEAD
-<detail>
-=======
 <details>
->>>>>>> main
 <summary>Usage Example</summary>
 
 Create a module named 'counter_component.rs';
@@ -120,11 +116,7 @@ fn main() {
 }
 ```
 
-<<<<<<< HEAD
-</detail>
-=======
 </details>
->>>>>>> main
 
 ##### C- SIGNALS BASICS
 
