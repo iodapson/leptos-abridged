@@ -1,4 +1,4 @@
-<h3 style="text-align:center;">Building User Interfaces</h3>
+<h3 style="text-align:center;">Components, Event Listeners, Signals, Derived Signals (for Dynamically Derived Values, Dynamic Classes, HTML Attributes & Inline-Styles), and HTML Injection</h3>
 
 ---
 
@@ -6,26 +6,28 @@
 
 #### [Event Listeners](#b---event-listeners),
 
-#### [Signals](#c--signals-basics),
+#### [Signals](#c---signals-basics),
 
-#### [Derived Signals for Dynamically Derived Values](#d--derived-signals-for-dynamically-derived-values),
+#### [Derived Signals for Dynamically Derived Values](#d---derived-signals-for-dynamically-derived-values),
 
-#### [Dynamic Classes, HTML Attributes & Inline-Styles](#e--dynamic-classes-html-attributes--inline-styles),
+#### [Dynamic Classes, HTML Attributes & Inline-Styles](#e---dynamic-classes-html-attributes--inline-styles),
 
-#### [HTML Injection](#f--html-injection)
+#### [HTML Injection](#f---html-injection)
 
 ---
 
-##### A- BASIC COMPONENT
+##### A - LEPTOS COMPONENT
 
-- Has either `#[component]` (for client-side-render only components) or `#[server]` (for both server-side and client-side rendering with hydration), at the start of its definition.
-- Is a function that is CamelCased
+- A Leptos component would at the start of its definition either have an attribute `#[component]` (for client-side-render only components) or attribute `#[server]` (for both server-side and client-side rendering with hydration).
+- Has a function-name that is CamelCased
 - Returns `impl IntoView`
-- Returns value `view! {...}`
+- Returns value `view! {...}` to satisfy `impl IntoView`'s requirement
 
 Example;
 
 ```rs
+use leptos::*;
+
 #[component]
 fn {{TheNameOfTheComponent}}() -> impl IntoView {
   view! {
@@ -40,12 +42,12 @@ fn {{TheNameOfTheServerComponent}}() -> impl IntoView {
   }
 }
 
-// Now render the component you wish to
+// Now render any component you wish to
 #[component]
 fn App() -> impl IntoView {
   let (count, set_count) = create_signal(0);
   view! {
-    <{{TheNameOfTheComponet}}/>
+    <{{TheNameOfTheComponent}}/>
   }
 }
 
@@ -54,12 +56,14 @@ fn main() {
 }
 ```
 
+Check out the official documentation on ["A Basic Component"](https://leptos-rs.github.io/leptos/view/01_basic_component.html) for a thorough explanation.
+
 ##### B - EVENT LISTENERS
 
-- Event listeners have the following syntax;
+- Event listeners have the following syntax:
 
 ```rs
-  on:{{event-name}} = move |_| {
+  on:{{event_name}} = move |_| {
       ...
   }
 ```
@@ -67,7 +71,7 @@ fn main() {
 OR
 
 ```rs
-  on:{{event-name}} = move | {{received_event_value}} | {
+  on:{{event_name}} = move | {{received_event_value}} | {
       ...
   }
 ```
@@ -75,7 +79,7 @@ OR
 <details>
 <summary>Usage Example</summary>
 
-Create a module named 'counter_component.rs';
+Create a module inside `src` e.g, `counter_component.rs`;
 
 ```rs
 use leptos::*;
@@ -96,7 +100,7 @@ pub fn CounterComponent() -> impl IntoView {
 }
 ```
 
-Inside module 'app.rs';
+Inside module `app.rs`;
 
 ```rs
 use crate::counter_component::CounterComponent;
@@ -118,9 +122,9 @@ fn main() {
 
 </details>
 
-##### C- SIGNALS BASICS
+##### C - SIGNALS BASICS
 
-- Creating a signal in Leptos;
+- Creating a signal in Leptos:
 
 ```rs
   let ( {{signal_name}}, {{set_signal_name}} ) = create_signal(
@@ -128,79 +132,141 @@ fn main() {
   )
 ```
 
-- Reading a signal syntax
+> Here, in the above code snippet, calling `create_signal()` returns a tuple, where `signal_name` is a [ReadSignal](https://docs.rs/leptos/latest/leptos/struct.ReadSignal.html), and `set_signal_name` is a [WriteSignal](https://docs.rs/leptos/latest/leptos/struct.WriteSignal.html)
+
+- Reading a signal syntax:
 
 ```rs
-  <button /*...*/>
-    "Click me: "
-    {count}
-  </button>
-  // The value will evaluate and dynamically change per signal change
+  use leptos::*;
+
+  #[component]
+  fn App() -> impl IntoView {
+
+      // First create a signal
+      let (count, set_count) = create_signal(0);
+
+      view! {
+          // Then read the signal
+          <button /*...*/>
+            "Click me: "
+            {count} // reactive
+          </button>
+          // count is reactive, because it is a ReadSignal
+      }
+  }
 ```
+
+> Here, in the code snippet above, `{count}` inside the view's `<button></button>` is actually a clone of signal `count` of type `ReadSignal<i32>` from '`let (count, set_count) = create_signal(0);`'.
 
 OR
 
 ```rs
-  <button /*...*/>
-    "Click me: "
-    {count()}
-  </button>
+  use leptos::*;
+
+  #[component]
+  fn App() -> impl IntoView {
+
+      // First create a signal
+      let (count, set_count) = create_signal(0);
+
+      view! {// Then read the signal
+          <button /*...*/>
+            "Click me: "
+            {count()} // unreactive
+          </button>
+      }
+  }
 ```
 
-- Update a signal dynamically
+> Here, in the code demo above, `count()` will evaluate `ReadSignal` - `count`'s value immediately, and access it only once. Calling `count()` is actually syntax-sugar for `count.clone().get()`
+
+- Update a signal dynamically:
 
 ```rs
-  <button on:click=move |_| {
-      set_count.update(|n| *n += 1);
-  }>
-    "Click me: "
-    {move || count()}
-  </button>
+  use leptos::*;
+
+  #[component]
+  fn App() -> impl IntoView {
+
+      /* First create a signal so you can cause a
+         re-render whenever you update the signal
+      */
+      let (count, set_count) = create_signal(0);
+
+      view! {
+          // Pay attention to 'set_count', which is a 'WriteSignal'
+          <button on:click=move |_| {
+            set_count.update(|n| *n += 1);
+          }>
+            "Click me: "
+            {move || count()}
+            /* Interestingly, '{move || count()}' is reactive because
+                you're only calling 'count()' within a closure!
+            */
+          </button>
+      }
+  }
 ```
 
-##### D- DERIVED SIGNALS FOR DYNAMICALLY DERIVED VALUES
+##### D - DERIVED SIGNALS FOR DYNAMICALLY DERIVED VALUES
 
 - Derived signals are controlled by signals.
 
-- Signals are functions, e.g, the single tuple value returned from 'create_signal()' contains two elements and each elements are the signals. Derived signals on the other hand, are closures which access a signal.
+- Derived signals are closures that access a signal source.
 
-- Derived signal syntax
+- Derived signals gived you the opportunity to access a `ReadSignal` to make futher computations, and then use the computed value instead.
+
+- Derived signals allow you derive values from a signal source reactively. You'll soon see an example of accessing a derived signal reactively.
+
+- Derived signal syntax:
 
 ```rs
-// double_count is a derived signal
+// double_count is a derived signal, count() is a ReadSignal value
 let double_count = move || count() * 2;
 ```
 
 OR
 
 ```rs
-<progress
-  max="50"
-  value=move || count() * 2 // value is subtly a derived signal
-/>
+view! {
+    <progress
+      max="50"
+      value=move || count() * 2
+      // 'move || count() * 2' is a derived signal
+    />
+}
 ```
 
-- Derived signal usage example
+- Derived signal usage example:
 
 ```rs
-// First create a Read & Write signal
-let (count, set_count) = create_signal(0);
-/* Then create a closure that calls a Read signal to clone its value,
- and returns a double of the value as a variable
-*/
-let double_count = move || count() * 2;
+use leptos::*;
 
-view! {
-  // An HTML element with an attribute whose value dynamically changes
-  <progress
-    max="50"
-    value=double_count
-  />
-  // Another example
-  <p>
-    "Double Count: "
-    {double_count}
-  </p>
+pub fn MyComponent() -> impl IntoView {
+    // First create a Read & Write signal
+    let (count, set_count) = create_signal(0);
+
+    /* Then create a closure that gets a ReadSignal's data,
+       and returns a double of the ReadSignal value as a variable
+    */
+    let double_count = move || count() * 2;
+
+    // Usage of derived signal 'double_count':
+    view! {
+        /* An HTML element with an attribute whose value
+           dynamically changes
+        */
+        <progress
+          max="50"
+          value=double_count
+        />
+
+        // Accessing a derived signal value reactively
+        <p>
+          "Double Count: "
+          {double_count}
+        </p>
+    }
 }
 ```
 
@@ -212,27 +278,50 @@ view! {
   - dynamic inline-style values
   - & dynamic HTML attribute values
 
-- Derived signals compute twice or more times. A derived signal will run once for the variable that stores, and once for/inside each and every place where the variable that stores it is used.
+- Derived signals compute twice or more times - once per source signal signal change (acceptable), and once again for each and every place where the derived-signal is called to make its source-signal' derived-computation (not great for resource intensive computations!).
 
 - Use memos for resource intensive values that need to change like a signal.
 
-##### E- DYNAMIC CLASSES, HTML ATTRIBUTES & INLINE STYLES
+##### E - DYNAMIC CLASSES, HTML ATTRIBUTES & INLINE STYLES
 
 - Dynamic class' syntax
 
 ```rs
+  ...
+
+  /* First create a source-signal for the dynamic signal
+     that would make the HTML element's class value to be dynamic
+  */
+  let (count, set_count) = create_signal(0);
+
+  // Then make the class dynamic
   <p class:red=move || count() % 2 == 1>
      "Dynamically change the color of this text"
   </p>
+
+  ...
+
 ```
 
 OR
 
 ```rs
+  ...
+
+  /* First create a source-signal for the dynamic signal
+     that would make the HTML element's class value to be dynamic
+  */
+  let (count, set_count) = create_signal(0);
+
   /* Use this approach if your HTML element
    has a class name with one or more dashes in its definition
   */
-  class=("button-20", move || count() % 2 == 1)
+  <p class=("p-20", move || count() % 2 == 1)>
+    "Dynamically change the font-size of this text"
+  </p>
+
+  ...
+
 ```
 
 - Dynamic HTML attribute syntax
@@ -240,14 +329,16 @@ OR
 ```rs
 <progress
   max="50"
-  value=move || count() * 2 // value is subtly a derived signal
+  value=move || count() * 2 // attribute 'value' is now dynamic
 />
 ```
 
 - Dynamic inline-style syntax
 
 ```rs
-// First create a signal that would control the value fo the style
+...
+
+// First create a signal that would control the value of the style
 let (o, set_o) = create_signal(0);
 let (p, set_p) = create_signal(0);
 view! {
@@ -262,9 +353,12 @@ view! {
       "Moves when coordinates change"
     </div>
 }
+
+...
+
 ```
 
-##### F- HTML INJECTION
+##### F - HTML INJECTION
 
 - You can inject HTML directly into a DOM element or Component's render using the `inner_html` Leptos property like this;
 

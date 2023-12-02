@@ -1,14 +1,16 @@
 # Summary
 
-- [Introduction](./README.md)
+[Introduction](./README.md)
+
+[Setting up a Leptos Project]()
 
 # Building User Interfaces
 
-- [Components, Event Listeners, Signals, Dynamically-Derived Signals, Dynamic HTML Attributes & Styles, HTML Injection](./1-Building_user_interfaces/leptos-analysis-1.md)
+- [Components, Event Listeners, Signals, Dynamically-Derived Signals, Dynamic HTML Classes, Attributes & Styles, HTML Injection](./1-Building_user_interfaces/leptos-analysis-1.md)
 
 ---
 
-- [Component and Sub-Component Props (1)](./1-Building_user_interfaces/leptos-analysis-2.md)
+- [Component Properties, Documenting Components, Displaying Data Without Any Additional Wrapping](./1-Building_user_interfaces/leptos-analysis-2.md)
 
 ---
 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Component and Sub-Component Props (1) - Leptos Book Abridged</title>
+        <title>Component Properties, Documenting Components, Displaying Data Without Any Additional Wrapping - Leptos Book Abridged</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">2.</strong> Components, Event Listeners, Signals, Dynamically-Derived Signals, Dynamic HTML Attributes & Styles, HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html" class="active"><strong aria-hidden="true">3.</strong> Component and Sub-Component Props (1)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">4.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">5.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">6.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">7.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">8.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">9.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">10.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">11.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">13.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">14.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">15.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">18.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">19.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded affix "><div>Setting up a Leptos Project</div></li><li class="chapter-item expanded affix "><li class="part-title">Building User Interfaces</li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-1.html"><strong aria-hidden="true">1.</strong> Components, Event Listeners, Signals, Dynamically-Derived Signals, Dynamic HTML Classes, Attributes & Styles, HTML Injection</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-2.html" class="active"><strong aria-hidden="true">2.</strong> Component Properties, Documenting Components, Displaying Data Without Any Additional Wrapping</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-3.html"><strong aria-hidden="true">3.</strong> Interating Lists Statically Or Dynamically</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-4.html"><strong aria-hidden="true">4.</strong> Forms and Inputs</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-5.html"><strong aria-hidden="true">5.</strong> Control Flow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-6.html"><strong aria-hidden="true">6.</strong> Error Handling</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-7.html"><strong aria-hidden="true">7.</strong> Parent-Child Communication (Passing Props to Grand-Sub-Components, Making a Parent Component Aware of Changes Made to Its Props from Inside Its Sub-Component)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../1-Building_user_interfaces/leptos-analysis-8.html"><strong aria-hidden="true">8.</strong> Component Children (Passing Components to Another Component As Props)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Reactivity</li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-1.html"><strong aria-hidden="true">9.</strong> Working With Signals (The Different Signal Methods)</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../2-Reactivity/leptos-analysis-2.html"><strong aria-hidden="true">10.</strong> Responding to Changes with 'create_effect'</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Testing</li><li class="chapter-item expanded "><a href="../3-Testing/leptos-analysis-1.html"><strong aria-hidden="true">11.</strong> Testing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Async</li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-1.html"><strong aria-hidden="true">12.</strong> Loading Data with Resources - 'create_resource'</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-2.html"><strong aria-hidden="true">13.</strong> Suspense, Await, Transition</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../4-Async/leptos-analysis-3.html"><strong aria-hidden="true">14.</strong> Mutating Data With Actions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Interlude - Projecting Children</li><li class="chapter-item expanded "><a href="../5-Interlude - Projecting Children/leptos-analysis-1.html"><strong aria-hidden="true">15.</strong> Interlude: Projecting Children</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Global State Management</li><li class="chapter-item expanded "><a href="../6-Global State Management/leptos-analysis-1.html"><strong aria-hidden="true">16.</strong> Global State Management</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Routing</li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-1.html"><strong aria-hidden="true">17.</strong> Defining &lt; Routes/&gt;, Nested Routing, </a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../7-Routing/leptos-analysis-2.html"><strong aria-hidden="true">18.</strong> &lt; Form/&gt;</a></li><li class="spacer"></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,76 +134,125 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h4>
-BUILDING USER INTERFACES::
-COMPONENTS, SUB-COMPONENT PROPS (Part 1).
-</h4>
-<p>See Part 2 <a href="./leptos-analysis-8.html">here</a></p>
-<ol>
-<li>Specifying a component prop for a sub-component looks like this;</li>
-</ol>
-<pre><code class="language-rs">#[component]
-fn {{TheNameOfTheSubComponent}}(
-    {{the_name_of_prop_1}}: {{its_data_type}} // e.g, progress: ReadSignal&lt;i32&gt;
+                        <h3 style="text-align:center;">Component Properties, Documenting Components, Displaying Data Without Any Additional Wrapping (Part 1) </h3>
+<p>See Part 2 of specifying component properties in the context of passing properties down from a parent component to a a sub-component, one or more sub-component layers deep <a href="./leptos-analysis-8.html">here</a></p>
+<hr />
+<h4 id="required-component-properties"><a class="header" href="#required-component-properties"><a href="#a---component-properties">Required Component Properties</a>,</a></h4>
+<h4 id="optional-component-properties"><a class="header" href="#optional-component-properties"><a href="#b---optional-component-properties">Optional Component Properties</a>,</a></h4>
+<h4 id="optional-component-properties-with-default-values"><a class="header" href="#optional-component-properties-with-default-values"><a href="#c---optional-component-props-with-default-values">Optional Component Properties With Default Values</a></a></h4>
+<h4 id="required-generic-component-properties"><a class="header" href="#required-generic-component-properties"><a href="#d---required-generic-component-props">Required Generic Component Properties</a></a></h4>
+<h4 id="optional-generic-component-properties"><a class="header" href="#optional-generic-component-properties"><a href="#e---optional-generic-component-props">Optional Generic Component Properties</a></a></h4>
+<h4 id="documenting-components"><a class="header" href="#documenting-components"><a href="#f---documenting-components">Documenting Components</a></a></h4>
+<h4 id="displaying-data-without-any-additional-wrapping"><a class="header" href="#displaying-data-without-any-additional-wrapping"><a href="#g---displaying-data-directly-without-any-additional-wrapping">Displaying Data Without Any Additional Wrapping</a></a></h4>
+<hr />
+<h5 id="a---component-properties"><a class="header" href="#a---component-properties">A - Component Properties</a></h5>
+<ul>
+<li>
+<p>You can specify that your component require properties to be passed in to it when rendered in the <code>view!{...}</code> of another component (its parent component), or perhaps nested inside a child HTML element, e.g, <code>&lt;div&gt;&lt;/div&gt;</code> of another component, as its descendant.</p>
+</li>
+<li>
+<p>The syntax to specify a component's property or props/properties looks like this:</p>
+</li>
+</ul>
+<pre><code class="language-rs">use leptos::*;
+
+#[component]
+fn {{TheNameOfYourComponent}}(
+    {{a_prop_name}}: {{its_data_type}},
+    {{another_prop_name}}: i32 // i32, for example
 ) -&gt; impl IntoView {
+
+    ...
+
+}
+</code></pre>
+<details>
+<summary>Usage Example</summary>
+<p>Module <code>leptos_project/src/lib.rs</code>:</p>
+<pre><code class="language-rs">use leptos::*;
+
+#[component]
+fn SimpleProgressBar(
+    current_progress: u32
+) -&gt; impl IntoView {
+
     view! {
         &lt;progress
           max=&quot;50&quot;
-          value={{the_name_of_prop_1}}
+          value=current_progress
         /&gt;
     }
 }
+</code></pre>
+<p>Module <code>leptos_project/src/main.rs</code>:</p>
+<pre><code class="language-rs">// use the custom component 'SimpleProgressBar'
+use leptos_project::SimpleProgressBar;
+// OR
+// use super::SimpleProgressBar;
+use leptos::*;
 
-// And here is how you would use such component with a property
+/* And here is how you would render SimpleProgressBar such that you
+   provide it its required property 'current_progress'.
+   In this example, 'current_progress' is given a signal value
+*/
 #[component]
 fn App() -&gt; impl IntoView {
     let (count, set_count) = create_signal(0);
     view! {
-        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=count/&gt;
+        &lt;div&gt;
+          &lt;p&gt;&quot;The current progress is at:&quot;&lt;/p&gt;
+          &lt;SimpleProgressBar current_progress=count/&gt;
+        &lt;/div&gt;
     }
 }
 </code></pre>
-<hr />
-<p>Optional Sub-component Prop</p>
-<ol start="2">
-<li>Specifying an optional component prop for a sub-component looks like this;</li>
-</ol>
+</details>
+<h5 id="b---optional-component-properties"><a class="header" href="#b---optional-component-properties">B - Optional Component Properties</a></h5>
+<ul>
+<li>Specifying an optional component prop for component looks like this:</li>
+</ul>
 <pre><code class="language-rs">#[component]
-fn {{TheNameOfTheSubComponent}}(
-    // You need the '#[prop(optional)]' annotation
+fn {{TheNameOfYourComponent}}(
+    /* You need the '#[prop(optional)]' annotation to make
+       any property optional
+    */
     #[prop(optional)]
-    {{the_name_of_optional_prop_1}}: {{its_data_type}}
+    {{the_name_of_the_optional_prop}}: {{its_data_type}}
+
 ) -&gt; impl IntoView {
+
     view! {
         &lt;progress
           max=&quot;14&quot;
-          value={{the_name_optional_prop_1}}
+          value={{the_name_of_the_optional_prop}}
         /&gt;
     }
 }
 
-// And here is how you would use such component with a property
+// And here is how you could use a component with an optional property
 #[component]
 fn App() -&gt; impl IntoView {
     view! {
-        &lt;{{TheNameOfTheSubComponent}}/&gt; // notice how {{the_name_of_optional_prop_1}} was entirely skipped!
+        &lt;{{TheNameOfYourComponent}}/&gt;
     }
 }
 </code></pre>
-<hr />
-<p>Optional Sub-component Prop With Default Value</p>
-<ol start="3">
-<li>Specifying an optional component with a default value when skipped for a sub-component;</li>
-</ol>
+<blockquote>
+<p>You can provide a value for an optional property too like this: <div><code>&lt;{{TheNameOfYourComponent}} the_name_of_the_optional_prop={{a_signal_or_value}} /&gt;</code></div></p>
+</blockquote>
+<h5 id="c---optional-component-props-with-default-values"><a class="header" href="#c---optional-component-props-with-default-values">C - Optional Component Props With Default Values</a></h5>
+<ul>
+<li>Specifying an optional component with a default value when skipped for a component looks like this:</li>
+</ul>
 <pre><code class="language-rs">#[component]
-fn {{TheNameOfTheSubComponent}}(
+fn {{TheNameOfYourComponent}}(
     // You need the '#[prop(optional)]' annotation
     #[prop(default = 20)]
-    {{the_name_of_optional_prop_1}}: {{its_data_type}}
+    {{the_name_of_the_optional_prop}}: {{its_data_type}}
 ) -&gt; impl IntoView {
     view! {
         &lt;progress
-          max={{the_name_of_optional_prop_1}}
+          max={{the_name_of_the_optional_prop}}
           value=&quot;14&quot;
         /&gt;
     }
@@ -213,59 +262,86 @@ fn {{TheNameOfTheSubComponent}}(
 #[component]
 fn App() -&gt; impl IntoView {
     view! {
-        &lt;{{TheNameOfTheSubComponent}}/&gt; // ** notice how {{the_name_of_optional_prop_1}} was entirely skipped!
+        &lt;{{TheNameOfTheSubComponent}}/&gt;
+        /* notice how {{the_name_of_the_optional_prop}} was
+           entirely skipped!
+        */
     }
 }
 </code></pre>
-<hr />
-<p>Generic Sub-component Prop</p>
-<ol start="4">
+<h5 id="d---required-generic-component-props"><a class="header" href="#d---required-generic-component-props">D - Required Generic Component Props</a></h5>
+<ul>
 <li>
-<p>Specifying a generic sub-component prop lets you use a value that is of a certain data-type such as, and i32, or use a closure that returns a value of the same data-type (i32).</p>
+<p>Specifying a required generic sub-component prop lets you require a property of a simple concrete optioned data-type such as <code>Option&lt;i32&gt;</code>, <code>Option&lt;bool&gt;</code>, or perhaps even a property which is itself a closure that returns a value of a certain data-type, e.g, an <code>i32</code>, just like your good' ol derived signals (for example; <code>move || count() *2</code>).</p>
 </li>
 <li>
-<p>Here is a (trait-style) demonstration of specifying a generic sub-component prop;</p>
+<p>You could create a generic property for a component either by</p>
+<ul>
+<li>requiring the component prop's data type to implement <code>Fn</code>, as shown below</li>
+<li>or by annotating the target property with attribute <code>#[prop(into)]</code>, as shown further below</li>
+</ul>
 </li>
-</ol>
+<li>
+<p>Below is a (traity-style) code demonstration of specifying a required generic component prop:</p>
+</li>
+</ul>
 <pre><code class="language-rs">#[component]
-fn {{TheNameOfTheSubComponent}}&lt;F&gt;(
-    {{the_name_of_prop_1}}: F
+fn {{TheNameOfYourComponent}}&lt;F&gt;(
+    {{the_name_of_the_prop}}: F
 ) -&gt; impl IntoView
+
 where
-  F: Fn() -&gt; i32 + 'static, // &quot;F: impl F() -&gt; i32 + 'static &quot; not allowed in Leptos yet
+  F: Fn() -&gt; i32 + 'static,
+  /* Please note:
+     &quot; F: impl F() -&gt; i32 + 'static &quot; is not allowed
+     in Leptos just yet
+  */
+
 {
+
     view! {
         &lt;progress
           max=&quot;14&quot;
-          value={{the_name_of_prop_1}}
+          value={{the_name_of_the_prop}}
         /&gt;
     }
+
 }
 
 // Usage:
 #[component]
 fn App() -&gt; impl IntoView {
-    let (count, set_count) = create_signal(0); // count is an i32 type of value
-    let double_count = move || { count() * 2 }; // double_count is closure that returns an i32 type of value
+
+
+    let (count, set_count) = create_signal(0); // ReadSignal&lt;i32&gt;
+    // 'double_count' is a derived signal that returns an i32
+    let double_count = move || { count() * 2 };
+
     view! {
-        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=count/&gt; // direct value of type i32
-        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=double_count&gt; // closure that evaluates to a value of type i32
+        &lt;{{TheNameOfYourComponent}} {{the_name_of_the_prop}}=count/&gt;
+
+        &lt;{{TheNameOfYourComponent}}
+          {{the_name_of_the_prop}}=double_count
+        /&gt;
     }
 }
 </code></pre>
-<ol start="6">
-<li>Here is an (attribute-style) demonstration of specifying a generic sub-component prop;</li>
-</ol>
+<blockquote>
+<p>In the above code demo, notice that you can pass a prop of type <code>ReadSignal&lt;T&gt;</code>, e.g. <code>ReadSignal&lt;i32&gt;</code> to a component that requires a prop of type <code>Fn() -&gt; i32 + 'static</code> just fine, as long as the type <code>T</code> in the <code>ReadSignal&lt;T&gt;</code> matches what the <code>Fn</code> returns.</p>
+</blockquote>
+<ul>
+<li>Here is an (attribute-style) code demonstration of specifying a required generic component prop:</li>
+</ul>
 <pre><code class="language-rs">#[component]
-fn {{TheNameOfTheSubComponent}}(
+fn {{TheNameOfYourComponent}}(
     #[prop(into)]
-    {{the_name_of_prop_1}}: Signal&lt;i32&gt;
+    {{the_name_of_the_prop}}: Signal&lt;i32&gt;
 ) -&gt; impl IntoView
 {
     view! {
         &lt;progress
           max=&quot;14&quot;
-          value={{the_name_of_prop_1}}
+          value={{the_name_of_the_prop}}
         /&gt;
     }
 }
@@ -273,56 +349,76 @@ fn {{TheNameOfTheSubComponent}}(
 // Usage:
 #[component]
 fn App() -&gt; impl IntoView {
-    let (count, set_count) = create_signal(0); // count is an i32 type of value
-    let double_count = move || { count() * 2 }; // double_count is closure that returns an i32 type of value
+    let (count, set_count) = create_signal(0);
+    let double_count = move || { count() * 2 };
     view! {
-        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=count/&gt; // direct value of type i32
-        // ** Take Note Here **
-        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_prop_1}}=Signal::derive(double_count)/&gt; // closure that evaluates to a value of type i32
+        &lt;{{TheNameOfYourComponent}} {{the_name_of_the_prop}}=count/&gt;
+        // Take note here
+        &lt;{{TheNameOfYourComponent}}
+          {{the_name_of_the_prop}}=Signal::derive(double_count)/&gt;
     }
 }
 </code></pre>
-<hr />
-<p>Optional Generic Sub-component Prop</p>
-<ol start="7">
-<li>Usually, you can't specify optional generic props for a sub-component, but there is a workaround for this, which is <code>Option&lt;Box&lt;dyn Fn() -&gt; {{DataType}}&gt;&gt;</code>.</li>
-</ol>
-<p>Example code;</p>
+<h5 id="e---optional-generic-component-props"><a class="header" href="#e---optional-generic-component-props">E - Optional Generic Component Props</a></h5>
+<ul>
+<li>
+<p>Usually, you can't specify optional generic props for a sub-component, but there is a workaround for this, which is <code>Option&lt;Box&lt;dyn Fn() -&gt; {{DataType}}&gt;&gt;</code>.</p>
+</li>
+<li>
+<p>Optional generic component prop example code:</p>
+</li>
+</ul>
 <pre><code class="language-rs">#[component]
-fn {{TheNameOfTheSubComponent}}(
-    {{the_name_of_optional_generic_prop_1}}: Option:&lt;Box&lt;dyn Fn() -&gt; i32&gt;&gt;, // change i32 to your desired data-type
+fn {{TheNameOfYourComponent}}(
+    {{the_name_of_the_optional_generic_prop}}:
+      Option:&lt;Box&lt;dyn Fn() -&gt; i32&gt;&gt;
 ) -&gt; impl IntoView {
 
-  {{the_name_of_optional_generic_prop_1}}.map( |{{optional_generic_prop_1_value}}| {
-    view! {
-        &lt;progress
-          max=&quot;14&quot;
-          value={{optional_generic_prop_1_value}}
-        /&gt;
-    }
-  })
+  {{the_name_of_the_optional_generic_prop}}.map(
+      |{{the_optional_generic_prop_value}}| {
+          view! {
+              &lt;progress
+                max=&quot;14&quot;
+                value={{the_optional_generic_prop_value}}
+              /&gt;
+          }
+      }
+  )
+
 }
 
 // Usage:
 #[component]
 fn App() -&gt; impl IntoView {
-    let (count, set_count) = create_signal(3); // count is an i32 type of value
-    let double_count = move || { count() * 2 }; // double_count is closure that returns an i32 type of value
+    let (count, set_count) = create_signal(3);
+    let double_count = move || { count() * 2 };
+
     view! {
-        // ** providing no optional generic prop
-        &lt;{{TheNameOfTheSubComponent}}/&gt;
-        // ** providing the optional generic prop as an i32 type
-        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_optional_generic_prop_1}}=count/&gt;
-        // ** providing the optional generic optional prop as a double type
-        &lt;{{TheNameOfTheSubComponent}} {{the_name_of_optional_generic_prop_1}}=double_count/&gt;
+        /* providing no prop value for the component's optional
+           generic prop
+        */
+        &lt;{{TheNameOfYourComponent}}/&gt;
+
+        /* providing a ReadSignal&lt;i32&gt; as the component's optional
+           generic prop' value
+        */
+        &lt;{{TheNameOfYourComponent}}
+          {{the_name_of_optional_generic_prop_1}}=count
+        /&gt;
+
+        /* providing a derived-signal as the component's optional
+           generic prop' value
+        */
+        &lt;{{TheNameOfYourComponent}}
+          {{the_name_of_optional_generic_prop_1}}=double_count
+        /&gt;
     }
 }
 </code></pre>
-<hr />
-<p>Documenting Components</p>
-<ol start="8">
-<li>Here is a demonstration of how you would document components. It is very simple. You do so with three slashes, as in, <code>///</code>.</li>
-</ol>
+<h5 id="f---documenting-components"><a class="header" href="#f---documenting-components">F - Documenting Components</a></h5>
+<ul>
+<li>You document a component with three trailing forward-slashes, as in, <code>///</code>, the a newline before your component's definition. Here is a demonstration below:</li>
+</ul>
 <pre><code class="language-rs">/// Shows progress toward a goal.
 #[component]
 fn ProgressBar(
@@ -336,22 +432,23 @@ fn ProgressBar(
     /* ...the body of your component... */
 }
 </code></pre>
-<hr />
-<ol start="9">
-<li>Dispalying Data Directly Without Any Additional Wrapping</li>
-</ol>
-<p>To do so, you would need to use attribute <code>#[component(transparent)]</code> when writing such component that needs to display data directly without any additional wrapping.</p>
-<p>&quot;Note: In general, you should not need to use transparent components unless you are creating custom wrapping components that fall into one of these two categories</p>
+<h5 id="g---displaying-data-directly-without-any-additional-wrapping"><a class="header" href="#g---displaying-data-directly-without-any-additional-wrapping">G - Displaying Data Directly Without Any Additional Wrapping</a></h5>
+<ul>
+<li>
+<p><code>#[component(transparent)]</code> is the attribute that you need when writing a component that needs to display data directly without going through any transformation to <code>impl IntoView</code>.</p>
+</li>
+<li>
+<p>In general, you would not need to use transparent components unless, you are creating custom wrapping components that fall into one of these two categories:</p>
 <ul>
 <li>
 <p>Creating wrappers around <code>&lt;Suspense/&gt;</code> or <code>&lt;Transition/&gt;</code>, which return a transparent suspense structure to integrate with SSR and hydration properly.</p>
 </li>
 <li>
-<p>Refactoring <code>&lt;Route/&gt;</code> definitions for <code>leptos_router</code> out into separate components, because <code>&lt;Route/&gt;</code> is a transparent component that returns a <code>RouteDefinition</code> struct rather than a view.</p>
+<p>Refactoring <code>&lt;Route/&gt;</code> definitions for <code>leptos_router</code> out into separate components, because <code>&lt;Route/&gt;</code> is a transparent component that returns a <code>RouteDefinition</code> struct rather than a view. &quot;</p>
 </li>
 </ul>
-<hr />
-<p><em>Sefini</em></p>
+</li>
+</ul>
 
                     </main>
 
